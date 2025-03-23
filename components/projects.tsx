@@ -146,7 +146,7 @@ export default function Projects() {
           </span>
         </h2>
         <p className="text-gray-400 text-center mb-12 max-w-2xl mx-auto">
-          A collection of my recent work showcasing my skills and experience in software development.
+          A collection of my recent work, showcasing my relevant skills and experience.
         </p>
 
         {/* Desktop View */}
