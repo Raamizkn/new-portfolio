@@ -25,7 +25,7 @@ export default function Hero() {
         <h1 className="text-4xl md:text-6xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-blue-500">
           Raamiz Khan Niazi
         </h1>
-        <h2 className="text-xl md:text-2xl font-medium text-gray-300 mb-6">Software Engineer & Computer Scientist</h2>
+        <h2 className="text-xl md:text-2xl font-medium text-gray-300 mb-6">AI and DevOps Engineer</h2>
 
         <div className="space-y-4 mb-8">
           <p className="text-gray-400 leading-relaxed">
