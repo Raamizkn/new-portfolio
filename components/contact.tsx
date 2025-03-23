@@ -58,7 +58,7 @@ export default function Contact() {
                     <h3 className="text-sm font-medium text-gray-300">Social Media</h3>
                     <div className="flex gap-2 mt-1">
                       <a
-                        href="https://github.com/yourusername"
+                        href="https://github.com/Raamizkn"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-gray-400 hover:text-white transition-colors"
@@ -67,7 +67,7 @@ export default function Contact() {
                       </a>
                       <span className="text-gray-600">•</span>
                       <a
-                        href="https://linkedin.com/in/yourusername"
+                        href="https://www.linkedin.com/in/raamiz-khan-niazi-b77a43233/"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-gray-400 hover:text-white transition-colors"

@@ -21,23 +21,23 @@ interface Certification {
 const certifications: Certification[] = [
   {
     id: 1,
-    title: "AWS Cloud Practitioner",
-    issuer: "Amazon Web Services",
-    date: "2024",
+    title: "Applications of AI for Predictive Maintenance",
+    issuer: "NVIDIA",
+    date: "Feb 2025",
     description:
-      "Fundamental understanding of AWS Cloud concepts, services, security, architecture, pricing, and support.",
-    credentialUrl: "#",
-    skills: ["AWS", "Cloud Computing", "Security", "Architecture"],
+      "Advanced certification in implementing AI-based solutions for predictive maintenance across industrial applications.",
+    credentialUrl: "https://learn.nvidia.com/certificates?id=38XtOjStR1qLXwTBdn0PuA",
+    skills: ["Predictive Maintenance", "AI", "Deep Learning", "Industrial IoT"],
     logo: "/placeholder.svg?height=80&width=80",
   },
   {
     id: 2,
     title: "Building Transformer-Based NLP Applications",
     issuer: "NVIDIA",
-    date: "2024",
+    date: "March 2024",
     description:
       "Advanced training in developing NLP applications using transformer architectures and NVIDIA technologies.",
-    credentialUrl: "#",
+    credentialUrl: "https://learn.nvidia.com/certificates?id=a8d9byLkSiqPissrEKzogQ",
     skills: ["NLP", "Transformers", "Deep Learning", "NVIDIA"],
     logo: "/placeholder.svg?height=80&width=80",
   },
@@ -45,9 +45,9 @@ const certifications: Certification[] = [
     id: 3,
     title: "Fundamentals of Accelerated Computing with CUDA C/C++",
     issuer: "NVIDIA",
-    date: "2024",
+    date: "March 2024",
     description: "Core concepts of parallel programming and GPU computing using CUDA C/C++.",
-    credentialUrl: "#",
+    credentialUrl: "https://learn.nvidia.com/certificates?id=seajHjSuRi21xSsD5zF5Rw",
     skills: ["CUDA", "C++", "GPU Computing", "Parallel Programming"],
     logo: "/placeholder.svg?height=80&width=80",
   },
@@ -55,10 +55,21 @@ const certifications: Certification[] = [
     id: 4,
     title: "Fundamentals of Deep Learning",
     issuer: "NVIDIA",
-    date: "2023",
+    date: "December 2023",
     description: "Comprehensive understanding of deep learning concepts, architectures, and practical applications.",
-    credentialUrl: "#",
+    credentialUrl: "https://learn.nvidia.com/certificates?id=edbe2f2ec35e4e4a8ccff244aa932402",
     skills: ["Deep Learning", "Neural Networks", "TensorFlow", "PyTorch"],
+    logo: "/placeholder.svg?height=80&width=80",
+  },
+  {
+    id: 5,
+    title: "AWS Cloud Practitioner",
+    issuer: "Amazon Web Services",
+    date: "2024",
+    description:
+      "Fundamental understanding of AWS Cloud concepts, services, security, architecture, pricing, and support.",
+    credentialUrl: "#",
+    skills: ["AWS", "Cloud Computing", "Security", "Architecture"],
     logo: "/placeholder.svg?height=80&width=80",
   },
 ]
@@ -103,6 +114,11 @@ export default function Certifications() {
                     <CardTitle className="text-white">{certification.title}</CardTitle>
                     <CardDescription className="text-gray-400">
                       {certification.issuer} • {certification.date}
+                      {certification.credentialUrl && certification.credentialUrl !== "#" && (
+                        <div className="text-xs mt-1">
+                          Credential ID: {certification.credentialUrl.split("id=")[1]}
+                        </div>
+                      )}
                     </CardDescription>
                   </div>
                 </CardHeader>

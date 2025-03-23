@@ -54,6 +54,11 @@ const backendSkills: Skill[] = [
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cuda/cuda-original.svg",
     color: "#76B900",
   },
+  {
+    name: "R",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/r/r-original.svg",
+    color: "#276DC3",
+  },
 ]
 
 const mlSkills: Skill[] = [
@@ -82,6 +87,11 @@ const mlSkills: Skill[] = [
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg",
     color: "#013243",
   },
+  {
+    name: "RAG",
+    icon: "https://img.icons8.com/color/48/000000/artificial-intelligence.png",
+    color: "#0078D7",
+  },
 ]
 
 const devopsSkills: Skill[] = [
@@ -100,6 +110,34 @@ const devopsSkills: Skill[] = [
     name: "AWS",
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg",
     color: "#232F3E",
+  },
+  {
+    name: "Terraform",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/terraform/terraform-original.svg",
+    color: "#7B42BC",
+  },
+]
+
+const cloudSkills: Skill[] = [
+  {
+    name: "AWS Lambda",
+    icon: "https://img.icons8.com/color/48/000000/lambda.png",
+    color: "#FF9900",
+  },
+  {
+    name: "LocalStack",
+    icon: "https://img.icons8.com/external-tal-revivo-shadow-tal-revivo/24/external-localstack-a-fully-functional-local-aws-cloud-stack-logo-shadow-tal-revivo.png",
+    color: "#1A73E8",
+  },
+  {
+    name: "IaC",
+    icon: "https://img.icons8.com/external-flaticons-flat-flat-icons/64/external-infrastructure-web-hosting-flaticons-flat-flat-icons.png",
+    color: "#009688",
+  },
+  {
+    name: "SSH",
+    icon: "https://img.icons8.com/color/48/ssh.png",
+    color: "#000000",
   },
 ]
 
@@ -127,8 +165,9 @@ export default function Skills() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <SkillCategory title="Frontend Development" skills={frontendSkills} delay={0} isInView={isInView} />
           <SkillCategory title="Backend Development" skills={backendSkills} delay={0.2} isInView={isInView} />
-          <SkillCategory title="Machine Learning" skills={mlSkills} delay={0.3} isInView={isInView} />
+          <SkillCategory title="Machine Learning & AI" skills={mlSkills} delay={0.3} isInView={isInView} />
           <SkillCategory title="DevOps & Tools" skills={devopsSkills} delay={0.4} isInView={isInView} />
+          <SkillCategory title="Cloud & Infrastructure" skills={cloudSkills} delay={0.5} isInView={isInView} />
         </div>
       </motion.div>
     </section>

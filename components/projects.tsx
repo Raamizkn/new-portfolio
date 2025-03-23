@@ -25,7 +25,7 @@ const projects: Project[] = [
       "A generative AI system using Stable Diffusion and Python to produce rapid automotive concept images. Built with Streamlit dashboard for live design iteration and user interaction, accelerating concept validation and feedback loops.",
     image: "/placeholder.svg?height=600&width=800",
     tags: ["Python", "Stable Diffusion", "Streamlit", "Machine Learning", "Generative AI"],
-    github: "https://github.com/Raamizkn/automotive-concept-styler",
+    github: "https://github.com/Raamizkn/AI-Automation-Concept-Styler",
   },
   {
     id: 2,
@@ -34,7 +34,7 @@ const projects: Project[] = [
       "An IoT management system using machine learning for predictive maintenance and anomaly detection. Features real-time monitoring with Streamlit dashboard and automated alerting for proactive issue resolution.",
     image: "/placeholder.svg?height=600&width=800",
     tags: ["Python", "Machine Learning", "IoT", "Streamlit", "Random Forest"],
-    github: "https://github.com/Raamizkn/iot-management",
+    github: "https://github.com/Raamizkn/AI-Iot-Management",
   },
   {
     id: 3,
@@ -43,7 +43,7 @@ const projects: Project[] = [
       "An automated resume-ranking system using FastAPI, integrating BERT embeddings and OpenAI API. Features keyword-based relevance scoring and containerized deployment with Docker and Kubernetes.",
     image: "/placeholder.svg?height=600&width=800",
     tags: ["FastAPI", "BERT", "Docker", "Kubernetes", "OpenAI"],
-    github: "https://github.com/Raamizkn/resume-ranker",
+    github: "https://github.com/Raamizkn/Resume-Ranker",
   },
   {
     id: 4,
@@ -52,7 +52,7 @@ const projects: Project[] = [
       "AI-powered system to analyze geographic and demographic data for optimal 5G tower placement, considering factors such as population density and proximity to existing towers.",
     image: "/placeholder.svg?height=600&width=800",
     tags: ["Python", "AI", "Data Analysis", "Geographic Data", "Demographics"],
-    github: "https://github.com/Raamizkn/5g-analyzer",
+    github: "https://github.com/Raamizkn/5GDeployment",
   },
   {
     id: 5,
@@ -61,7 +61,7 @@ const projects: Project[] = [
       "A responsive front-end interface for parking status monitoring using HTML, CSS, and JavaScript, featuring live status updates and interactive elements. Achieved 93% user satisfaction among the student-faculty population.",
     image: "/placeholder.svg?height=600&width=800",
     tags: ["HTML", "CSS", "JavaScript", "LoRaWAN", "IoT"],
-    github: "https://github.com/Raamizkn/parking-sensor",
+    github: "https://github.com/Raamizkn/ParkingStatus",
   },
   {
     id: 6,
@@ -70,7 +70,52 @@ const projects: Project[] = [
       "A robust web scraping solution using Puppeteer to extract detailed course information from Sabanci University's dynamic catalog, automating the collection of university, required, and elective courses.",
     image: "/placeholder.svg?height=600&width=800",
     tags: ["Node.js", "Puppeteer", "Web Scraping", "Automation", "Data Collection"],
-    github: "https://github.com/Raamizkn/susurvey",
+    github: "https://github.com/Raamizkn/Sabanci-Course-Selection-Site",
+  },
+  {
+    id: 7,
+    title: "Network Configuration Compliance Auditor",
+    description:
+      "A comprehensive tool for auditing network device configurations against compliance policies. Features secure SSH connections, configuration parsing, and compliance enforcement with detailed reports.",
+    image: "/placeholder.svg?height=600&width=800",
+    tags: ["Python", "SSH", "Network Security", "Compliance", "Automation"],
+    github: "https://github.com/Raamizkn/network",
+  },
+  {
+    id: 8,
+    title: "PDF Research Assistant (RAG-Powered)",
+    description:
+      "An AI-powered research assistant that analyzes multiple PDFs, extracts information, and answers queries using Retrieval-Augmented Generation (RAG). Supports multi-document knowledge retrieval and context-aware responses.",
+    image: "/placeholder.svg?height=600&width=800",
+    tags: ["Python", "LLM", "RAG", "NLP", "Streamlit", "Docker"],
+    github: "https://github.com/Raamizkn/RAGpdf",
+  },
+  {
+    id: 9,
+    title: "Containerized Threat Detection App",
+    description:
+      "A containerized threat detection application deployed using Infrastructure-as-Code (IaC) principles. Built with Python Flask, this web service analyzes text for potential security threats using machine learning.",
+    image: "/placeholder.svg?height=600&width=800",
+    tags: ["Python", "Flask", "Docker", "Terraform", "IaC", "Security"],
+    github: "https://github.com/Raamizkn/ThreatAppIaC",
+  },
+  {
+    id: 10,
+    title: "AWS Cloud Simulator with LocalStack",
+    description:
+      "A simulated AWS cloud environment using LocalStack to emulate AWS services locally. Includes an S3 bucket that triggers Python Lambda functions for serverless email processing pipelines.",
+    image: "/placeholder.svg?height=600&width=800", 
+    tags: ["Python", "AWS", "Lambda", "LocalStack", "Serverless", "Docker"],
+    github: "https://github.com/Raamizkn/AWS-Sim",
+  },
+  {
+    id: 11,
+    title: "Inventory Sales Analysis System",
+    description:
+      "An R-based inventory and sales analysis system with enhanced time series forecasting using ARIMA and Prophet models. Features automated report generation and scheduling for retail inventory optimization.",
+    image: "/placeholder.svg?height=600&width=800",
+    tags: ["R", "Time Series Analysis", "ARIMA", "Prophet", "Data Visualization"],
+    github: "https://github.com/Raamizkn/InventorySales",
   },
 ]
 
