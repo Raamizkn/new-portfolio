@@ -13,7 +13,7 @@ export default function Hero() {
   }, [])
 
   return (
-    <section className="min-h-screen flex flex-col justify-center items-center px-4 relative overflow-hidden">
+    <section id="hero" className="min-h-screen flex flex-col justify-center items-center px-4 relative overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-900/20 via-transparent to-transparent"></div>
 
       <motion.div
@@ -75,7 +75,10 @@ export default function Hero() {
         <Button
           className="bg-purple-600 text-white hover:bg-white hover:text-purple-600 transition-colors"
           onClick={() => {
-            document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })
+            const projectsSection = document.getElementById("projects")
+            if (projectsSection) {
+              projectsSection.scrollIntoView({ behavior: "smooth", block: "start" })
+            }
           }}
         >
           View My Work

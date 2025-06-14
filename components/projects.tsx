@@ -210,7 +210,7 @@ const ProjectModal = ({ project, isOpen, onClose }: { project: Project | null; i
             </button>
 
             {/* Image */}
-            <div className="aspect-video bg-gray-800 relative overflow-hidden">
+            <div className="aspect-[16/7] bg-gray-800 relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-blue-500/20" />
               <div className="flex items-center justify-center h-full">
                 <div className="w-16 h-16 bg-gray-700 rounded-xl flex items-center justify-center">
@@ -354,7 +354,7 @@ export default function Projects() {
   }
 
   return (
-    <section className="py-20 px-4 md:px-8 relative overflow-hidden">
+    <section id="projects" className="py-20 px-4 md:px-8 relative overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-900/10 via-transparent to-transparent"></div>
       
       <div className="max-w-7xl mx-auto relative z-10">

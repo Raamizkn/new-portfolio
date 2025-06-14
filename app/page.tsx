@@ -5,6 +5,7 @@ import { default as Experience } from "../components/experience"
 import { default as Certifications } from "../components/certifications"
 import { default as Contact } from "../components/contact"
 import { default as Footer } from "../components/footer"
+import { default as FloatingNav } from "../components/floating-nav"
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <Certifications />
       <Contact />
       <Footer />
+      <FloatingNav />
     </main>
   )
 }
