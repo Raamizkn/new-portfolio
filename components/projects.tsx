@@ -292,8 +292,8 @@ const ProjectCard = ({ project, onClick }: { project: Project; onClick: () => vo
         {project.description}
       </p>
       
-      <div className="flex flex-wrap gap-2 mb-4 min-h-[2.5rem]">
-        {project.tags.slice(0, 4).map((tag) => (
+      <div className="flex flex-wrap gap-2 mb-4">
+        {project.tags.map((tag) => (
           <Badge
             key={tag}
             variant="secondary"
@@ -302,14 +302,6 @@ const ProjectCard = ({ project, onClick }: { project: Project; onClick: () => vo
             {tag}
           </Badge>
         ))}
-        {project.tags.length > 4 && (
-          <Badge
-            variant="secondary"
-            className="bg-gray-700 text-gray-400 text-xs"
-          >
-            +{project.tags.length - 4}
-          </Badge>
-        )}
       </div>
       
       <div className="mt-auto pt-2 space-y-3">
