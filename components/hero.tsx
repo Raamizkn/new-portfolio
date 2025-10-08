@@ -25,13 +25,11 @@ export default function Hero() {
         <h1 className="text-4xl md:text-6xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-blue-500">
           Raamiz Khan Niazi
         </h1>
-        <h2 className="text-xl md:text-2xl font-medium text-gray-300 mb-6">AI and DevOps Engineer</h2>
+        <h2 className="text-xl md:text-2xl font-medium text-gray-300 mb-6">Product & AI Consultant</h2>
 
         <div className="space-y-4 mb-8">
           <p className="text-gray-400 leading-relaxed">
-            I'm a versatile computer science student. Passionate about AI, machine learning, cloud computing, and
-            software development, I thrive on solving real-world challenges and building innovative, tech-driven
-            solutions across diverse domains.
+            As a computer science student specializing in AI and product management, I focus on designing intelligent solutions that automate complex workflows and drive business value. My passion lies in leveraging machine learning and automation to build scalable products that solve real-world problems and accelerate digital transformation.
           </p>
         </div>
 
