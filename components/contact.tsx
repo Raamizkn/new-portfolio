@@ -68,7 +68,7 @@ export default function Contact() {
         className="max-w-6xl mx-auto"
       >
         <h2 className="text-4xl md:text-5xl font-light mb-12 text-center">
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-blue-600 dark:from-purple-400 dark:to-blue-500">
+          <span style={{ color: '#8668ED' }}>
             Let's Connect
           </span>
         </h2>

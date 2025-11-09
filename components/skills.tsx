@@ -232,7 +232,7 @@ export default function Skills() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-4xl md:text-5xl font-light mb-4"
           >
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-blue-600 dark:from-purple-400 dark:to-blue-500">
+            <span style={{ color: '#8668ED' }}>
               Skills & Technologies
             </span>
           </motion.h2>
@@ -273,16 +273,21 @@ function SkillCategory({
       transition={{ duration: 0.6, delay }}
       className="group relative"
     >
-      <div className="relative bg-white dark:bg-gray-900/60 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-2xl p-6 hover:border-purple-500/30 transition-all duration-300 h-full shadow-sm">
+      <div className="relative bg-white dark:bg-gray-900/60 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-2xl p-6 transition-all duration-300 h-full shadow-sm"
+        onMouseEnter={(e) => e.currentTarget.style.borderColor = '#8668ED50'}
+        onMouseLeave={(e) => e.currentTarget.style.borderColor = ''}>
         {/* Category Header */}
         <div className="flex items-center gap-3 mb-6">
-          <div className="p-2 bg-purple-100 dark:bg-purple-500/10 rounded-lg border border-purple-200 dark:border-purple-500/20">
-            <span className="text-purple-600 dark:text-purple-400">
+          <div className="p-2 rounded-lg border" style={{ backgroundColor: '#8668ED10', borderColor: '#8668ED30' }}>
+            <span style={{ color: '#8668ED' }}>
               {categoryIcons[title as keyof typeof categoryIcons]}
             </span>
           </div>
           <div>
-            <h3 className="text-lg font-normal text-gray-900 dark:text-white group-hover:text-purple-500 dark:group-hover:text-purple-300 transition-colors">
+            <h3 className="text-lg font-normal text-gray-900 dark:text-white transition-colors"
+              style={{ transition: 'color 0.3s' }}
+              onMouseEnter={(e) => e.currentTarget.style.color = '#8668ED'}
+              onMouseLeave={(e) => e.currentTarget.style.color = ''}>
               {title}
             </h3>
             <p className="text-xs text-gray-600 dark:text-gray-400">{skills.length} technologies</p>
@@ -316,12 +321,14 @@ function SkillBadge({ skill, index, isInView }: { skill: Skill; index: number; i
       whileTap={{ scale: 0.95 }}
       className="group relative"
     >
-      <div className="relative flex flex-col items-center justify-center p-4 bg-gray-50 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl border border-gray-200 dark:border-gray-700/50 group-hover:border-purple-500/30 group-hover:bg-gray-100 dark:group-hover:bg-gray-800/90 transition-all duration-300 h-full min-h-[100px]">
+      <div className="relative flex flex-col items-center justify-center p-4 bg-gray-50 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl border border-gray-200 dark:border-gray-700/50 group-hover:bg-gray-100 dark:group-hover:bg-gray-800/90 transition-all duration-300 h-full min-h-[100px]"
+        onMouseEnter={(e) => e.currentTarget.style.borderColor = '#8668ED50'}
+        onMouseLeave={(e) => e.currentTarget.style.borderColor = ''}>
         {/* Icon Container */}
         <div className="w-12 h-12 mb-3 flex items-center justify-center relative">
           {imageError || !skill.icon ? (
             <div className="relative z-10">
-              {skill.fallbackIcon || <Code className="w-7 h-7 text-purple-400" />}
+              {skill.fallbackIcon || <Code className="w-7 h-7" style={{ color: '#8668ED' }} />}
             </div>
           ) : (
             <img 

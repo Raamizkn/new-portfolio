@@ -68,7 +68,7 @@ export default function About() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-light mb-4">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-blue-600 dark:from-purple-400 dark:to-blue-500">
+            <span style={{ color: '#8668ED' }}>
               About Me
             </span>
           </h2>
@@ -87,10 +87,12 @@ export default function About() {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="text-center p-6 bg-white dark:bg-gray-900/40 backdrop-blur-sm border border-gray-200 dark:border-gray-800/50 rounded-2xl hover:border-purple-500/30 transition-all duration-300 shadow-sm"
+              className="text-center p-6 bg-white dark:bg-gray-900/40 backdrop-blur-sm border border-gray-200 dark:border-gray-800/50 rounded-2xl transition-all duration-300 shadow-sm"
+              onMouseEnter={(e) => e.currentTarget.style.borderColor = '#8668ED50'}
+              onMouseLeave={(e) => e.currentTarget.style.borderColor = ''}
             >
-              <div className="inline-flex items-center justify-center w-12 h-12 mb-4 bg-purple-100 dark:bg-purple-500/10 rounded-xl border border-purple-200 dark:border-purple-500/20">
-                <item.icon className="w-6 h-6 text-purple-600 dark:text-purple-400" />
+              <div className="inline-flex items-center justify-center w-12 h-12 mb-4 rounded-xl border" style={{ backgroundColor: '#8668ED10', borderColor: '#8668ED30' }}>
+                <item.icon className="w-6 h-6" style={{ color: '#8668ED' }} />
               </div>
               <div className="text-3xl md:text-4xl font-light text-gray-900 dark:text-white mb-2">{item.value}</div>
               <div className="text-sm font-normal text-gray-700 dark:text-gray-300 mb-1">{item.label}</div>
@@ -117,9 +119,13 @@ export default function About() {
                 initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
                 animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
                 transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
-                className="p-6 bg-white dark:bg-gray-900/40 backdrop-blur-sm border border-gray-200 dark:border-gray-800/50 rounded-2xl hover:border-purple-500/30 transition-all duration-300 group shadow-sm"
+                className="p-6 bg-white dark:bg-gray-900/40 backdrop-blur-sm border border-gray-200 dark:border-gray-800/50 rounded-2xl transition-all duration-300 group shadow-sm"
+                onMouseEnter={(e) => e.currentTarget.style.borderColor = '#8668ED50'}
+                onMouseLeave={(e) => e.currentTarget.style.borderColor = ''}
               >
-                <h4 className="text-xl font-normal text-gray-900 dark:text-white mb-3 group-hover:text-purple-500 dark:group-hover:text-purple-300 transition-colors">
+                <h4 className="text-xl font-normal text-gray-900 dark:text-white mb-3 transition-colors"
+                  onMouseEnter={(e) => e.currentTarget.style.color = '#8668ED'}
+                  onMouseLeave={(e) => e.currentTarget.style.color = ''}>
                   {item.title}
                 </h4>
                 <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
@@ -137,7 +143,7 @@ export default function About() {
           transition={{ duration: 0.6, delay: 0.8 }}
           className="text-center max-w-4xl mx-auto"
         >
-          <div className="p-8 md:p-12 bg-gradient-to-br from-purple-100/50 to-blue-100/50 dark:from-purple-500/10 dark:to-blue-500/10 border border-purple-200 dark:border-purple-500/20 rounded-3xl">
+          <div className="p-8 md:p-12 border rounded-3xl" style={{ backgroundColor: '#8668ED10', borderColor: '#8668ED30' }}>
             <blockquote className="text-xl md:text-2xl font-light text-gray-700 dark:text-gray-200 leading-relaxed">
               "I believe the best products are born from a deep understanding of user needs, 
               powered by cutting-edge technology, and refined through continuous iteration and feedback."

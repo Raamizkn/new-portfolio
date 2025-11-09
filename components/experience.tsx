@@ -117,7 +117,7 @@ export default function Experience() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-4xl md:text-5xl font-light mb-4"
           >
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-blue-600 dark:from-purple-400 dark:to-blue-500">
+            <span style={{ color: '#8668ED' }}>
               Professional Journey
             </span>
           </motion.h2>
@@ -188,7 +188,9 @@ function ExperienceItem({
         <motion.div
           whileHover={{ y: -5, scale: 1.02 }}
           transition={{ duration: 0.2 }}
-          className="bg-white dark:bg-gray-900/60 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-2xl p-6 shadow-lg hover:border-purple-500/30 transition-all duration-300 group"
+          className="bg-white dark:bg-gray-900/60 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-2xl p-6 shadow-lg transition-all duration-300 group"
+          onMouseEnter={(e) => e.currentTarget.style.borderColor = '#8668ED50'}
+          onMouseLeave={(e) => e.currentTarget.style.borderColor = ''}
         >
           {/* Header */}
           <div className="flex items-start justify-between mb-4">
@@ -287,7 +289,15 @@ function ExperienceItem({
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
                 transition={{ duration: 0.3, delay: index * 0.2 + i * 0.05 }}
-                className="px-3 py-1 bg-gray-100 dark:bg-gray-800/50 text-gray-700 dark:text-gray-300 text-xs rounded-full hover:bg-purple-100 dark:hover:bg-purple-500/10 hover:text-purple-600 dark:hover:text-purple-300 transition-all duration-200"
+                className="px-3 py-1 bg-gray-100 dark:bg-gray-800/50 text-gray-700 dark:text-gray-300 text-xs rounded-full transition-all duration-200"
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = '#8668ED20'
+                  e.currentTarget.style.color = '#8668ED'
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = ''
+                  e.currentTarget.style.color = ''
+                }}
               >
                 {tech}
               </motion.div>

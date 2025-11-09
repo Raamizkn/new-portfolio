@@ -59,7 +59,8 @@ export default function Header() {
                 e.preventDefault()
                 scrollToSection("#hero")
               }}
-              className="text-xl md:text-2xl font-normal bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-blue-600 dark:from-purple-400 dark:to-blue-500 hover:from-purple-400 hover:to-blue-500 dark:hover:from-purple-300 dark:hover:to-blue-400 transition-all duration-300"
+              className="text-xl md:text-2xl font-normal transition-all duration-300"
+              style={{ color: '#8668ED' }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -82,7 +83,7 @@ export default function Header() {
                   className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 text-sm font-normal relative group"
                 >
                   {item.name}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-500 to-blue-600 dark:from-purple-400 dark:to-blue-500 group-hover:w-full transition-all duration-300"></span>
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300" style={{ backgroundColor: '#8668ED' }}></span>
                 </motion.a>
               ))}
             </nav>
@@ -98,7 +99,9 @@ export default function Header() {
               {mounted && (
                 <button
                   onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                  className="p-2 rounded-full bg-gray-800/50 dark:bg-gray-800/50 border border-gray-700/50 hover:border-purple-500/50 transition-all duration-300"
+                  className="p-2 rounded-full bg-gray-800/50 dark:bg-gray-800/50 border border-gray-700/50 transition-all duration-300"
+                  onMouseEnter={(e) => e.currentTarget.style.borderColor = '#8668ED80'}
+                  onMouseLeave={(e) => e.currentTarget.style.borderColor = ''}
                   aria-label="Toggle theme"
                 >
                   {theme === "dark" ? (
@@ -111,7 +114,8 @@ export default function Header() {
               
               <Button
                 onClick={() => scrollToSection("#contact")}
-                className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white font-normal px-6 py-2 rounded-full transition-all duration-300 shadow-lg hover:shadow-purple-500/25"
+                className="text-white font-normal px-6 py-2 rounded-full transition-all duration-300 shadow-lg hover:opacity-90"
+                style={{ backgroundColor: '#8668ED' }}
               >
                 Get in Touch
               </Button>
@@ -122,7 +126,9 @@ export default function Header() {
               {mounted && (
                 <button
                   onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                  className="p-2 rounded-full bg-gray-200/80 dark:bg-gray-800/50 border border-gray-300 dark:border-gray-700/50 hover:border-purple-500/50 transition-all duration-300"
+                  className="p-2 rounded-full bg-gray-200/80 dark:bg-gray-800/50 border border-gray-300 dark:border-gray-700/50 transition-all duration-300"
+                  onMouseEnter={(e) => e.currentTarget.style.borderColor = '#8668ED80'}
+                  onMouseLeave={(e) => e.currentTarget.style.borderColor = ''}
                   aria-label="Toggle theme"
                 >
                   {theme === "dark" ? (
@@ -173,7 +179,8 @@ export default function Header() {
               ))}
               <Button
                 onClick={() => scrollToSection("#contact")}
-                className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white font-normal px-6 py-3 rounded-full transition-all duration-300 mt-4"
+                className="text-white font-normal px-6 py-3 rounded-full transition-all duration-300 mt-4 hover:opacity-90"
+                style={{ backgroundColor: '#8668ED' }}
               >
                 Get in Touch
               </Button>

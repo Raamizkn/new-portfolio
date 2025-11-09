@@ -249,7 +249,8 @@ const ProjectModal = ({ project, isOpen, onClose }: { project: Project | null; i
 
                 <div>
                   <Button
-                    className="w-full bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white font-normal py-3 rounded-lg transition-all duration-300 shadow-lg hover:shadow-purple-500/25"
+                    className="w-full text-white font-normal py-3 rounded-lg transition-all duration-300 shadow-lg hover:opacity-90"
+                    style={{ backgroundColor: '#8668ED' }}
                     onClick={() => window.open(project.github, '_blank')}
                   >
                     <GitHub className="w-5 h-5 mr-2" />
@@ -272,11 +273,13 @@ const ProjectCard = ({ project, onClick }: { project: Project; onClick: () => vo
     animate={{ opacity: 1, y: 0 }}
     exit={{ opacity: 0, y: -20 }}
     transition={{ duration: 0.3 }}
-          className="group relative bg-white dark:bg-gray-900/50 backdrop-blur-sm border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden hover:border-purple-500/50 transition-all duration-300 h-full flex flex-col cursor-pointer shadow-sm hover:shadow-lg"
+          className="group relative bg-white dark:bg-gray-900/50 backdrop-blur-sm border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden transition-all duration-300 h-full flex flex-col cursor-pointer shadow-sm hover:shadow-lg"
+          onMouseEnter={(e) => e.currentTarget.style.borderColor = '#8668ED80'}
+          onMouseLeave={(e) => e.currentTarget.style.borderColor = ''}
     onClick={onClick}
   >
         <div className="aspect-video bg-gray-100 dark:bg-gray-800 relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ backgroundColor: '#8668ED20' }} />
           <div className="flex items-center justify-center h-full">
             <div className="w-12 h-12 bg-gray-200 dark:bg-gray-700 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
               <ExternalLink className="w-6 h-6 text-gray-500 dark:text-gray-400" />
@@ -308,7 +311,17 @@ const ProjectCard = ({ project, onClick }: { project: Project; onClick: () => vo
         <Button
           variant="outline"
           size="sm"
-              className="w-full bg-transparent border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-purple-50 dark:hover:bg-purple-500/10 hover:border-purple-500/50 hover:text-purple-600 dark:hover:text-purple-300 transition-all duration-300"
+              className="w-full bg-transparent border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 transition-all duration-300"
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = '#8668ED10'
+                e.currentTarget.style.borderColor = '#8668ED80'
+                e.currentTarget.style.color = '#8668ED'
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = ''
+                e.currentTarget.style.borderColor = ''
+                e.currentTarget.style.color = ''
+              }}
           onClick={(e) => {
             e.stopPropagation()
             window.open(project.github, '_blank')
@@ -357,7 +370,7 @@ export default function Projects() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-light mb-4 bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-blue-600 dark:from-purple-400 dark:to-blue-500">
+          <h2 className="text-4xl md:text-5xl font-light mb-4" style={{ color: '#8668ED' }}>
             My Projects
           </h2>
           <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
@@ -383,7 +396,8 @@ export default function Projects() {
                 {activeTab === tab.id && (
                   <motion.div
                     layoutId="activeTab"
-                    className="absolute inset-0 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full"
+                    className="absolute inset-0 rounded-full"
+                    style={{ backgroundColor: '#8668ED' }}
                     transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                   />
                 )}

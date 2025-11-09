@@ -15,18 +15,18 @@ import {
 
 interface NavItem {
   id: string
-  label: string
-  icon: React.ReactNode
+  name: string
+  icon: typeof Home
   section: string
 }
 
 const navItems: NavItem[] = [
-  { id: "home", label: "Home", icon: <Home className="w-4 h-4" />, section: "hero" },
-  { id: "projects", label: "Projects", icon: <FolderOpen className="w-4 h-4" />, section: "projects" },
-  { id: "skills", label: "Skills", icon: <Code className="w-4 h-4" />, section: "skills" },
-  { id: "experience", label: "Experience", icon: <Briefcase className="w-4 h-4" />, section: "experience" },
-  { id: "certifications", label: "Certifications", icon: <Award className="w-4 h-4" />, section: "certifications" },
-  { id: "contact", label: "Contact", icon: <Mail className="w-4 h-4" />, section: "contact" },
+  { id: "home", name: "Home", icon: Home, section: "hero" },
+  { id: "projects", name: "Projects", icon: FolderOpen, section: "projects" },
+  { id: "skills", name: "Skills", icon: Code, section: "skills" },
+  { id: "experience", name: "Experience", icon: Briefcase, section: "experience" },
+  { id: "certifications", name: "Certifications", icon: Award, section: "certifications" },
+  { id: "contact", name: "Contact", icon: Mail, section: "contact" },
 ]
 
 export default function FloatingNav() {
@@ -84,7 +84,7 @@ export default function FloatingNav() {
               exit={{ rotate: 90, opacity: 0 }}
               transition={{ duration: 0.2 }}
             >
-                    <X className="w-5 h-5 text-gray-700 dark:text-gray-300" />
+              <X className="w-5 h-5 text-gray-700 dark:text-gray-300" />
             </motion.div>
           ) : (
             <motion.div
@@ -94,7 +94,7 @@ export default function FloatingNav() {
               exit={{ rotate: -90, opacity: 0 }}
               transition={{ duration: 0.2 }}
             >
-                    <Menu className="w-5 h-5 text-gray-700 dark:text-gray-300" />
+              <Menu className="w-5 h-5 text-gray-700 dark:text-gray-300" />
             </motion.div>
           )}
         </AnimatePresence>
@@ -111,38 +111,37 @@ export default function FloatingNav() {
             className="absolute right-16 top-0 bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm border border-gray-300 dark:border-gray-700 rounded-xl shadow-2xl overflow-hidden min-w-[200px]"
           >
             <div className="p-2">
-              {navItems.map((item, index) => (
-                <motion.button
-                  key={item.id}
-                  onClick={() => scrollToSection(item.section)}
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.2, delay: index * 0.05 }}
-                  className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 text-left ${
-                    activeSection === item.section
-                      ? "bg-gradient-to-r from-purple-100 to-blue-100 dark:from-purple-500/20 dark:to-blue-500/20 text-purple-600 dark:text-purple-300 border border-purple-300 dark:border-purple-500/30"
-                      : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800/50 hover:text-gray-900 dark:hover:text-white"
-                  }`}
-                >
-                  <span className={`transition-colors duration-200 ${
-                    activeSection === item.section ? "text-purple-600 dark:text-purple-400" : "text-gray-600 dark:text-gray-400"
-                  }`}>
-                    {item.icon}
-                  </span>
-                  <span className="font-normal">{item.label}</span>
-                  {activeSection === item.section && (
-                    <motion.div
-                      layoutId="activeIndicator"
-                      className="ml-auto w-2 h-2 bg-purple-600 dark:bg-purple-400 rounded-full"
-                      transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                    />
-                  )}
-                </motion.button>
-              ))}
+              {navItems.map((item, index) => {
+                const isActive = activeSection === item.section
+                return (
+                  <motion.button
+                    key={item.id}
+                    onClick={() => scrollToSection(item.section)}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.2, delay: index * 0.05 }}
+                    className="w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 text-left"
+                    style={isActive ? { backgroundColor: '#8668ED20', color: '#8668ED', borderColor: '#8668ED50', border: '1px solid' } : undefined}
+                    onMouseEnter={(e) => {
+                      if (!isActive) {
+                        e.currentTarget.style.backgroundColor = '#8668ED10'
+                      }
+                    }}
+                    onMouseLeave={(e) => {
+                      if (!isActive) {
+                        e.currentTarget.style.backgroundColor = ''
+                      }
+                    }}
+                  >
+                    <item.icon className="w-5 h-5" />
+                    <span className="font-normal">{item.name}</span>
+                  </motion.button>
+                )
+              })}
             </div>
           </motion.div>
         )}
       </AnimatePresence>
     </div>
   )
-} 
+}

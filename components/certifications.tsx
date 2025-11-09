@@ -140,7 +140,7 @@ export default function Certifications() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-4xl md:text-5xl font-light mb-4"
           >
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-blue-600 dark:from-purple-400 dark:to-blue-500">
+            <span style={{ color: '#8668ED' }}>
               Professional Certifications
             </span>
           </motion.h2>
@@ -163,7 +163,9 @@ export default function Certifications() {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               className="h-full"
             >
-              <Card className="h-full bg-white dark:bg-gray-900/60 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 hover:border-purple-500/30 transition-all duration-300 group flex flex-col shadow-lg">
+              <Card className="h-full bg-white dark:bg-gray-900/60 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 transition-all duration-300 group flex flex-col shadow-lg"
+                onMouseEnter={(e) => e.currentTarget.style.borderColor = '#8668ED50'}
+                onMouseLeave={(e) => e.currentTarget.style.borderColor = ''}>
                 {/* Header with Logo and Title */}
                 <CardHeader className="pb-4">
                   <div className="flex items-start gap-4">
@@ -226,7 +228,15 @@ export default function Certifications() {
                     {certification.skills.map((skill) => (
                       <span 
                         key={skill} 
-                        className="px-3 py-1 bg-gray-100 dark:bg-gray-800/50 text-gray-700 dark:text-gray-300 hover:bg-purple-100 dark:hover:bg-purple-500/20 hover:text-purple-600 dark:hover:text-purple-300 transition-colors text-xs rounded-full"
+                        className="px-3 py-1 bg-gray-100 dark:bg-gray-800/50 text-gray-700 dark:text-gray-300 transition-colors text-xs rounded-full"
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = '#8668ED20'
+              e.currentTarget.style.color = '#8668ED'
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = ''
+              e.currentTarget.style.color = ''
+            }}
                       >
                         {skill}
                       </span>
@@ -237,7 +247,8 @@ export default function Certifications() {
                 {/* Footer */}
                 <CardFooter className="pt-4 mt-auto">
                   <Button 
-                    className="w-full bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white font-normal transition-all duration-300 shadow-lg hover:shadow-purple-500/25"
+                    className="w-full text-white font-normal transition-all duration-300 shadow-lg hover:opacity-90"
+                    style={{ backgroundColor: '#8668ED' }}
                     onClick={() => window.open(certification.credentialUrl, '_blank')}
                     disabled={certification.credentialUrl === "#"}
                   >

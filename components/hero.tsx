@@ -65,7 +65,7 @@ export default function Hero() {
             >
               <span className="text-gray-900 dark:text-white">Hello, I'm</span>
               <br />
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-blue-400 to-purple-500">
+              <span style={{ color: '#8668ED' }}>
                 Raamiz Khan
               </span>
             </motion.h1>
@@ -100,14 +100,18 @@ export default function Hero() {
           >
             <Button
               onClick={() => scrollToSection("projects")}
-              className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white font-normal px-8 py-6 text-lg rounded-full transition-all duration-300 shadow-lg hover:shadow-purple-500/25 hover:scale-105"
+              className="text-white font-normal px-8 py-6 text-lg rounded-full transition-all duration-300 shadow-lg hover:opacity-90 hover:scale-105"
+              style={{ backgroundColor: '#8668ED' }}
             >
               View My Work
             </Button>
             <Button
               onClick={() => scrollToSection("contact")}
               variant="outline"
-              className="border-2 border-gray-300 dark:border-gray-700 hover:border-purple-500/50 text-gray-900 dark:text-white font-normal px-8 py-6 text-lg rounded-full transition-all duration-300 bg-transparent hover:bg-purple-50 dark:hover:bg-purple-500/10"
+              className="border-2 border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white font-normal px-8 py-6 text-lg rounded-full transition-all duration-300 bg-transparent hover:bg-opacity-5"
+              style={{ borderColor: '#8668ED' }}
+              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#8668ED10'}
+              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
             >
               Get in Touch
             </Button>
@@ -126,7 +130,10 @@ export default function Hero() {
               rel="noopener noreferrer"
               whileHover={{ scale: 1.1, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              className="p-3 bg-gray-100 dark:bg-gray-800/50 backdrop-blur-sm border border-gray-300 dark:border-gray-700/50 rounded-full hover:border-purple-500/50 hover:bg-gray-200 dark:hover:bg-gray-800/80 transition-all duration-300"
+              className="p-3 bg-gray-100 dark:bg-gray-800/50 backdrop-blur-sm border border-gray-300 dark:border-gray-700/50 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800/80 transition-all duration-300"
+              style={{ '--hover-border-color': '#8668ED80' } as React.CSSProperties}
+              onMouseEnter={(e) => e.currentTarget.style.borderColor = '#8668ED80'}
+              onMouseLeave={(e) => e.currentTarget.style.borderColor = ''}
             >
               <GitHub className="h-5 w-5 text-gray-700 dark:text-gray-300" />
               <span className="sr-only">GitHub</span>
@@ -138,7 +145,10 @@ export default function Hero() {
               rel="noopener noreferrer"
               whileHover={{ scale: 1.1, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              className="p-3 bg-gray-100 dark:bg-gray-800/50 backdrop-blur-sm border border-gray-300 dark:border-gray-700/50 rounded-full hover:border-purple-500/50 hover:bg-gray-200 dark:hover:bg-gray-800/80 transition-all duration-300"
+              className="p-3 bg-gray-100 dark:bg-gray-800/50 backdrop-blur-sm border border-gray-300 dark:border-gray-700/50 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800/80 transition-all duration-300"
+              style={{ '--hover-border-color': '#8668ED80' } as React.CSSProperties}
+              onMouseEnter={(e) => e.currentTarget.style.borderColor = '#8668ED80'}
+              onMouseLeave={(e) => e.currentTarget.style.borderColor = ''}
             >
               <Linkedin className="h-5 w-5 text-gray-700 dark:text-gray-300" />
               <span className="sr-only">LinkedIn</span>
@@ -149,7 +159,10 @@ export default function Hero() {
               download
               whileHover={{ scale: 1.1, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              className="p-3 bg-gray-100 dark:bg-gray-800/50 backdrop-blur-sm border border-gray-300 dark:border-gray-700/50 rounded-full hover:border-purple-500/50 hover:bg-gray-200 dark:hover:bg-gray-800/80 transition-all duration-300"
+              className="p-3 bg-gray-100 dark:bg-gray-800/50 backdrop-blur-sm border border-gray-300 dark:border-gray-700/50 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800/80 transition-all duration-300"
+              style={{ '--hover-border-color': '#8668ED80' } as React.CSSProperties}
+              onMouseEnter={(e) => e.currentTarget.style.borderColor = '#8668ED80'}
+              onMouseLeave={(e) => e.currentTarget.style.borderColor = ''}
             >
               <FileText className="h-5 w-5 text-gray-700 dark:text-gray-300" />
               <span className="sr-only">Resume</span>
