@@ -108,9 +108,10 @@ export default function FloatingNav() {
             animate={{ opacity: 1, x: 0, scale: 1 }}
             exit={{ opacity: 0, x: 20, scale: 0.9 }}
             transition={{ duration: 0.2, type: "spring", damping: 20 }}
-            className="absolute right-16 top-0 bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm border border-gray-300 dark:border-gray-700 rounded-xl shadow-2xl overflow-hidden min-w-[200px]"
+            className="absolute right-16 top-0 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md rounded-2xl shadow-2xl overflow-hidden min-w-[200px]"
+            style={{ border: '1px solid rgba(134, 104, 237, 0.2)' }}
           >
-            <div className="p-2">
+            <div className="p-3 space-y-1">
               {navItems.map((item, index) => {
                 const isActive = activeSection === item.section
                 return (
@@ -120,27 +121,20 @@ export default function FloatingNav() {
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.2, delay: index * 0.05 }}
-                    className="w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 text-left border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300"
+                    className="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all duration-200 text-left text-gray-700 dark:text-gray-300 relative overflow-hidden group"
                     style={isActive ? { 
-                      backgroundColor: '#8668ED20', 
-                      color: '#8668ED', 
-                      borderColor: '#8668ED' 
+                      backgroundColor: '#8668ED',
+                      color: 'white'
                     } : undefined}
-                    onMouseEnter={(e) => {
-                      if (!isActive) {
-                        e.currentTarget.style.backgroundColor = '#8668ED10'
-                        e.currentTarget.style.borderColor = '#8668ED50'
-                      }
-                    }}
-                    onMouseLeave={(e) => {
-                      if (!isActive) {
-                        e.currentTarget.style.backgroundColor = ''
-                        e.currentTarget.style.borderColor = ''
-                      }
-                    }}
                   >
-                    <item.icon className="w-5 h-5" />
-                    <span className="font-normal">{item.name}</span>
+                    {!isActive && (
+                      <div 
+                        className="absolute inset-0 bg-gradient-to-r from-transparent via-purple-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                        style={{ transform: 'translateX(-100%)', animation: 'shimmer 2s infinite' }}
+                      />
+                    )}
+                    <item.icon className="w-4 h-4 relative z-10" />
+                    <span className="font-light text-sm relative z-10">{item.name}</span>
                   </motion.button>
                 )
               })}
@@ -148,6 +142,13 @@ export default function FloatingNav() {
           </motion.div>
         )}
       </AnimatePresence>
+      
+      <style jsx>{`
+        @keyframes shimmer {
+          0% { transform: translateX(-100%); }
+          100% { transform: translateX(100%); }
+        }
+      `}</style>
     </div>
   )
 }

@@ -8,10 +8,12 @@ import { default as Certifications } from "../components/certifications"
 import { default as Contact } from "../components/contact"
 import { default as Footer } from "../components/footer"
 import { default as FloatingNav } from "../components/floating-nav"
+import { default as CursorEffect } from "../components/cursor-effect"
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-950 dark:to-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
+      <CursorEffect />
       <Header />
       <Hero />
       <About />
