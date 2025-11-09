@@ -99,15 +99,21 @@ export default function Header() {
               {mounted && (
                 <button
                   onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                  className="p-2 rounded-full bg-gray-800/50 dark:bg-gray-800/50 border border-gray-700/50 transition-all duration-300"
-                  onMouseEnter={(e) => e.currentTarget.style.borderColor = '#8668ED80'}
-                  onMouseLeave={(e) => e.currentTarget.style.borderColor = ''}
+                  className="p-2 rounded-full bg-gray-100 dark:bg-gray-800/50 border border-gray-300 dark:border-gray-700/50 transition-all duration-300"
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.borderColor = '#8668ED'
+                    e.currentTarget.style.backgroundColor = theme === "dark" ? '#8668ED20' : '#8668ED10'
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.borderColor = ''
+                    e.currentTarget.style.backgroundColor = ''
+                  }}
                   aria-label="Toggle theme"
                 >
                   {theme === "dark" ? (
-                    <Sun className="w-5 h-5 text-gray-300" />
+                    <Sun className="w-5 h-5 text-gray-700 dark:text-gray-300" />
                   ) : (
-                    <Moon className="w-5 h-5 text-gray-700" />
+                    <Moon className="w-5 h-5 text-gray-700 dark:text-gray-300" />
                   )}
                 </button>
               )}
@@ -126,7 +132,7 @@ export default function Header() {
               {mounted && (
                 <button
                   onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                  className="p-2 rounded-full bg-gray-200/80 dark:bg-gray-800/50 border border-gray-300 dark:border-gray-700/50 transition-all duration-300"
+                  className="p-2 rounded-full bg-gray-100 dark:bg-gray-800/50 border border-gray-300 dark:border-gray-700/50 transition-all duration-300"
                   onMouseEnter={(e) => e.currentTarget.style.borderColor = '#8668ED80'}
                   onMouseLeave={(e) => e.currentTarget.style.borderColor = ''}
                   aria-label="Toggle theme"

@@ -2,9 +2,7 @@
 
 import { useRef, useState } from "react"
 import { motion, useInView, AnimatePresence } from "framer-motion"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { ExternalLink, Calendar, MapPin, Users, Award, ChevronDown, ChevronUp } from "lucide-react"
+import { Calendar, MapPin, ChevronDown, ChevronUp } from "lucide-react"
 
 interface Experience {
   id: number
@@ -12,11 +10,9 @@ interface Experience {
   title: string
   company: string
   location?: string
-  companyUrl?: string
   description: string
   achievements: string[]
   technologies: string[]
-  teamSize?: string
   type: "full-time" | "internship" | "program" | "freelance"
 }
 
@@ -37,7 +33,6 @@ const experiences: Experience[] = [
       "Achieved program completion with distinction in cloud architecture fundamentals"
     ],
     technologies: ["AWS", "Elastic Beanstalk", "Cloud Architecture", "Solution Design", "Cost Optimization"],
-    teamSize: "Individual Project"
   },
   {
     id: 2,
@@ -56,7 +51,6 @@ const experiences: Experience[] = [
       "Developed standardized training materials and assessment frameworks"
     ],
     technologies: ["NLP", "CUDA C/C++", "TensorFlow", "Deep Learning", "Workshop Facilitation", "Remote Coordination"],
-    teamSize: "5-8 Team Members"
   },
   {
     id: 3,
@@ -75,22 +69,115 @@ const experiences: Experience[] = [
       "Created automated reporting systems that improved accuracy and reduced processing time"
     ],
     technologies: ["Python", "Geolocation APIs", "Data Analysis", "GPON Networks", "Report Automation", "Network Infrastructure"],
-    teamSize: "12+ Team Members"
   },
 ]
 
-const typeColors = {
-  "full-time": "from-blue-500 to-cyan-500",
-  "internship": "from-blue-600 to-indigo-600",
-  "program": "from-purple-500 to-violet-500",
-  "freelance": "from-purple-600 to-indigo-600"
-}
+const ExperienceCard = ({ experience, index }: { experience: Experience; index: number }) => {
+  const [isExpanded, setIsExpanded] = useState(false)
 
-const typeLabels = {
-  "full-time": "Full-time",
-  "internship": "Internship",
-  "program": "Program",
-  "freelance": "Freelance"
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      className="group relative"
+    >
+      <div 
+        className="p-8 bg-white dark:bg-gray-900/40 backdrop-blur-sm border border-gray-200 dark:border-gray-800/50 rounded-2xl transition-all duration-300"
+        onMouseEnter={(e) => {
+          e.currentTarget.style.borderColor = '#8668ED'
+          e.currentTarget.style.transform = 'translateY(-4px)'
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.borderColor = ''
+          e.currentTarget.style.transform = 'translateY(0)'
+        }}
+      >
+        {/* Header */}
+        <div className="mb-6">
+          <div className="flex items-start justify-between mb-3">
+            <div>
+              <h3 className="text-2xl font-light text-gray-900 dark:text-white mb-2">
+                {experience.title}
+              </h3>
+              <p className="text-lg text-gray-700 dark:text-gray-300 font-normal">
+                {experience.company}
+              </p>
+            </div>
+          </div>
+          
+          <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600 dark:text-gray-400">
+            <div className="flex items-center gap-2">
+              <Calendar className="w-4 h-4" />
+              <span>{experience.period}</span>
+            </div>
+            {experience.location && (
+              <div className="flex items-center gap-2">
+                <MapPin className="w-4 h-4" />
+                <span>{experience.location}</span>
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Description */}
+        <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
+          {experience.description}
+        </p>
+
+        {/* Technologies */}
+        <div className="flex flex-wrap gap-2 mb-6">
+          {experience.technologies.map((tech) => (
+            <span
+              key={tech}
+              className="px-3 py-1 bg-gray-100 dark:bg-gray-800/50 text-gray-700 dark:text-gray-300 text-xs rounded-full"
+            >
+              {tech}
+            </span>
+          ))}
+        </div>
+
+        {/* Achievements Toggle */}
+        <button
+          onClick={() => setIsExpanded(!isExpanded)}
+          className="flex items-center gap-2 text-sm font-normal transition-colors"
+          style={{ color: '#8668ED' }}
+        >
+          <span>{isExpanded ? 'Hide' : 'Show'} Key Achievements</span>
+          {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+        </button>
+
+        {/* Achievements */}
+        <AnimatePresence>
+          {isExpanded && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="overflow-hidden"
+            >
+              <ul className="mt-4 space-y-2">
+                {experience.achievements.map((achievement, i) => (
+                  <motion.li
+                    key={i}
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.1 }}
+                    className="flex items-start gap-3 text-sm text-gray-600 dark:text-gray-400"
+                  >
+                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ backgroundColor: '#8668ED' }} />
+                    <span>{achievement}</span>
+                  </motion.li>
+                ))}
+              </ul>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    </motion.div>
+  )
 }
 
 export default function Experience() {
@@ -98,214 +185,32 @@ export default function Experience() {
   const isInView = useInView(ref, { once: false, amount: 0.2 })
 
   return (
-    <section id="experience" className="py-20 px-4 md:px-8 relative overflow-hidden bg-gray-50 dark:bg-transparent" ref={ref}>
-      {/* Background Effects */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-200/20 dark:from-purple-900/5 via-transparent to-transparent"></div>
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
+    <section id="experience" className="py-20 px-4 md:px-8 relative overflow-hidden bg-white dark:bg-transparent" ref={ref}>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-200/10 dark:from-purple-900/5 via-transparent to-transparent"></div>
+      
+      <div className="max-w-5xl mx-auto relative z-10">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl font-light mb-4" style={{ color: '#8668ED' }}>
+            Professional Journey
+          </h2>
+          <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            My experience building products and leading technical initiatives
+          </p>
+        </motion.div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-        transition={{ duration: 0.6 }}
-        className="max-w-6xl mx-auto relative z-10"
-      >
-        <div className="text-center mb-16">
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl md:text-5xl font-light mb-4"
-          >
-            <span style={{ color: '#8668ED' }}>
-              Professional Journey
-            </span>
-          </motion.h2>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-lg"
-          >
-            Building expertise through diverse experiences in cloud architecture, AI/ML, and enterprise solutions
-          </motion.p>
+        {/* Experience Cards */}
+        <div className="space-y-6">
+          {experiences.map((experience, index) => (
+            <ExperienceCard key={experience.id} experience={experience} index={index} />
+          ))}
         </div>
-
-        {/* Timeline */}
-        <div className="relative">
-          {/* Timeline Line */}
-          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-purple-500 via-blue-500 to-purple-500 transform md:-translate-x-0.5"></div>
-
-          <div className="space-y-12">
-            {experiences.map((experience, index) => (
-              <ExperienceItem 
-                key={experience.id} 
-                experience={experience} 
-                index={index} 
-                isInView={isInView}
-                isLeft={index % 2 === 0}
-              />
-            ))}
-          </div>
-        </div>
-      </motion.div>
+      </div>
     </section>
   )
 }
-
-function ExperienceItem({
-  experience,
-  index,
-  isInView,
-  isLeft
-}: {
-  experience: Experience
-  index: number
-  isInView: boolean
-  isLeft: boolean
-}) {
-  const [isExpanded, setIsExpanded] = useState(false)
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, x: isLeft ? -50 : 50 }}
-      animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: isLeft ? -50 : 50 }}
-      transition={{ duration: 0.6, delay: index * 0.2 }}
-      className={`relative flex items-center ${isLeft ? 'md:flex-row' : 'md:flex-row-reverse'}`}
-    >
-      {/* Timeline Node */}
-      <motion.div
-        initial={{ scale: 0 }}
-        animate={isInView ? { scale: 1 } : { scale: 0 }}
-        transition={{ duration: 0.4, delay: index * 0.2 + 0.3 }}
-        className={`absolute left-4 md:left-1/2 w-4 h-4 bg-gradient-to-r ${typeColors[experience.type]} rounded-full transform -translate-x-2 md:-translate-x-2 z-10 shadow-lg`}
-      >
-        <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent rounded-full"></div>
-      </motion.div>
-
-      {/* Content Card */}
-      <div className={`w-full md:w-5/12 ml-12 md:ml-0 ${isLeft ? 'md:mr-auto md:pr-8' : 'md:ml-auto md:pl-8'}`}>
-        <motion.div
-          whileHover={{ y: -5, scale: 1.02 }}
-          transition={{ duration: 0.2 }}
-          className="bg-white dark:bg-gray-900/60 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-2xl p-6 shadow-lg transition-all duration-300 group"
-          onMouseEnter={(e) => e.currentTarget.style.borderColor = '#8668ED50'}
-          onMouseLeave={(e) => e.currentTarget.style.borderColor = ''}
-        >
-          {/* Header */}
-          <div className="flex items-start justify-between mb-4">
-            <div className="flex-1">
-              <div className="flex items-center gap-3 mb-2">
-                <div className="flex items-center text-gray-600 dark:text-gray-400 text-sm font-normal">
-                  <Calendar className="w-4 h-4 mr-1.5" />
-                  {experience.period}
-                </div>
-              </div>
-              
-              <h3 className="text-xl font-normal text-gray-900 dark:text-white mb-1 group-hover:text-purple-500 dark:group-hover:text-purple-300 transition-colors">
-                {experience.title}
-              </h3>
-              
-              <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400 mb-3">
-                <span className="text-purple-600 dark:text-purple-400 font-normal">{experience.company}</span>
-                {experience.location && (
-                  <div className="flex items-center">
-                    <MapPin className="w-3 h-3 mr-1" />
-                    {experience.location}
-                  </div>
-                )}
-                {experience.teamSize && (
-                  <div className="flex items-center">
-                    <Users className="w-3 h-3 mr-1" />
-                    {experience.teamSize}
-                  </div>
-                )}
-              </div>
-            </div>
-
-            {experience.companyUrl && (
-              <Button
-                variant="ghost"
-                size="sm"
-                className="text-gray-400 hover:text-purple-400 p-2"
-                onClick={() => window.open(experience.companyUrl, '_blank')}
-              >
-                <ExternalLink className="w-4 h-4" />
-              </Button>
-            )}
-          </div>
-
-          {/* Description */}
-          <p className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
-            {experience.description}
-          </p>
-
-          {/* Achievements */}
-          <div className="mb-4">
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => setIsExpanded(!isExpanded)}
-              className="text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 p-0 h-auto font-normal mb-2"
-            >
-              <Award className="w-4 h-4 mr-2" />
-              Key Achievements
-              {isExpanded ? <ChevronUp className="w-4 h-4 ml-1" /> : <ChevronDown className="w-4 h-4 ml-1" />}
-            </Button>
-            
-            <AnimatePresence>
-              {isExpanded && (
-                <motion.div
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{ opacity: 1, height: "auto" }}
-                  exit={{ opacity: 0, height: 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="overflow-hidden"
-                >
-                  <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-300">
-                    {experience.achievements.map((achievement, i) => (
-                      <motion.li
-                        key={i}
-                        initial={{ opacity: 0, x: -10 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.2, delay: i * 0.1 }}
-                        className="flex items-start"
-                      >
-                        <div className="w-1.5 h-1.5 bg-purple-600 dark:bg-purple-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                        {achievement}
-                      </motion.li>
-                    ))}
-                  </ul>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-
-          {/* Technologies */}
-          <div className="flex flex-wrap gap-2">
-            {experience.technologies.map((tech, i) => (
-              <motion.div
-                key={tech}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-                transition={{ duration: 0.3, delay: index * 0.2 + i * 0.05 }}
-                className="px-3 py-1 bg-gray-100 dark:bg-gray-800/50 text-gray-700 dark:text-gray-300 text-xs rounded-full transition-all duration-200"
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = '#8668ED20'
-                  e.currentTarget.style.color = '#8668ED'
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = ''
-                  e.currentTarget.style.color = ''
-                }}
-              >
-                {tech}
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-      </div>
-    </motion.div>
-  )
-}
-

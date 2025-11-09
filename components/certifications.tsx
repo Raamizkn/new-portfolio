@@ -2,10 +2,8 @@
 
 import { useRef, useState } from "react"
 import { motion, useInView } from "framer-motion"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { ExternalLink, Calendar, Award, CheckCircle, Copy, Check } from "lucide-react"
+import { ExternalLink, Award, Copy, Check } from "lucide-react"
 
 interface Certification {
   id: number
@@ -15,10 +13,7 @@ interface Certification {
   description: string
   credentialUrl: string
   skills: string[]
-  logo: string
   credentialId?: string
-  status: "active" | "expired" | "pending"
-  level: "beginner" | "intermediate" | "advanced" | "expert"
 }
 
 const certifications: Certification[] = [
@@ -28,13 +23,10 @@ const certifications: Certification[] = [
     issuer: "NVIDIA",
     date: "Feb 2025",
     description:
-      "Advanced certification in implementing AI-based solutions for predictive maintenance across industrial applications, covering machine learning algorithms, sensor data analysis, and predictive modeling techniques.",
+      "Advanced certification in implementing AI-based solutions for predictive maintenance across industrial applications.",
     credentialUrl: "https://learn.nvidia.com/certificates?id=38XtOjStR1qLXwTBdn0PuA",
     credentialId: "38XtOjStR1qLXwTBdn0PuA",
     skills: ["Predictive Maintenance", "AI", "Deep Learning", "Industrial IoT"],
-    logo: "/placeholder.svg?height=80&width=80",
-    status: "active",
-    level: "advanced"
   },
   {
     id: 2,
@@ -42,39 +34,30 @@ const certifications: Certification[] = [
     issuer: "NVIDIA",
     date: "March 2024",
     description:
-      "Advanced training in developing NLP applications using transformer architectures and NVIDIA technologies, including BERT, GPT models, and fine-tuning techniques for specialized applications.",
+      "Advanced training in developing NLP applications using transformer architectures and NVIDIA technologies.",
     credentialUrl: "https://learn.nvidia.com/certificates?id=a8d9byLkSiqPissrEKzogQ",
     credentialId: "a8d9byLkSiqPissrEKzogQ",
     skills: ["NLP", "Transformers", "Deep Learning", "NVIDIA"],
-    logo: "/placeholder.svg?height=80&width=80",
-    status: "active",
-    level: "advanced"
   },
   {
     id: 3,
     title: "Fundamentals of Accelerated Computing with CUDA C/C++",
     issuer: "NVIDIA",
     date: "March 2024",
-    description: "Core concepts of parallel programming and GPU computing using CUDA C/C++, covering memory management, kernel optimization, and performance tuning for high-performance computing applications.",
+    description: "Core concepts of parallel programming and GPU computing using CUDA C/C++.",
     credentialUrl: "https://learn.nvidia.com/certificates?id=seajHjSuRi21xSsD5zF5Rw",
     credentialId: "seajHjSuRi21xSsD5zF5Rw",
     skills: ["CUDA", "C++", "GPU Computing", "Parallel Programming"],
-    logo: "/placeholder.svg?height=80&width=80",
-    status: "active",
-    level: "intermediate"
   },
   {
     id: 4,
     title: "Fundamentals of Deep Learning",
     issuer: "NVIDIA",
     date: "December 2023",
-    description: "Comprehensive understanding of deep learning concepts, architectures, and practical applications including neural network design, training optimization, and deployment strategies.",
+    description: "Comprehensive understanding of deep learning concepts, architectures, and practical applications.",
     credentialUrl: "https://learn.nvidia.com/certificates?id=edbe2f2ec35e4e4a8ccff244aa932402",
     credentialId: "edbe2f2ec35e4e4a8ccff244aa932402",
     skills: ["Deep Learning", "Neural Networks", "TensorFlow", "PyTorch"],
-    logo: "/placeholder.svg?height=80&width=80",
-    status: "active",
-    level: "intermediate"
   },
   {
     id: 5,
@@ -82,186 +65,150 @@ const certifications: Certification[] = [
     issuer: "Amazon Web Services",
     date: "2024",
     description:
-      "Fundamental understanding of AWS Cloud concepts, services, security, architecture, pricing, and support including hands-on experience with core AWS services and best practices.",
+      "Fundamental understanding of AWS Cloud concepts, services, security, architecture, pricing, and support.",
     credentialUrl: "#",
     skills: ["AWS", "Cloud Computing", "Security", "Architecture"],
-    logo: "/placeholder.svg?height=80&width=80",
-    status: "active",
-    level: "beginner"
   },
 ]
 
-const levelColors = {
-  beginner: "from-blue-400 to-cyan-400",
-  intermediate: "from-blue-500 to-cyan-500",
-  advanced: "from-purple-500 to-violet-500",
-  expert: "from-purple-600 to-indigo-600"
-}
+const CertificationCard = ({ cert, index }: { cert: Certification; index: number }) => {
+  const [copiedId, setCopiedId] = useState<number | null>(null)
 
-const levelLabels = {
-  beginner: "Beginner",
-  intermediate: "Intermediate", 
-  advanced: "Advanced",
-  expert: "Expert"
+  const handleCopyCredential = (id: number, credentialId: string) => {
+    navigator.clipboard.writeText(credentialId)
+    setCopiedId(id)
+    setTimeout(() => setCopiedId(null), 2000)
+  }
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      className="group h-full"
+    >
+      <div 
+        className="h-full p-8 bg-white dark:bg-gray-900/40 backdrop-blur-sm border border-gray-200 dark:border-gray-800/50 rounded-2xl transition-all duration-300 flex flex-col"
+        onMouseEnter={(e) => {
+          e.currentTarget.style.borderColor = '#8668ED'
+          e.currentTarget.style.transform = 'translateY(-4px)'
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.borderColor = ''
+          e.currentTarget.style.transform = 'translateY(0)'
+        }}
+      >
+        {/* Icon */}
+        <div className="mb-6">
+          <div 
+            className="inline-flex items-center justify-center w-14 h-14 rounded-xl"
+            style={{ backgroundColor: '#8668ED20' }}
+          >
+            <Award className="w-7 h-7" style={{ color: '#8668ED' }} />
+          </div>
+        </div>
+
+        {/* Content */}
+        <div className="flex-1">
+          <h3 className="text-xl font-light text-gray-900 dark:text-white mb-2">
+            {cert.title}
+          </h3>
+          <p className="text-gray-700 dark:text-gray-300 font-normal mb-3">
+            {cert.issuer}
+          </p>
+          <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
+            {cert.date}
+          </p>
+          <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-6">
+            {cert.description}
+          </p>
+
+          {/* Skills */}
+          <div className="flex flex-wrap gap-2 mb-6">
+            {cert.skills.map((skill) => (
+              <span
+                key={skill}
+                className="px-3 py-1 bg-gray-100 dark:bg-gray-800/50 text-gray-700 dark:text-gray-300 text-xs rounded-full"
+              >
+                {skill}
+              </span>
+            ))}
+          </div>
+
+          {/* Credential ID */}
+          {cert.credentialId && (
+            <div className="mb-4 p-3 bg-gray-50 dark:bg-gray-800/30 rounded-lg">
+              <div className="flex items-center justify-between gap-2">
+                <div className="flex-1 min-w-0">
+                  <p className="text-xs text-gray-500 dark:text-gray-500 mb-1">Credential ID</p>
+                  <p className="text-xs text-gray-700 dark:text-gray-300 font-mono truncate">
+                    {cert.credentialId}
+                  </p>
+                </div>
+                <button
+                  onClick={() => handleCopyCredential(cert.id, cert.credentialId!)}
+                  className="p-2 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg transition-colors flex-shrink-0"
+                  aria-label="Copy credential ID"
+                >
+                  {copiedId === cert.id ? (
+                    <Check className="w-4 h-4" style={{ color: '#8668ED' }} />
+                  ) : (
+                    <Copy className="w-4 h-4 text-gray-600 dark:text-gray-400" />
+                  )}
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* Button */}
+        <Button
+          onClick={() => window.open(cert.credentialUrl, '_blank')}
+          className="w-full text-white font-normal transition-all duration-300"
+          style={{ backgroundColor: '#8668ED' }}
+          onMouseEnter={(e) => e.currentTarget.style.opacity = '0.9'}
+          onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}
+        >
+          <ExternalLink className="w-4 h-4 mr-2" />
+          View Credential
+        </Button>
+      </div>
+    </motion.div>
+  )
 }
 
 export default function Certifications() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: false, amount: 0.2 })
-  const [copiedId, setCopiedId] = useState<string | null>(null)
-
-  const copyCredentialId = async (credentialId: string) => {
-    try {
-      await navigator.clipboard.writeText(credentialId)
-      setCopiedId(credentialId)
-      setTimeout(() => setCopiedId(null), 2000)
-    } catch (err) {
-      console.error('Failed to copy credential ID:', err)
-    }
-  }
 
   return (
-    <section id="certifications" className="py-20 px-4 md:px-8 bg-white dark:bg-gray-950 relative overflow-hidden" ref={ref}>
-      {/* Background Effects */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-200/20 dark:from-purple-900/5 via-transparent to-transparent"></div>
-      <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-1/3 left-1/4 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl"></div>
+    <section id="certifications" className="py-20 px-4 md:px-8 relative overflow-hidden bg-white dark:bg-transparent" ref={ref}>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-200/10 dark:from-purple-900/5 via-transparent to-transparent"></div>
+      
+      <div className="max-w-7xl mx-auto relative z-10">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl font-light mb-4" style={{ color: '#8668ED' }}>
+            Professional Certifications
+          </h2>
+          <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            Continuous learning and professional development in cutting-edge technologies
+          </p>
+        </motion.div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-        transition={{ duration: 0.6 }}
-        className="max-w-6xl mx-auto relative z-10"
-      >
-        <div className="text-center mb-16">
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl md:text-5xl font-light mb-4"
-          >
-            <span style={{ color: '#8668ED' }}>
-              Professional Certifications
-            </span>
-          </motion.h2>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-lg"
-          >
-            Industry-recognized certifications validating expertise in AI, cloud computing, and advanced technologies
-          </motion.p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {certifications.map((certification, index) => (
-            <motion.div
-              key={certification.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="h-full"
-            >
-              <Card className="h-full bg-white dark:bg-gray-900/60 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 transition-all duration-300 group flex flex-col shadow-lg"
-                onMouseEnter={(e) => e.currentTarget.style.borderColor = '#8668ED50'}
-                onMouseLeave={(e) => e.currentTarget.style.borderColor = ''}>
-                {/* Header with Logo and Title */}
-                <CardHeader className="pb-4">
-                  <div className="flex items-start gap-4">
-                    <div className="relative">
-                      <div className="w-16 h-16 bg-gray-100 dark:bg-gray-800 rounded-xl flex items-center justify-center group-hover:bg-gray-200 dark:group-hover:bg-gray-700 transition-colors duration-300">
-                        <Award className="w-8 h-8 text-purple-600 dark:text-purple-400" />
-                      </div>
-                      <div className="absolute -top-1 -right-1">
-                        <CheckCircle className="w-5 h-5 text-blue-600 dark:text-blue-400 bg-white dark:bg-gray-900 rounded-full" />
-                      </div>
-                    </div>
-                    
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-3 mb-2">
-                        <div className="flex items-center text-gray-600 dark:text-gray-400 text-sm">
-                          <Calendar className="w-4 h-4 mr-1.5" />
-                          {certification.date}
-                        </div>
-                      </div>
-                      
-                      <CardTitle className="text-gray-900 dark:text-white text-lg leading-tight mb-2 group-hover:text-purple-500 dark:group-hover:text-purple-300 transition-colors line-clamp-2 font-normal">
-                        {certification.title}
-                      </CardTitle>
-                      
-                      <CardDescription className="text-purple-600 dark:text-purple-400 font-normal">
-                        {certification.issuer}
-                      </CardDescription>
-                      
-                      {certification.credentialId && (
-                        <div className="flex items-center gap-2 mt-2">
-                          <span className="text-xs text-gray-600 dark:text-gray-500">ID:</span>
-                          <code className="text-xs bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded text-gray-700 dark:text-gray-300 font-mono">
-                            {certification.credentialId.slice(0, 12)}...
-                          </code>
-                          <Button
-                            variant="ghost"
-                            size="sm"
-                            className="h-6 w-6 p-0 text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400"
-                            onClick={() => copyCredentialId(certification.credentialId!)}
-                          >
-                            {copiedId === certification.credentialId ? (
-                              <Check className="w-3 h-3" />
-                            ) : (
-                              <Copy className="w-3 h-3" />
-                            )}
-                          </Button>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                </CardHeader>
-
-                {/* Content */}
-                <CardContent className="flex-1 flex flex-col">
-                  <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4 line-clamp-4">
-                    {certification.description}
-                  </p>
-                  
-                  <div className="flex flex-wrap gap-2 mt-auto">
-                    {certification.skills.map((skill) => (
-                      <span 
-                        key={skill} 
-                        className="px-3 py-1 bg-gray-100 dark:bg-gray-800/50 text-gray-700 dark:text-gray-300 transition-colors text-xs rounded-full"
-            onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = '#8668ED20'
-              e.currentTarget.style.color = '#8668ED'
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = ''
-              e.currentTarget.style.color = ''
-            }}
-                      >
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
-                </CardContent>
-
-                {/* Footer */}
-                <CardFooter className="pt-4 mt-auto">
-                  <Button 
-                    className="w-full text-white font-normal transition-all duration-300 shadow-lg hover:opacity-90"
-                    style={{ backgroundColor: '#8668ED' }}
-                    onClick={() => window.open(certification.credentialUrl, '_blank')}
-                    disabled={certification.credentialUrl === "#"}
-                  >
-                    <ExternalLink className="w-4 h-4 mr-2" />
-                    {certification.credentialUrl === "#" ? "Coming Soon" : "View Credential"}
-                  </Button>
-                </CardFooter>
-              </Card>
-            </motion.div>
+        {/* Certifications Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {certifications.map((cert, index) => (
+            <CertificationCard key={cert.id} cert={cert} index={index} />
           ))}
         </div>
-      </motion.div>
+      </div>
     </section>
   )
 }
-

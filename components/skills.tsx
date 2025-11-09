@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react"
 import { motion, useInView } from "framer-motion"
-import { Code, Database, Brain, Settings, Cloud, Sparkles } from "lucide-react"
+import { Code, Database, Brain, Settings, Cloud } from "lucide-react"
 
 interface Skill {
   name: string
@@ -106,17 +106,17 @@ const mlSkills: Skill[] = [
     name: "NumPy",
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/numpy/numpy-original.svg",
     color: "#013243",
-    fallbackIcon: <Brain className="w-6 h-6 text-blue-800" />
-  },
-  {
-    name: "RAG",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg",
-    color: "#0078D7",
-    fallbackIcon: <Brain className="w-6 h-6 text-blue-500" />
+    fallbackIcon: <Brain className="w-6 h-6 text-blue-700" />
   },
 ]
 
-const devopsSkills: Skill[] = [
+const toolsSkills: Skill[] = [
+  {
+    name: "Git",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg",
+    color: "#F05032",
+    fallbackIcon: <Settings className="w-6 h-6 text-red-500" />
+  },
   {
     name: "Docker",
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg",
@@ -129,59 +129,82 @@ const devopsSkills: Skill[] = [
     color: "#326CE5",
     fallbackIcon: <Settings className="w-6 h-6 text-blue-600" />
   },
-  { 
-    name: "Git", 
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg", 
-    color: "#F05032",
-    fallbackIcon: <Settings className="w-6 h-6 text-red-500" />
-  },
-  {
-    name: "AWS",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg",
-    color: "#232F3E",
-    fallbackIcon: <Cloud className="w-6 h-6 text-orange-500" />
-  },
   {
     name: "Terraform",
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/terraform/terraform-original.svg",
     color: "#7B42BC",
-    fallbackIcon: <Settings className="w-6 h-6 text-purple-500" />
+    fallbackIcon: <Settings className="w-6 h-6 text-purple-600" />
+  },
+  {
+    name: "Postman",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postman/postman-original.svg",
+    color: "#FF6C37",
+    fallbackIcon: <Settings className="w-6 h-6 text-orange-500" />
   },
 ]
 
 const cloudSkills: Skill[] = [
   {
-    name: "AWS Lambda",
+    name: "AWS",
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg",
     color: "#FF9900",
     fallbackIcon: <Cloud className="w-6 h-6 text-orange-500" />
   },
   {
-    name: "LocalStack",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg",
-    color: "#1A73E8",
+    name: "Azure",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azure/azure-original.svg",
+    color: "#0078D4",
     fallbackIcon: <Cloud className="w-6 h-6 text-blue-500" />
   },
   {
-    name: "IaC",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/terraform/terraform-original.svg",
-    color: "#009688",
-    fallbackIcon: <Cloud className="w-6 h-6 text-teal-500" />
-  },
-  {
-    name: "SSH",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/ssh/ssh-original.svg",
-    color: "#000000",
-    fallbackIcon: <Settings className="w-6 h-6 text-gray-500" />
+    name: "Google Cloud",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/googlecloud/googlecloud-original.svg",
+    color: "#4285F4",
+    fallbackIcon: <Cloud className="w-6 h-6 text-blue-600" />
   },
 ]
 
-const categoryIcons = {
-  "Frontend Development": <Code className="w-5 h-5" />,
-  "Backend Development": <Database className="w-5 h-5" />,
-  "Machine Learning & AI": <Brain className="w-5 h-5" />,
-  "DevOps & Tools": <Settings className="w-5 h-5" />,
-  "Cloud & Infrastructure": <Cloud className="w-5 h-5" />
+const skillCategories = [
+  { name: "Frontend Development", skills: frontendSkills },
+  { name: "Backend Development", skills: backendSkills },
+  { name: "Machine Learning & AI", skills: mlSkills },
+  { name: "DevOps & Tools", skills: toolsSkills },
+  { name: "Cloud Platforms", skills: cloudSkills },
+]
+
+const SkillBadge = ({ skill }: { skill: Skill }) => {
+  const [imageError, setImageError] = useState(false)
+
+  return (
+    <motion.div
+      whileHover={{ y: -4 }}
+      transition={{ duration: 0.2 }}
+      className="group relative px-4 py-3 bg-white dark:bg-gray-900/40 backdrop-blur-sm border border-gray-200 dark:border-gray-800/50 rounded-xl transition-all duration-300 flex items-center gap-3"
+      onMouseEnter={(e) => {
+        e.currentTarget.style.borderColor = '#8668ED'
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.borderColor = ''
+      }}
+    >
+      <div className="w-6 h-6 flex-shrink-0">
+        {!imageError ? (
+          <img
+            src={skill.icon}
+            alt={skill.name}
+            className="w-full h-full object-contain"
+            onError={() => setImageError(true)}
+            loading="lazy"
+          />
+        ) : (
+          skill.fallbackIcon
+        )}
+      </div>
+      <span className="text-sm font-normal text-gray-700 dark:text-gray-300">
+        {skill.name}
+      </span>
+    </motion.div>
+  )
 }
 
 export default function Skills() {
@@ -189,164 +212,53 @@ export default function Skills() {
   const isInView = useInView(ref, { once: false, amount: 0.2 })
 
   return (
-    <section id="skills" className="py-20 px-4 md:px-8 bg-gray-50 dark:bg-gray-950 relative overflow-hidden" ref={ref}>
-      {/* Enhanced Background Effects */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-200/20 dark:from-purple-900/10 via-transparent to-transparent"></div>
-      <div className="absolute top-1/4 left-1/3 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-1/4 right-1/3 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl"></div>
+    <section id="skills" className="py-20 px-4 md:px-8 relative overflow-hidden bg-white dark:bg-transparent" ref={ref}>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-200/10 dark:from-purple-900/5 via-transparent to-transparent"></div>
       
-      {/* Floating particles */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(6)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-2 h-2 bg-purple-400/20 rounded-full"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              y: [-20, 20, -20],
-              opacity: [0.2, 0.8, 0.2],
-            }}
-            transition={{
-              duration: 3 + Math.random() * 2,
-              repeat: Infinity,
-              delay: Math.random() * 2,
-            }}
-          />
-        ))}
-      </div>
-
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-        transition={{ duration: 0.6 }}
-        className="max-w-7xl mx-auto relative z-10"
-      >
-        {/* Enhanced Header */}
-        <div className="text-center mb-16">
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-4xl md:text-5xl font-light mb-4"
-          >
-            <span style={{ color: '#8668ED' }}>
-              Skills & Technologies
-            </span>
-          </motion.h2>
-          
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-lg leading-relaxed"
-          >
+      <div className="max-w-7xl mx-auto relative z-10">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl font-light mb-4" style={{ color: '#8668ED' }}>
+            Skills & Technologies
+          </h2>
+          <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
             The tools and technologies I use to bring ideas to life and solve complex problems
-          </motion.p>
-        </div>
-
-        {/* Enhanced Grid Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
-          <SkillCategory title="Frontend Development" skills={frontendSkills} delay={0} isInView={isInView} />
-          <SkillCategory title="Backend Development" skills={backendSkills} delay={0.1} isInView={isInView} />
-          <SkillCategory title="Machine Learning & AI" skills={mlSkills} delay={0.2} isInView={isInView} />
-          <SkillCategory title="DevOps & Tools" skills={devopsSkills} delay={0.3} isInView={isInView} />
-          <SkillCategory title="Cloud & Infrastructure" skills={cloudSkills} delay={0.4} isInView={isInView} />
-        </div>
-      </motion.div>
-    </section>
-  )
-}
-
-function SkillCategory({
-  title,
-  skills,
-  delay,
-  isInView,
-}: { title: string; skills: Skill[]; delay: number; isInView: boolean }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-      transition={{ duration: 0.6, delay }}
-      className="group relative"
-    >
-      <div className="relative bg-white dark:bg-gray-900/60 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-2xl p-6 transition-all duration-300 h-full shadow-sm"
-        onMouseEnter={(e) => e.currentTarget.style.borderColor = '#8668ED50'}
-        onMouseLeave={(e) => e.currentTarget.style.borderColor = ''}>
-        {/* Category Header */}
-        <div className="flex items-center gap-3 mb-6">
-          <div className="p-2 rounded-lg border" style={{ backgroundColor: '#8668ED10', borderColor: '#8668ED30' }}>
-            <span style={{ color: '#8668ED' }}>
-              {categoryIcons[title as keyof typeof categoryIcons]}
-            </span>
-          </div>
-          <div>
-            <h3 className="text-lg font-normal text-gray-900 dark:text-white transition-colors"
-              style={{ transition: 'color 0.3s' }}
-              onMouseEnter={(e) => e.currentTarget.style.color = '#8668ED'}
-              onMouseLeave={(e) => e.currentTarget.style.color = ''}>
-              {title}
-            </h3>
-            <p className="text-xs text-gray-600 dark:text-gray-400">{skills.length} technologies</p>
-          </div>
-        </div>
+          </p>
+        </motion.div>
 
         {/* Skills Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-          {skills.map((skill, index) => (
-            <SkillBadge key={skill.name} skill={skill} index={index} isInView={isInView} />
+        <div className="space-y-12">
+          {skillCategories.map((category, categoryIndex) => (
+            <motion.div
+              key={category.name}
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.6, delay: 0.3 + categoryIndex * 0.1 }}
+            >
+              <h3 className="text-xl font-light text-gray-900 dark:text-white mb-6">
+                {category.name}
+              </h3>
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                {category.skills.map((skill, index) => (
+                  <motion.div
+                    key={skill.name}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
+                    transition={{ duration: 0.3, delay: 0.4 + categoryIndex * 0.1 + index * 0.05 }}
+                  >
+                    <SkillBadge skill={skill} />
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
           ))}
         </div>
       </div>
-    </motion.div>
+    </section>
   )
 }
-
-function SkillBadge({ skill, index, isInView }: { skill: Skill; index: number; isInView: boolean }) {
-  const [imageError, setImageError] = useState(false)
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.8 }}
-      animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-      transition={{ duration: 0.4, delay: 0.1 * index }}
-      whileHover={{ 
-        scale: 1.05, 
-        y: -8,
-        transition: { duration: 0.2 }
-      }}
-      whileTap={{ scale: 0.95 }}
-      className="group relative"
-    >
-      <div className="relative flex flex-col items-center justify-center p-4 bg-gray-50 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl border border-gray-200 dark:border-gray-700/50 group-hover:bg-gray-100 dark:group-hover:bg-gray-800/90 transition-all duration-300 h-full min-h-[100px]"
-        onMouseEnter={(e) => e.currentTarget.style.borderColor = '#8668ED50'}
-        onMouseLeave={(e) => e.currentTarget.style.borderColor = ''}>
-        {/* Icon Container */}
-        <div className="w-12 h-12 mb-3 flex items-center justify-center relative">
-          {imageError || !skill.icon ? (
-            <div className="relative z-10">
-              {skill.fallbackIcon || <Code className="w-7 h-7" style={{ color: '#8668ED' }} />}
-            </div>
-          ) : (
-            <img 
-              src={skill.icon} 
-              alt={skill.name} 
-              className="w-8 h-8 relative z-10 group-hover:scale-110 transition-transform duration-300"
-              onError={() => setImageError(true)}
-              onLoad={() => setImageError(false)}
-            />
-          )}
-        </div>
-        
-        {/* Skill Name */}
-        <span className="text-sm font-normal text-gray-700 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white transition-colors text-center leading-tight">
-          {skill.name}
-        </span>
-      </div>
-    </motion.div>
-  )
-}
-

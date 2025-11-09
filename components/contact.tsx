@@ -60,12 +60,14 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="py-20 px-4 md:px-8 bg-gray-50 dark:bg-transparent" ref={ref}>
+    <section id="contact" className="py-20 px-4 md:px-8 bg-white dark:bg-transparent" ref={ref}>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-200/10 dark:from-purple-900/5 via-transparent to-transparent"></div>
+      
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
         transition={{ duration: 0.6 }}
-        className="max-w-6xl mx-auto"
+        className="max-w-6xl mx-auto relative z-10"
       >
         <h2 className="text-4xl md:text-5xl font-light mb-12 text-center">
           <span style={{ color: '#8668ED' }}>
@@ -79,17 +81,17 @@ export default function Contact() {
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <Card className="bg-white dark:bg-gray-800/50 border-gray-200 dark:border-gray-700 h-full shadow-lg">
+            <Card className="bg-white dark:bg-gray-900/40 backdrop-blur-sm border border-gray-200 dark:border-gray-800/50 h-full rounded-2xl">
               <CardHeader>
-                <CardTitle className="text-gray-900 dark:text-white font-normal">Contact Information</CardTitle>
+                <CardTitle className="text-gray-900 dark:text-white font-light text-2xl">Contact Information</CardTitle>
                 <CardDescription className="text-gray-600 dark:text-gray-400">
                   Feel free to reach out through any of these channels
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="flex items-center gap-4">
-                  <div className="bg-purple-100 dark:bg-purple-500/20 p-3 rounded-full">
-                    <Mail className="h-6 w-6 text-purple-600 dark:text-purple-400" />
+                  <div className="p-3 rounded-xl" style={{ backgroundColor: '#8668ED20' }}>
+                    <Mail className="h-6 w-6" style={{ color: '#8668ED' }} />
                   </div>
                   <div>
                     <h3 className="text-sm font-normal text-gray-700 dark:text-gray-300">Email</h3>
@@ -98,8 +100,8 @@ export default function Contact() {
                 </div>
 
                 <div className="flex items-center gap-4">
-                  <div className="bg-purple-100 dark:bg-purple-500/20 p-3 rounded-full">
-                    <MessageSquare className="h-6 w-6 text-purple-600 dark:text-purple-400" />
+                  <div className="p-3 rounded-xl" style={{ backgroundColor: '#8668ED20' }}>
+                    <MessageSquare className="h-6 w-6" style={{ color: '#8668ED' }} />
                   </div>
                   <div>
                     <h3 className="text-sm font-normal text-gray-700 dark:text-gray-300">Social Media</h3>
@@ -140,9 +142,9 @@ export default function Contact() {
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <Card className="bg-white dark:bg-gray-800/50 border-gray-200 dark:border-gray-700 shadow-lg">
+            <Card className="bg-white dark:bg-gray-900/40 backdrop-blur-sm border border-gray-200 dark:border-gray-800/50 rounded-2xl">
               <CardHeader>
-                <CardTitle className="text-gray-900 dark:text-white font-normal">Send a Message</CardTitle>
+                <CardTitle className="text-gray-900 dark:text-white font-light text-2xl">Send a Message</CardTitle>
                 <CardDescription className="text-gray-600 dark:text-gray-400">
                   Fill out the form below and I'll get back to you as soon as possible
                 </CardDescription>
