@@ -4,8 +4,7 @@ import { ThemeProvider } from '@/components/theme-provider'
 
 export const metadata: Metadata = {
   title: "Raamiz's Portfolio Website",
-  description: 'Created with v0',
-  generator: 'v0.dev',
+  description: 'My Personal Portfolio',
 }
 
 export default function RootLayout({
