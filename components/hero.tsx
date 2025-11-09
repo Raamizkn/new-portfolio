@@ -90,18 +90,20 @@ export default function Hero() {
           >
             <motion.button
               onClick={() => scrollToSection("projects")}
-              className="relative overflow-hidden font-light px-10 py-4 text-base rounded-full border-2 group"
+              className="relative overflow-hidden font-light px-10 py-4 text-base rounded-full border-2 bg-transparent group"
               style={{ 
-                backgroundColor: '#8668ED',
                 borderColor: '#8668ED'
               }}
               whileTap={{ scale: 0.98 }}
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
             >
-              <span className="relative z-10 text-white group-hover:text-purple-600 transition-colors duration-200">
-                View My Work
+              <span className="relative z-10 transition-colors duration-200" style={{ color: '#8668ED' }}>
+                <span className="group-hover:text-white">View My Work</span>
               </span>
-              <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+              <div 
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+                style={{ backgroundColor: '#8668ED' }}
+              />
             </motion.button>
             
             <motion.button

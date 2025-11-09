@@ -175,19 +175,23 @@ const CertificationCard = ({ cert, index }: { cert: Certification; index: number
         {/* Button */}
         <motion.button
           onClick={() => window.open(cert.credentialUrl, '_blank')}
-          className="relative overflow-hidden w-full font-light py-3 rounded-full border-2 group"
+          className="relative overflow-hidden w-full font-light py-3 rounded-full border-2 bg-transparent group"
           style={{ 
-            backgroundColor: '#8668ED',
             borderColor: '#8668ED'
           }}
           whileTap={{ scale: 0.99 }}
           transition={{ type: "spring", stiffness: 400, damping: 17 }}
         >
-          <span className="relative z-10 flex items-center justify-center text-white group-hover:text-purple-600 transition-colors duration-200">
-            <ExternalLink className="w-4 h-4 mr-2" />
-            View Credential
+          <span className="relative z-10 flex items-center justify-center transition-colors duration-200" style={{ color: '#8668ED' }}>
+            <span className="flex items-center group-hover:text-white">
+              <ExternalLink className="w-4 h-4 mr-2" />
+              View Credential
+            </span>
           </span>
-          <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+          <div 
+            className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+            style={{ backgroundColor: '#8668ED' }}
+          />
         </motion.button>
       </div>
     </motion.div>
