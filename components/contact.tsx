@@ -223,7 +223,8 @@ export default function Contact() {
 
                   <Button 
                     type="submit" 
-                    className="w-full bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white font-normal" 
+                    className="w-full text-white font-normal transition-all duration-300 shadow-lg hover:opacity-90" 
+                    style={{ backgroundColor: '#8668ED' }}
                     disabled={submitting}
                   >
                     {submitting ? (
