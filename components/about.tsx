@@ -21,18 +21,17 @@ export default function About() {
           className="mb-20"
         >
           <h2 className="text-5xl md:text-7xl lg:text-8xl font-light leading-tight mb-8">
-            <span className="text-gray-900 dark:text-white">I stay ahead of trends,</span>
+            <span className="text-gray-900 dark:text-white">I stay ahead of AI trends,</span>
             <br />
-            <span className="text-gray-900 dark:text-white">integrating the latest</span>
+            <span className="text-gray-900 dark:text-white">building intelligent</span>
             <br />
-            <span className="text-gray-900 dark:text-white">design principles and</span>
+            <span className="text-gray-900 dark:text-white">products and voice agents</span>
             <br />
-            <span className="text-gray-900 dark:text-white">technologies </span>
-            <span className="text-gray-500 dark:text-gray-600">to help</span>
+            <span className="text-gray-500 dark:text-gray-600">that drive conversions,</span>
             <br />
-            <span className="text-gray-500 dark:text-gray-600">businesses establish a</span>
+            <span className="text-gray-500 dark:text-gray-600">automate workflows, and</span>
             <br />
-            <span className="text-gray-500 dark:text-gray-600">strong online presence.</span>
+            <span className="text-gray-500 dark:text-gray-600">deliver measurable impact.</span>
           </h2>
         </motion.div>
 
@@ -66,7 +65,7 @@ export default function About() {
               Focus
             </div>
             <div className="text-4xl md:text-5xl font-light text-gray-900 dark:text-white">
-              AI <span className="text-2xl text-gray-500 dark:text-gray-600">& Product</span>
+              AI <span className="text-2xl text-gray-500 dark:text-gray-600">Products</span>
             </div>
           </div>
         </motion.div>
@@ -80,20 +79,20 @@ export default function About() {
         >
           {[
             {
-              title: "Product Strategy",
-              description: "Defining product vision, roadmaps, and go-to-market strategies that align with business objectives."
+              title: "AI Product Management",
+              description: "Leading end-to-end AI product development from concept to deployment, with focus on voice agents and automation."
             },
             {
-              title: "AI Integration",
-              description: "Implementing machine learning solutions that enhance product capabilities and user experience."
+              title: "Prompt & Context Engineering",
+              description: "Optimizing AI systems through advanced prompt design and context engineering for production-grade applications."
             },
             {
-              title: "Data-Driven Design",
-              description: "Leveraging analytics and research to make informed decisions and improve performance."
+              title: "Full-Stack Development",
+              description: "Building scalable applications with Next.js, TypeScript, and modern backend technologies."
             },
             {
-              title: "Agile Development",
-              description: "Leading cross-functional teams through iterative cycles, ensuring quality outcomes."
+              title: "Sprint & Workflow Design",
+              description: "Managing agile development cycles and designing automation workflows that drive business outcomes."
             }
           ].map((item, index) => (
             <motion.div

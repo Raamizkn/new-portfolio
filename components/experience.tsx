@@ -19,56 +19,72 @@ interface Experience {
 const experiences: Experience[] = [
   {
     id: 1,
-    period: "2024 — Present",
-    title: "Solutions Architecture Program Participant",
-    company: "AWS APAC (The Forage)",
-    location: "Remote",
-    type: "program",
+    period: "Aug 2025 — Present",
+    title: "AI Consultant",
+    company: "Ncrese",
+    location: "Remote, United States",
+    type: "full-time",
     description:
-      "Participated in an intensive solutions architecture program focusing on cloud infrastructure design and scalable system architecture.",
+      "Leading end-to-end AI voice agent development and marketing automation systems for clients, driving significant improvements in conversions and operational efficiency.",
     achievements: [
-      "Designed scalable hosting architecture using AWS Elastic Beanstalk for high-growth client scenarios",
-      "Created comprehensive architecture documentation with cost analysis and technical specifications",
-      "Presented solutions in client-friendly language, bridging technical and business requirements",
-      "Achieved program completion with distinction in cloud architecture fundamentals"
+      "Led development and deployment of AI voice agents using n8n, VAPI, and Retell, driving a 30% increase in lead conversions through automated engagement",
+      "Scoped, designed, and productized a marketing automation system for a digital agency, resulting in a 50% workload reduction and 60% growth in content output",
+      "Drove prompt and context engineering initiatives on Langfuse, enhancing latency efficiency and contextual accuracy across production-grade AI systems by 40-45%",
+      "Partnered with stakeholders to refine agentic logic and reliability in voice AI systems"
     ],
-    technologies: ["AWS", "Elastic Beanstalk", "Cloud Architecture", "Solution Design", "Cost Optimization"],
+    technologies: ["n8n", "VAPI", "Retell", "Langfuse", "OpenAI API", "Prompt Engineering", "Voice AI", "Marketing Automation"],
   },
   {
     id: 2,
-    period: "2023 — Present",
-    title: "Project Member & Workshop Facilitator",
-    company: "Kai Sabanci",
-    location: "Remote",
+    period: "Aug 2025 — Present",
+    title: "Cofounder & AI Product Head",
+    company: "Mathison AI",
+    location: "Türkiye",
     type: "full-time",
     description:
-      "Leading technical education initiatives and coordinating advanced programming workshops across multiple remote facilities.",
+      "Cofounded and leading product design, overseeing UX, feature rollout, and sprint management from concept to deployment.",
     achievements: [
-      "Successfully coordinated NLP workshop sessions for 50+ participants across remote facilities",
-      "Organized and delivered GPU programming workshops using CUDA C/C++ for performance computing",
-      "Structured comprehensive deep learning curriculum using TensorFlow for 60+ participants",
-      "Maintained 95% participant satisfaction rate across all workshop sessions",
-      "Developed standardized training materials and assessment frameworks"
+      "Led product design, overseeing UX, feature rollout, and sprint management from concept to deployment",
+      "Developed and tested backend APIs, managing full-stack integration and ensuring stable, scalable releases",
+      "Built and integrated AI grading agents using OpenAI APIs and MongoDB on Next.js, automating assessments with 85% accuracy",
+      "Managed cross-functional team coordination and agile development cycles"
     ],
-    technologies: ["NLP", "CUDA C/C++", "TensorFlow", "Deep Learning", "Workshop Facilitation", "Remote Coordination"],
+    technologies: ["Next.js", "OpenAI API", "MongoDB", "TypeScript", "Product Management", "Sprint Management", "Full-Stack Development"],
   },
   {
     id: 3,
-    period: "2023",
-    title: "Information Technology Intern",
-    company: "Transworld Associates",
-    location: "On-site",
+    period: "Mar 2025 — Jun 2025",
+    title: "AI Product Intern",
+    company: "Alt Ventures",
+    location: "Singapore",
     type: "internship",
     description:
-      "Contributed to nationwide service optimization initiatives and network infrastructure improvements across enterprise-scale deployments.",
+      "Engineered AI voice agents and developed scalable frontend/backend services for professional interview platform.",
     achievements: [
-      "Improved service delivery efficiency across 464 sites nationwide through geolocation API deployment",
-      "Developed Python-based automation tools that reduced manual processing time by 40%",
-      "Identified and resolved 30+ critical discrepancies in GPON network report parameters",
-      "Ensured data integrity through comprehensive analysis of large-scale telecommunications datasets",
-      "Created automated reporting systems that improved accuracy and reduced processing time"
+      "Engineered and optimized AI agent prompts, improving response relevance by 30% in dynamic customer-facing environments",
+      "Developed LLM-driven voice AI agents to conduct mock professional interviews with 95%+ transcription accuracy",
+      "Integrated emotional intelligence via Hume API's EVI models for enhanced interview experience",
+      "Built scalable frontend (Next.js with Stripe Connect) and backend services (Supabase) to support real-time AI agent operations",
+      "Led website frontend design and prototyping in Figma, maintaining UI/UX alignment with product and brand identity"
     ],
-    technologies: ["Python", "Geolocation APIs", "Data Analysis", "GPON Networks", "Report Automation", "Network Infrastructure"],
+    technologies: ["Next.js", "Supabase", "Hume API", "Stripe", "Figma", "Voice AI", "LLM", "Prompt Engineering"],
+  },
+  {
+    id: 4,
+    period: "Jun 2025 — Aug 2025",
+    title: "AI Intern",
+    company: "MedIQ Smart Healthcare",
+    location: "Pakistan",
+    type: "internship",
+    description:
+      "Built RAG workflows and telemedicine solutions, improving platform UI/UX and optimizing AI automation.",
+    achievements: [
+      "Built RAG workflows for lab-pharmacy support using n8n and WhatsApp Cloud API, cutting response time by 40%",
+      "Improved platform UI/UX with Vue.js, aligning design to product goals and raising task completion 35%",
+      "Developed a secure telemedicine web-app with Zoom SDK and Node.js, enabling 100+ weekly consultations post-launch",
+      "Optimized AI automation via context engineering, reducing LLM errors 35% and improving response relevance"
+    ],
+    technologies: ["n8n", "Vue.js", "Node.js", "Zoom SDK", "WhatsApp API", "RAG", "Context Engineering"],
   },
 ]
 

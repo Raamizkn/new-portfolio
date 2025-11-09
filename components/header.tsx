@@ -6,13 +6,15 @@ import { Menu, X, Sun, Moon } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useTheme } from "next-themes"
 
-const navItems = [
-  { name: "Home", href: "#hero" },
-  { name: "About", href: "#about" },
-  { name: "Projects", href: "#projects" },
-  { name: "Experience", href: "#experience" },
-  { name: "Contact", href: "#contact" },
-]
+  const navItems = [
+    { name: "Home", href: "#hero" },
+    { name: "About", href: "#about" },
+    { name: "Projects", href: "#projects" },
+    { name: "Skills", href: "#skills" },
+    { name: "Experience", href: "#experience" },
+    { name: "Certifications", href: "#certifications" },
+    { name: "Contact", href: "#contact" },
+  ]
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -64,7 +66,7 @@ export default function Header() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              Raamiz
+              Raamiz Khan Niazi
             </motion.a>
 
             {/* Desktop Navigation */}

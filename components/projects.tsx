@@ -292,34 +292,27 @@ export default function Projects() {
           viewport={{ once: true }}
           className="flex justify-center mb-12"
         >
-          <div className="bg-gray-100 dark:bg-gray-900/50 backdrop-blur-sm border border-gray-300 dark:border-gray-800 rounded-full p-1 inline-flex shadow-sm">
+          <div className="inline-flex bg-gray-100 dark:bg-gray-900/50 backdrop-blur-sm border border-gray-300 dark:border-gray-800 rounded-full p-1.5">
             {tabs.map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className="relative px-6 py-3 rounded-full transition-all duration-300 text-sm font-normal"
+                className="relative px-8 py-3 rounded-full transition-all duration-300"
               >
                 {activeTab === tab.id && (
                   <motion.div
-                    layoutId="activeTab"
+                    layoutId="activeProjectTab"
                     className="absolute inset-0 rounded-full"
                     style={{ backgroundColor: '#8668ED' }}
                     transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                   />
                 )}
-                <span className={`relative z-10 transition-colors duration-300 ${
+                <span className={`relative z-10 font-light transition-colors duration-300 ${
                   activeTab === tab.id 
                     ? 'text-white' 
-                    : 'text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-300'
+                    : 'text-gray-600 dark:text-gray-400'
                 }`}>
                   {tab.label}
-                  <span className={`ml-2 text-xs px-2 py-1 rounded-full ${
-                    activeTab === tab.id 
-                      ? 'bg-white/20' 
-                      : 'bg-gray-200 dark:bg-gray-800'
-                  }`}>
-                    {tab.count}
-                  </span>
                 </span>
               </button>
             ))}

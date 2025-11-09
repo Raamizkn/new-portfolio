@@ -2,207 +2,102 @@
 
 import { useRef, useState } from "react"
 import { motion, useInView } from "framer-motion"
-import { Code, Database, Brain, Settings, Cloud } from "lucide-react"
+import { Palette, Code2, Sparkles } from "lucide-react"
 
 interface Skill {
   name: string
-  icon: string
-  color: string
-  fallbackIcon?: React.ReactNode
+  category: string
+  description: string
 }
 
-const frontendSkills: Skill[] = [
-  {
-    name: "HTML5",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg",
-    color: "#E34F26",
-    fallbackIcon: <Code className="w-6 h-6 text-orange-500" />
-  },
-  { 
-    name: "CSS3", 
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg", 
-    color: "#1572B6",
-    fallbackIcon: <Code className="w-6 h-6 text-blue-500" />
-  },
-  {
-    name: "JavaScript",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg",
-    color: "#F7DF1E",
-    fallbackIcon: <Code className="w-6 h-6 text-yellow-500" />
-  },
-  {
-    name: "React",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg",
-    color: "#61DAFB",
-    fallbackIcon: <Code className="w-6 h-6 text-cyan-500" />
-  },
-  {
-    name: "Node.js",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg",
-    color: "#339933",
-    fallbackIcon: <Code className="w-6 h-6 text-green-500" />
-  },
+const productSkills: Skill[] = [
+  { name: "Figma", category: "Design", description: "UI/UX Design" },
+  { name: "Framer", category: "Prototyping", description: "Interactive Prototypes" },
+  { name: "Miro", category: "Collaboration", description: "Ideation & Planning" },
+  { name: "Adobe XD", category: "Design", description: "Experience Design" },
+  { name: "Sketch", category: "Design", description: "Interface Design" },
+  { name: "Notion", category: "Documentation", description: "Product Specs" },
+  { name: "Jira", category: "Management", description: "Agile Workflows" },
+  { name: "Confluence", category: "Documentation", description: "Team Wiki" },
+  { name: "Mixpanel", category: "Analytics", description: "Product Analytics" },
+  { name: "Hotjar", category: "Analytics", description: "User Behavior" },
+  { name: "UserTesting", category: "Research", description: "User Research" },
+  { name: "Maze", category: "Research", description: "Usability Testing" },
 ]
 
-const backendSkills: Skill[] = [
-  {
-    name: "Python",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg",
-    color: "#3776AB",
-    fallbackIcon: <Database className="w-6 h-6 text-blue-500" />
-  },
-  {
-    name: "FastAPI",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/fastapi/fastapi-original.svg",
-    color: "#009688",
-    fallbackIcon: <Database className="w-6 h-6 text-teal-500" />
-  },
-  {
-    name: "Flask",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flask/flask-original.svg",
-    color: "#000000",
-    fallbackIcon: <Database className="w-6 h-6 text-gray-500" />
-  },
-  {
-    name: "CUDA C/C++",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg",
-    color: "#76B900",
-    fallbackIcon: <Database className="w-6 h-6 text-green-500" />
-  },
-  {
-    name: "R",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/r/r-original.svg",
-    color: "#276DC3",
-    fallbackIcon: <Database className="w-6 h-6 text-blue-600" />
-  },
+const developmentSkills: Skill[] = [
+  { name: "Claude", category: "AI", description: "AI Assistant" },
+  { name: "Cursor", category: "IDE", description: "AI Code Editor" },
+  { name: "GitHub Copilot", category: "AI", description: "Code Completion" },
+  { name: "VS Code", category: "IDE", description: "Code Editor" },
+  { name: "Git", category: "Version Control", description: "Source Control" },
+  { name: "Docker", category: "DevOps", description: "Containerization" },
+  { name: "Postman", category: "API", description: "API Testing" },
+  { name: "Terminal", category: "CLI", description: "Command Line" },
+  { name: "npm/yarn", category: "Package Manager", description: "Dependencies" },
+  { name: "Vercel", category: "Deployment", description: "Hosting Platform" },
+  { name: "AWS", category: "Cloud", description: "Cloud Services" },
+  { name: "Python", category: "Language", description: "Backend & AI" },
 ]
 
-const mlSkills: Skill[] = [
-  {
-    name: "TensorFlow",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tensorflow/tensorflow-original.svg",
-    color: "#FF6F00",
-    fallbackIcon: <Brain className="w-6 h-6 text-orange-500" />
-  },
-  {
-    name: "PyTorch",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pytorch/pytorch-original.svg",
-    color: "#EE4C2C",
-    fallbackIcon: <Brain className="w-6 h-6 text-red-500" />
-  },
-  {
-    name: "Scikit-learn",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/scikitlearn/scikitlearn-original.svg",
-    color: "#F7931E",
-    fallbackIcon: <Brain className="w-6 h-6 text-orange-400" />
-  },
-  {
-    name: "Pandas",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pandas/pandas-original.svg",
-    color: "#150458",
-    fallbackIcon: <Brain className="w-6 h-6 text-purple-600" />
-  },
-  {
-    name: "NumPy",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/numpy/numpy-original.svg",
-    color: "#013243",
-    fallbackIcon: <Brain className="w-6 h-6 text-blue-700" />
-  },
-]
-
-const toolsSkills: Skill[] = [
-  {
-    name: "Git",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg",
-    color: "#F05032",
-    fallbackIcon: <Settings className="w-6 h-6 text-red-500" />
-  },
-  {
-    name: "Docker",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg",
-    color: "#2496ED",
-    fallbackIcon: <Settings className="w-6 h-6 text-blue-500" />
-  },
-  {
-    name: "Kubernetes",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kubernetes/kubernetes-original.svg",
-    color: "#326CE5",
-    fallbackIcon: <Settings className="w-6 h-6 text-blue-600" />
-  },
-  {
-    name: "Terraform",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/terraform/terraform-original.svg",
-    color: "#7B42BC",
-    fallbackIcon: <Settings className="w-6 h-6 text-purple-600" />
-  },
-  {
-    name: "Postman",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postman/postman-original.svg",
-    color: "#FF6C37",
-    fallbackIcon: <Settings className="w-6 h-6 text-orange-500" />
-  },
-]
-
-const cloudSkills: Skill[] = [
-  {
-    name: "AWS",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg",
-    color: "#FF9900",
-    fallbackIcon: <Cloud className="w-6 h-6 text-orange-500" />
-  },
-  {
-    name: "Azure",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azure/azure-original.svg",
-    color: "#0078D4",
-    fallbackIcon: <Cloud className="w-6 h-6 text-blue-500" />
-  },
-  {
-    name: "Google Cloud",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/googlecloud/googlecloud-original.svg",
-    color: "#4285F4",
-    fallbackIcon: <Cloud className="w-6 h-6 text-blue-600" />
-  },
-]
-
-const skillCategories = [
-  { name: "Frontend Development", skills: frontendSkills },
-  { name: "Backend Development", skills: backendSkills },
-  { name: "Machine Learning & AI", skills: mlSkills },
-  { name: "DevOps & Tools", skills: toolsSkills },
-  { name: "Cloud Platforms", skills: cloudSkills },
-]
-
-const SkillBadge = ({ skill }: { skill: Skill }) => {
-  const [imageError, setImageError] = useState(false)
-
+const SkillCard = ({ skill, index }: { skill: Skill; index: number }) => {
+  const [isHovered, setIsHovered] = useState(false)
+  
   return (
     <motion.div
-      whileHover={{ y: -4 }}
-      transition={{ duration: 0.2 }}
-      className="group relative px-4 py-3 bg-white dark:bg-gray-900/40 backdrop-blur-sm border border-gray-200 dark:border-gray-800/50 rounded-xl transition-all duration-300 flex items-center gap-3"
-      onMouseEnter={(e) => {
-        e.currentTarget.style.borderColor = '#8668ED'
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.borderColor = ''
-      }}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.4, delay: index * 0.05 }}
+      className="group relative"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="w-6 h-6 flex-shrink-0">
-        {!imageError ? (
-          <img
-            src={skill.icon}
-            alt={skill.name}
-            className="w-full h-full object-contain"
-            onError={() => setImageError(true)}
-            loading="lazy"
-          />
-        ) : (
-          skill.fallbackIcon
-        )}
+      <div 
+        className="relative p-6 bg-white dark:bg-gray-900/40 backdrop-blur-sm border border-gray-200 dark:border-gray-800/50 rounded-2xl transition-all duration-300 overflow-hidden"
+        style={{
+          borderColor: isHovered ? '#8668ED' : '',
+          transform: isHovered ? 'translateY(-4px)' : 'translateY(0)'
+        }}
+      >
+        {/* Hover glow effect */}
+        <div 
+          className="absolute inset-0 opacity-0 transition-opacity duration-300"
+          style={{
+            background: 'radial-gradient(circle at center, rgba(134, 104, 237, 0.1) 0%, transparent 70%)',
+            opacity: isHovered ? 1 : 0
+          }}
+        />
+        
+        {/* Content */}
+        <div className="relative z-10">
+          <div className="flex items-start justify-between mb-3">
+            <h3 className="text-lg font-normal text-gray-900 dark:text-white">
+              {skill.name}
+            </h3>
+            <motion.div
+              animate={{ rotate: isHovered ? 180 : 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              <Sparkles 
+                className="w-4 h-4 transition-colors duration-300" 
+                style={{ color: isHovered ? '#8668ED' : '#9CA3AF' }}
+              />
+            </motion.div>
+          </div>
+          
+          <div className="space-y-2">
+            <span 
+              className="inline-block px-3 py-1 text-xs rounded-full bg-gray-100 dark:bg-gray-800/50 text-gray-600 dark:text-gray-400"
+            >
+              {skill.category}
+            </span>
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              {skill.description}
+            </p>
+          </div>
+        </div>
       </div>
-      <span className="text-sm font-normal text-gray-700 dark:text-gray-300">
-        {skill.name}
-      </span>
     </motion.div>
   )
 }
@@ -210,6 +105,7 @@ const SkillBadge = ({ skill }: { skill: Skill }) => {
 export default function Skills() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: false, amount: 0.2 })
+  const [activeTab, setActiveTab] = useState<'product' | 'development'>('product')
 
   return (
     <section id="skills" className="py-20 px-4 md:px-8 relative overflow-hidden bg-white dark:bg-transparent" ref={ref}>
@@ -224,41 +120,128 @@ export default function Skills() {
           className="text-center mb-16"
         >
           <h2 className="text-5xl md:text-6xl lg:text-7xl font-light mb-6 leading-tight">
-            <span className="text-gray-900 dark:text-white">Skills & </span>
-            <span style={{ color: '#8668ED' }}>Technologies</span>
+            <span className="text-gray-900 dark:text-white">Tools & </span>
+            <span style={{ color: '#8668ED' }}>Expertise</span>
           </h2>
           <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-lg">
-            The tools and technologies <span className="text-gray-500 dark:text-gray-600">I use to bring ideas to life</span>
+            The technologies I use <span className="text-gray-500 dark:text-gray-600">to design and build products</span>
           </p>
         </motion.div>
 
-        {/* Skills Grid */}
-        <div className="space-y-12">
-          {skillCategories.map((category, categoryIndex) => (
-            <motion.div
-              key={category.name}
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ duration: 0.6, delay: 0.3 + categoryIndex * 0.1 }}
+        {/* Tab Navigation */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="flex justify-center mb-12"
+        >
+          <div className="inline-flex bg-gray-100 dark:bg-gray-900/50 backdrop-blur-sm border border-gray-300 dark:border-gray-800 rounded-full p-1.5">
+            <button
+              onClick={() => setActiveTab('product')}
+              className="relative px-8 py-3 rounded-full transition-all duration-300 flex items-center gap-2"
             >
-              <h3 className="text-xl font-light text-gray-900 dark:text-white mb-6">
-                {category.name}
-              </h3>
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-                {category.skills.map((skill, index) => (
-                  <motion.div
-                    key={skill.name}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
-                    transition={{ duration: 0.3, delay: 0.4 + categoryIndex * 0.1 + index * 0.05 }}
-                  >
-                    <SkillBadge skill={skill} />
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
+              {activeTab === 'product' && (
+                <motion.div
+                  layoutId="activeSkillTab"
+                  className="absolute inset-0 rounded-full"
+                  style={{ backgroundColor: '#8668ED' }}
+                  transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                />
+              )}
+              <Palette className={`w-4 h-4 relative z-10 transition-colors duration-300 ${
+                activeTab === 'product' ? 'text-white' : 'text-gray-600 dark:text-gray-400'
+              }`} />
+              <span className={`relative z-10 font-light transition-colors duration-300 ${
+                activeTab === 'product' 
+                  ? 'text-white' 
+                  : 'text-gray-600 dark:text-gray-400'
+              }`}>
+                Product Design
+              </span>
+            </button>
+            
+            <button
+              onClick={() => setActiveTab('development')}
+              className="relative px-8 py-3 rounded-full transition-all duration-300 flex items-center gap-2"
+            >
+              {activeTab === 'development' && (
+                <motion.div
+                  layoutId="activeSkillTab"
+                  className="absolute inset-0 rounded-full"
+                  style={{ backgroundColor: '#8668ED' }}
+                  transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                />
+              )}
+              <Code2 className={`w-4 h-4 relative z-10 transition-colors duration-300 ${
+                activeTab === 'development' ? 'text-white' : 'text-gray-600 dark:text-gray-400'
+              }`} />
+              <span className={`relative z-10 font-light transition-colors duration-300 ${
+                activeTab === 'development' 
+                  ? 'text-white' 
+                  : 'text-gray-600 dark:text-gray-400'
+              }`}>
+                Development
+              </span>
+            </button>
+          </div>
+        </motion.div>
+
+        {/* Skills Grid */}
+        <motion.div
+          key={activeTab}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.4 }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
+        >
+          {(activeTab === 'product' ? productSkills : developmentSkills).map((skill, index) => (
+            <SkillCard key={skill.name} skill={skill} index={index} />
           ))}
-        </div>
+        </motion.div>
+
+        {/* Stats */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="mt-16 pt-12 border-t border-gray-200 dark:border-gray-800"
+        >
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div>
+              <div className="text-3xl font-light text-gray-900 dark:text-white mb-2">
+                {productSkills.length}
+              </div>
+              <div className="text-sm text-gray-600 dark:text-gray-400">
+                Design Tools
+              </div>
+            </div>
+            <div>
+              <div className="text-3xl font-light text-gray-900 dark:text-white mb-2">
+                {developmentSkills.length}
+              </div>
+              <div className="text-sm text-gray-600 dark:text-gray-400">
+                Dev Tools
+              </div>
+            </div>
+            <div>
+              <div className="text-3xl font-light text-gray-900 dark:text-white mb-2">
+                3+
+              </div>
+              <div className="text-sm text-gray-600 dark:text-gray-400">
+                Years Experience
+              </div>
+            </div>
+            <div>
+              <div className="text-3xl font-light text-gray-900 dark:text-white mb-2">
+                20+
+              </div>
+              <div className="text-sm text-gray-600 dark:text-gray-400">
+                Projects Delivered
+              </div>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   )

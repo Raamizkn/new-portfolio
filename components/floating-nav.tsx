@@ -120,16 +120,22 @@ export default function FloatingNav() {
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.2, delay: index * 0.05 }}
-                    className="w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 text-left"
-                    style={isActive ? { backgroundColor: '#8668ED20', color: '#8668ED', borderColor: '#8668ED50', border: '1px solid' } : undefined}
+                    className="w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 text-left border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300"
+                    style={isActive ? { 
+                      backgroundColor: '#8668ED20', 
+                      color: '#8668ED', 
+                      borderColor: '#8668ED' 
+                    } : undefined}
                     onMouseEnter={(e) => {
                       if (!isActive) {
                         e.currentTarget.style.backgroundColor = '#8668ED10'
+                        e.currentTarget.style.borderColor = '#8668ED50'
                       }
                     }}
                     onMouseLeave={(e) => {
                       if (!isActive) {
                         e.currentTarget.style.backgroundColor = ''
+                        e.currentTarget.style.borderColor = ''
                       }
                     }}
                   >

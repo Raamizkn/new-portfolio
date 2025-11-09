@@ -64,11 +64,9 @@ export default function Hero() {
               className="text-5xl md:text-7xl lg:text-8xl font-light tracking-tight leading-tight"
             >
               <span className="text-gray-900 dark:text-white">Hello, I'm </span>
-              <span style={{ color: '#8668ED' }}>Raamiz Khan</span>
+              <span style={{ color: '#8668ED' }}>Raamiz Khan Niazi</span>
               <br />
-              <span className="text-gray-500 dark:text-gray-600">Product & AI</span>
-              <br />
-              <span className="text-gray-500 dark:text-gray-600">Consultant</span>
+              <span className="text-gray-500 dark:text-gray-600 text-4xl md:text-6xl lg:text-7xl">AI Product Manager & Consultant</span>
             </motion.h1>
           </div>
 
@@ -79,8 +77,8 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed"
           >
-            Specializing in AI-driven product development and automation. I design intelligent solutions 
-            that streamline workflows, enhance user experiences, and drive measurable business outcomes.
+            Specializing in AI product management, voice agents, and automation workflows. I build intelligent solutions 
+            that drive conversions, streamline operations, and deliver measurable impact.
           </motion.p>
 
           {/* CTA Buttons */}

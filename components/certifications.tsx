@@ -19,9 +19,29 @@ interface Certification {
 const certifications: Certification[] = [
   {
     id: 1,
+    title: "Product Management Job Simulation",
+    issuer: "Electronic Arts (The Forage)",
+    date: "Aug 2025",
+    description:
+      "Completed product management simulation covering feature prioritization, roadmap planning, and stakeholder communication.",
+    credentialUrl: "#",
+    skills: ["Product Management", "Feature Prioritization", "Roadmap Planning", "Stakeholder Management"],
+  },
+  {
+    id: 2,
+    title: "Project Manager Job Simulation",
+    issuer: "Siemens Mobility (The Forage)",
+    date: "Jul 2025",
+    description:
+      "Completed project management simulation focusing on agile methodologies, resource allocation, and delivery timelines.",
+    credentialUrl: "#",
+    skills: ["Project Management", "Agile", "Resource Planning", "Delivery Management"],
+  },
+  {
+    id: 3,
     title: "Applications of AI for Predictive Maintenance",
     issuer: "NVIDIA",
-    date: "Feb 2025",
+    date: "Mar 2025",
     description:
       "Advanced certification in implementing AI-based solutions for predictive maintenance across industrial applications.",
     credentialUrl: "https://learn.nvidia.com/certificates?id=38XtOjStR1qLXwTBdn0PuA",
@@ -29,10 +49,20 @@ const certifications: Certification[] = [
     skills: ["Predictive Maintenance", "AI", "Deep Learning", "Industrial IoT"],
   },
   {
-    id: 2,
+    id: 4,
+    title: "APAC Solutions Architecture Program",
+    issuer: "AWS (The Forage)",
+    date: "Mar 2024",
+    description:
+      "Completed solutions architecture program focusing on cloud infrastructure design and scalable system architecture.",
+    credentialUrl: "#",
+    skills: ["AWS", "Cloud Architecture", "Solution Design", "Infrastructure"],
+  },
+  {
+    id: 5,
     title: "Building Transformer-Based NLP Applications",
     issuer: "NVIDIA",
-    date: "March 2024",
+    date: "Mar 2024",
     description:
       "Advanced training in developing NLP applications using transformer architectures and NVIDIA technologies.",
     credentialUrl: "https://learn.nvidia.com/certificates?id=a8d9byLkSiqPissrEKzogQ",
@@ -40,34 +70,14 @@ const certifications: Certification[] = [
     skills: ["NLP", "Transformers", "Deep Learning", "NVIDIA"],
   },
   {
-    id: 3,
-    title: "Fundamentals of Accelerated Computing with CUDA C/C++",
-    issuer: "NVIDIA",
-    date: "March 2024",
-    description: "Core concepts of parallel programming and GPU computing using CUDA C/C++.",
-    credentialUrl: "https://learn.nvidia.com/certificates?id=seajHjSuRi21xSsD5zF5Rw",
-    credentialId: "seajHjSuRi21xSsD5zF5Rw",
-    skills: ["CUDA", "C++", "GPU Computing", "Parallel Programming"],
-  },
-  {
-    id: 4,
+    id: 6,
     title: "Fundamentals of Deep Learning",
     issuer: "NVIDIA",
-    date: "December 2023",
+    date: "Dec 2023",
     description: "Comprehensive understanding of deep learning concepts, architectures, and practical applications.",
     credentialUrl: "https://learn.nvidia.com/certificates?id=edbe2f2ec35e4e4a8ccff244aa932402",
     credentialId: "edbe2f2ec35e4e4a8ccff244aa932402",
     skills: ["Deep Learning", "Neural Networks", "TensorFlow", "PyTorch"],
-  },
-  {
-    id: 5,
-    title: "AWS Cloud Practitioner",
-    issuer: "Amazon Web Services",
-    date: "2024",
-    description:
-      "Fundamental understanding of AWS Cloud concepts, services, security, architecture, pricing, and support.",
-    credentialUrl: "#",
-    skills: ["AWS", "Cloud Computing", "Security", "Architecture"],
   },
 ]
 
