@@ -181,7 +181,7 @@ const ProjectModal = ({ project, isOpen, onClose }: { project: Project | null; i
   return (
     <AnimatePresence>
       {isOpen && (
-        <motion.div
+      <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -193,45 +193,45 @@ const ProjectModal = ({ project, isOpen, onClose }: { project: Project | null; i
           <div className="absolute inset-0 bg-black/50 backdrop-blur-md" />
           
           {/* Modal Content */}
-          <motion.div
+            <motion.div
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
             transition={{ duration: 0.3, type: "spring", damping: 25, stiffness: 300 }}
-            className="relative bg-gray-900/95 backdrop-blur-sm border border-gray-700 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl"
+            className="relative bg-white dark:bg-gray-900/95 backdrop-blur-sm border border-gray-200 dark:border-gray-700 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close Button */}
             <button
               onClick={onClose}
-              className="absolute top-4 right-4 z-10 p-2 rounded-full bg-gray-800/80 hover:bg-gray-700/80 transition-colors duration-200"
+              className="absolute top-4 right-4 z-10 p-2 rounded-full bg-gray-200/80 dark:bg-gray-800/80 hover:bg-gray-300/80 dark:hover:bg-gray-700/80 transition-colors duration-200"
             >
-              <X className="w-5 h-5 text-gray-300" />
+              <X className="w-5 h-5 text-gray-700 dark:text-gray-300" />
             </button>
 
             {/* Image */}
-            <div className="aspect-[16/7] bg-gray-800 relative overflow-hidden">
+            <div className="aspect-[16/7] bg-gray-100 dark:bg-gray-800 relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-blue-500/20" />
               <div className="flex items-center justify-center h-full">
-                <div className="w-16 h-16 bg-gray-700 rounded-xl flex items-center justify-center">
-                  <ExternalLink className="w-8 h-8 text-gray-400" />
+                <div className="w-16 h-16 bg-gray-200 dark:bg-gray-700 rounded-xl flex items-center justify-center">
+                  <ExternalLink className="w-8 h-8 text-gray-500 dark:text-gray-400" />
                 </div>
               </div>
-            </div>
+        </div>
 
             {/* Content */}
             <div className="p-6">
-              <h2 className="text-2xl font-bold text-white mb-4 pr-8">
+              <h2 className="text-2xl font-light text-gray-900 dark:text-white mb-4 pr-8">
                 {project.title}
               </h2>
               
-              <p className="text-gray-300 leading-relaxed mb-6 text-base">
+              <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6 text-base">
                 {project.description}
               </p>
 
               <div className="space-y-6">
                 <div>
-                  <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wide mb-3">
+                  <h3 className="text-sm font-normal text-gray-600 dark:text-gray-400 uppercase tracking-wide mb-3">
                     Technologies Used
                   </h3>
                   <div className="flex flex-wrap gap-2">
@@ -239,26 +239,26 @@ const ProjectModal = ({ project, isOpen, onClose }: { project: Project | null; i
                       <Badge
                         key={tag}
                         variant="secondary"
-                        className="bg-gray-800 text-gray-300 hover:bg-purple-500/20 hover:text-purple-300 transition-colors duration-200"
+                        className="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-purple-100 dark:hover:bg-purple-500/20 hover:text-purple-600 dark:hover:text-purple-300 transition-colors duration-200"
                       >
                         {tag}
                       </Badge>
                     ))}
                   </div>
-                </div>
+              </div>
 
                 <div>
                   <Button
-                    className="w-full bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white font-medium py-3 rounded-lg transition-all duration-300 shadow-lg hover:shadow-purple-500/25"
+                    className="w-full bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white font-normal py-3 rounded-lg transition-all duration-300 shadow-lg hover:shadow-purple-500/25"
                     onClick={() => window.open(project.github, '_blank')}
                   >
                     <GitHub className="w-5 h-5 mr-2" />
                     View on GitHub
-                  </Button>
-                </div>
-              </div>
+              </Button>
             </div>
-          </motion.div>
+          </div>
+        </div>
+      </motion.div>
         </motion.div>
       )}
     </AnimatePresence>
@@ -272,43 +272,43 @@ const ProjectCard = ({ project, onClick }: { project: Project; onClick: () => vo
     animate={{ opacity: 1, y: 0 }}
     exit={{ opacity: 0, y: -20 }}
     transition={{ duration: 0.3 }}
-    className="group relative bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-xl overflow-hidden hover:border-purple-500/50 transition-all duration-300 h-full flex flex-col cursor-pointer"
+          className="group relative bg-white dark:bg-gray-900/50 backdrop-blur-sm border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden hover:border-purple-500/50 transition-all duration-300 h-full flex flex-col cursor-pointer shadow-sm hover:shadow-lg"
     onClick={onClick}
   >
-    <div className="aspect-video bg-gray-800 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-      <div className="flex items-center justify-center h-full">
-        <div className="w-12 h-12 bg-gray-700 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-          <ExternalLink className="w-6 h-6 text-gray-400" />
-        </div>
+        <div className="aspect-video bg-gray-100 dark:bg-gray-800 relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          <div className="flex items-center justify-center h-full">
+            <div className="w-12 h-12 bg-gray-200 dark:bg-gray-700 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+              <ExternalLink className="w-6 h-6 text-gray-500 dark:text-gray-400" />
+            </div>
+          </div>
       </div>
-    </div>
     
     <div className="p-6 flex flex-col flex-1">
-      <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-purple-400 transition-colors duration-300 min-h-[3.5rem] line-clamp-2">
-        {project.title}
-      </h3>
-      <p className="text-gray-400 text-sm leading-relaxed mb-4 flex-1 line-clamp-4">
-        {project.description}
-      </p>
+          <h3 className="text-xl font-normal text-gray-900 dark:text-white mb-3 group-hover:text-purple-500 dark:group-hover:text-purple-400 transition-colors duration-300 min-h-[3.5rem] line-clamp-2">
+            {project.title}
+          </h3>
+          <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-4 flex-1 line-clamp-4">
+            {project.description}
+          </p>
       
       <div className="flex flex-wrap gap-2 mb-4">
-        {project.tags.map((tag) => (
+          {project.tags.map((tag) => (
           <Badge
             key={tag}
             variant="secondary"
-            className="bg-gray-800 text-gray-300 hover:bg-purple-500/20 hover:text-purple-300 transition-colors duration-200 text-xs"
+                  className="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-purple-100 dark:hover:bg-purple-500/20 hover:text-purple-600 dark:hover:text-purple-300 transition-colors duration-200 text-xs"
           >
-            {tag}
-          </Badge>
-        ))}
-      </div>
+              {tag}
+            </Badge>
+          ))}
+        </div>
       
       <div className="mt-auto pt-2 space-y-3">
         <Button
           variant="outline"
           size="sm"
-          className="w-full bg-transparent border-gray-700 text-gray-300 hover:bg-purple-500/10 hover:border-purple-500/50 hover:text-purple-300 transition-all duration-300"
+              className="w-full bg-transparent border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-purple-50 dark:hover:bg-purple-500/10 hover:border-purple-500/50 hover:text-purple-600 dark:hover:text-purple-300 transition-all duration-300"
           onClick={(e) => {
             e.stopPropagation()
             window.open(project.github, '_blank')
@@ -316,10 +316,10 @@ const ProjectCard = ({ project, onClick }: { project: Project; onClick: () => vo
         >
           <GitHub className="w-4 h-4 mr-2" />
           View on GitHub
-        </Button>
-        <div className="text-xs text-gray-500 text-center">
-          Click card for details
-        </div>
+          </Button>
+            <div className="text-xs text-gray-500 dark:text-gray-500 text-center">
+              Click card for details
+            </div>
       </div>
     </div>
   </motion.div>
@@ -346,8 +346,8 @@ export default function Projects() {
   }
 
   return (
-    <section id="projects" className="py-20 px-4 md:px-8 relative overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-900/10 via-transparent to-transparent"></div>
+    <section id="projects" className="py-20 px-4 md:px-8 relative overflow-hidden bg-white dark:bg-transparent">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-200/20 dark:from-purple-900/10 via-transparent to-transparent"></div>
       
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
@@ -357,10 +357,10 @@ export default function Projects() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-blue-500">
+          <h2 className="text-4xl md:text-5xl font-light mb-4 bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-blue-600 dark:from-purple-400 dark:to-blue-500">
             My Projects
           </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">
+          <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
             A collection of my recent work, showcasing my relevant skills and experience.
           </p>
         </motion.div>
@@ -373,12 +373,12 @@ export default function Projects() {
           viewport={{ once: true }}
           className="flex justify-center mb-12"
         >
-          <div className="bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-full p-1 inline-flex">
+          <div className="bg-gray-100 dark:bg-gray-900/50 backdrop-blur-sm border border-gray-300 dark:border-gray-800 rounded-full p-1 inline-flex shadow-sm">
             {tabs.map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className="relative px-6 py-3 rounded-full transition-all duration-300 text-sm font-medium"
+                className="relative px-6 py-3 rounded-full transition-all duration-300 text-sm font-normal"
               >
                 {activeTab === tab.id && (
                   <motion.div
@@ -390,10 +390,14 @@ export default function Projects() {
                 <span className={`relative z-10 transition-colors duration-300 ${
                   activeTab === tab.id 
                     ? 'text-white' 
-                    : 'text-gray-400 hover:text-gray-300'
+                    : 'text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-300'
                 }`}>
                   {tab.label}
-                  <span className="ml-2 text-xs bg-gray-800 px-2 py-1 rounded-full">
+                  <span className={`ml-2 text-xs px-2 py-1 rounded-full ${
+                    activeTab === tab.id 
+                      ? 'bg-white/20' 
+                      : 'bg-gray-200 dark:bg-gray-800'
+                  }`}>
                     {tab.count}
                   </span>
                 </span>

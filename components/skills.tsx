@@ -189,9 +189,9 @@ export default function Skills() {
   const isInView = useInView(ref, { once: false, amount: 0.2 })
 
   return (
-    <section id="skills" className="py-20 px-4 md:px-8 bg-gray-950 relative overflow-hidden" ref={ref}>
+    <section id="skills" className="py-20 px-4 md:px-8 bg-gray-50 dark:bg-gray-950 relative overflow-hidden" ref={ref}>
       {/* Enhanced Background Effects */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-900/10 via-transparent to-transparent"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-200/20 dark:from-purple-900/10 via-transparent to-transparent"></div>
       <div className="absolute top-1/4 left-1/3 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
       <div className="absolute bottom-1/4 right-1/3 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl"></div>
       
@@ -226,23 +226,13 @@ export default function Skills() {
       >
         {/* Enhanced Header */}
         <div className="text-center mb-16">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="inline-flex items-center gap-2 mb-4 px-4 py-2 bg-purple-500/10 border border-purple-500/20 rounded-full"
-          >
-            <Sparkles className="w-4 h-4 text-purple-400" />
-            <span className="text-purple-300 text-sm font-medium">Technical Expertise</span>
-          </motion.div>
-          
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-3xl md:text-4xl font-bold mb-4"
+            className="text-4xl md:text-5xl font-light mb-4"
           >
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-blue-500">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-blue-600 dark:from-purple-400 dark:to-blue-500">
               Skills & Technologies
             </span>
           </motion.h2>
@@ -251,7 +241,7 @@ export default function Skills() {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-gray-400 max-w-2xl mx-auto text-lg leading-relaxed"
+            className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-lg leading-relaxed"
           >
             The tools and technologies I use to bring ideas to life and solve complex problems
           </motion.p>
@@ -283,19 +273,19 @@ function SkillCategory({
       transition={{ duration: 0.6, delay }}
       className="group relative"
     >
-      <div className="relative bg-gray-900/60 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6 hover:border-purple-500/30 transition-all duration-300 h-full">
+      <div className="relative bg-white dark:bg-gray-900/60 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-2xl p-6 hover:border-purple-500/30 transition-all duration-300 h-full shadow-sm">
         {/* Category Header */}
         <div className="flex items-center gap-3 mb-6">
-          <div className="p-2 bg-purple-500/10 rounded-lg border border-purple-500/20">
-            <span className="text-purple-400">
+          <div className="p-2 bg-purple-100 dark:bg-purple-500/10 rounded-lg border border-purple-200 dark:border-purple-500/20">
+            <span className="text-purple-600 dark:text-purple-400">
               {categoryIcons[title as keyof typeof categoryIcons]}
             </span>
           </div>
           <div>
-            <h3 className="text-lg font-bold text-white group-hover:text-purple-300 transition-colors">
+            <h3 className="text-lg font-normal text-gray-900 dark:text-white group-hover:text-purple-500 dark:group-hover:text-purple-300 transition-colors">
               {title}
             </h3>
-            <p className="text-xs text-gray-400">{skills.length} technologies</p>
+            <p className="text-xs text-gray-600 dark:text-gray-400">{skills.length} technologies</p>
           </div>
         </div>
 
@@ -326,7 +316,7 @@ function SkillBadge({ skill, index, isInView }: { skill: Skill; index: number; i
       whileTap={{ scale: 0.95 }}
       className="group relative"
     >
-      <div className="relative flex flex-col items-center justify-center p-4 bg-gray-800/80 backdrop-blur-sm rounded-xl border border-gray-700/50 group-hover:border-purple-500/30 group-hover:bg-gray-800/90 transition-all duration-300 h-full min-h-[100px]">
+      <div className="relative flex flex-col items-center justify-center p-4 bg-gray-50 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl border border-gray-200 dark:border-gray-700/50 group-hover:border-purple-500/30 group-hover:bg-gray-100 dark:group-hover:bg-gray-800/90 transition-all duration-300 h-full min-h-[100px]">
         {/* Icon Container */}
         <div className="w-12 h-12 mb-3 flex items-center justify-center relative">
           {imageError || !skill.icon ? (
@@ -345,7 +335,7 @@ function SkillBadge({ skill, index, isInView }: { skill: Skill; index: number; i
         </div>
         
         {/* Skill Name */}
-        <span className="text-sm font-medium text-gray-300 group-hover:text-white transition-colors text-center leading-tight">
+        <span className="text-sm font-normal text-gray-700 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white transition-colors text-center leading-tight">
           {skill.name}
         </span>
       </div>

@@ -60,15 +60,15 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="py-20 px-4 md:px-8" ref={ref}>
+    <section id="contact" className="py-20 px-4 md:px-8 bg-gray-50 dark:bg-transparent" ref={ref}>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
         transition={{ duration: 0.6 }}
         className="max-w-6xl mx-auto"
       >
-        <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-blue-500">
+        <h2 className="text-4xl md:text-5xl font-light mb-12 text-center">
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-blue-600 dark:from-purple-400 dark:to-blue-500">
             Let's Connect
           </span>
         </h2>
@@ -79,45 +79,45 @@ export default function Contact() {
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <Card className="bg-gray-800/50 border-gray-700 h-full">
+            <Card className="bg-white dark:bg-gray-800/50 border-gray-200 dark:border-gray-700 h-full shadow-lg">
               <CardHeader>
-                <CardTitle className="text-white">Contact Information</CardTitle>
-                <CardDescription className="text-gray-400">
+                <CardTitle className="text-gray-900 dark:text-white font-normal">Contact Information</CardTitle>
+                <CardDescription className="text-gray-600 dark:text-gray-400">
                   Feel free to reach out through any of these channels
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="flex items-center gap-4">
-                  <div className="bg-purple-500/20 p-3 rounded-full">
-                    <Mail className="h-6 w-6 text-purple-400" />
+                  <div className="bg-purple-100 dark:bg-purple-500/20 p-3 rounded-full">
+                    <Mail className="h-6 w-6 text-purple-600 dark:text-purple-400" />
                   </div>
                   <div>
-                    <h3 className="text-sm font-medium text-gray-300">Email</h3>
-                    <p className="text-gray-400">raamiz.niazi@sabanciuniv.edu</p>
+                    <h3 className="text-sm font-normal text-gray-700 dark:text-gray-300">Email</h3>
+                    <p className="text-gray-600 dark:text-gray-400">raamiz.niazi@sabanciuniv.edu</p>
                   </div>
                 </div>
 
                 <div className="flex items-center gap-4">
-                  <div className="bg-purple-500/20 p-3 rounded-full">
-                    <MessageSquare className="h-6 w-6 text-purple-400" />
+                  <div className="bg-purple-100 dark:bg-purple-500/20 p-3 rounded-full">
+                    <MessageSquare className="h-6 w-6 text-purple-600 dark:text-purple-400" />
                   </div>
                   <div>
-                    <h3 className="text-sm font-medium text-gray-300">Social Media</h3>
+                    <h3 className="text-sm font-normal text-gray-700 dark:text-gray-300">Social Media</h3>
                     <div className="flex gap-2 mt-1">
                       <a
                         href="https://github.com/Raamizkn"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-gray-400 hover:text-white transition-colors"
+                        className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
                       >
                         GitHub
                       </a>
-                      <span className="text-gray-600">•</span>
+                      <span className="text-gray-400 dark:text-gray-600">•</span>
                       <a
                         href="https://www.linkedin.com/in/raamiz-khan-niazi-b77a43233/"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-gray-400 hover:text-white transition-colors"
+                        className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
                       >
                         LinkedIn
                       </a>
@@ -126,7 +126,7 @@ export default function Contact() {
                 </div>
 
                 <div className="pt-6">
-                  <p className="text-gray-300">
+                  <p className="text-gray-600 dark:text-gray-300">
                     I'm currently open to freelance opportunities, full-time positions, and interesting projects. Let's
                     create something amazing together!
                   </p>
@@ -140,10 +140,10 @@ export default function Contact() {
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <Card className="bg-gray-800/50 border-gray-700">
+            <Card className="bg-white dark:bg-gray-800/50 border-gray-200 dark:border-gray-700 shadow-lg">
               <CardHeader>
-                <CardTitle className="text-white">Send a Message</CardTitle>
-                <CardDescription className="text-gray-400">
+                <CardTitle className="text-gray-900 dark:text-white font-normal">Send a Message</CardTitle>
+                <CardDescription className="text-gray-600 dark:text-gray-400">
                   Fill out the form below and I'll get back to you as soon as possible
                 </CardDescription>
               </CardHeader>
@@ -151,27 +151,27 @@ export default function Contact() {
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <label htmlFor="name" className="text-sm font-medium text-gray-300">
+                      <label htmlFor="name" className="text-sm font-normal text-gray-700 dark:text-gray-300">
                         Name
                       </label>
                       <Input
                         id="name"
                         placeholder="John Doe"
-                        className="bg-gray-700 border-gray-600 text-white placeholder:text-gray-400"
+                        className="bg-gray-50 dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400"
                         value={formState.name}
                         onChange={handleChange}
                         required
                       />
                     </div>
                     <div className="space-y-2">
-                      <label htmlFor="email" className="text-sm font-medium text-gray-300">
+                      <label htmlFor="email" className="text-sm font-normal text-gray-700 dark:text-gray-300">
                         Email
                       </label>
                       <Input
                         id="email"
                         type="email"
                         placeholder="john@example.com"
-                        className="bg-gray-700 border-gray-600 text-white placeholder:text-gray-400"
+                        className="bg-gray-50 dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400"
                         value={formState.email}
                         onChange={handleChange}
                         required
@@ -180,13 +180,13 @@ export default function Contact() {
                   </div>
 
                   <div className="space-y-2">
-                    <label htmlFor="subject" className="text-sm font-medium text-gray-300">
+                    <label htmlFor="subject" className="text-sm font-normal text-gray-700 dark:text-gray-300">
                       Subject
                     </label>
                     <Input
                       id="subject"
                       placeholder="Project Inquiry"
-                      className="bg-gray-700 border-gray-600 text-white placeholder:text-gray-400"
+                      className="bg-gray-50 dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400"
                       value={formState.subject}
                       onChange={handleChange}
                       required
@@ -194,13 +194,13 @@ export default function Contact() {
                   </div>
 
                   <div className="space-y-2">
-                    <label htmlFor="message" className="text-sm font-medium text-gray-300">
+                    <label htmlFor="message" className="text-sm font-normal text-gray-700 dark:text-gray-300">
                       Message
                     </label>
                     <Textarea
                       id="message"
                       placeholder="Tell me about your project..."
-                      className="bg-gray-700 border-gray-600 text-white placeholder:text-gray-400 min-h-[120px]"
+                      className="bg-gray-50 dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400 min-h-[120px]"
                       value={formState.message}
                       onChange={handleChange}
                       required
@@ -208,14 +208,14 @@ export default function Contact() {
                   </div>
 
                   {submitStatus === "success" && (
-                    <div className="bg-green-900/30 border border-green-800 text-green-400 flex items-center p-3 rounded-md">
+                    <div className="bg-green-100 dark:bg-green-900/30 border border-green-300 dark:border-green-800 text-green-700 dark:text-green-400 flex items-center p-3 rounded-md">
                       <CheckCircle className="h-5 w-5 mr-2" />
                       Message sent successfully! I'll get back to you soon.
                     </div>
                   )}
 
                   {submitStatus === "error" && (
-                    <div className="bg-red-900/30 border border-red-800 text-red-400 flex items-center p-3 rounded-md">
+                    <div className="bg-red-100 dark:bg-red-900/30 border border-red-300 dark:border-red-800 text-red-700 dark:text-red-400 flex items-center p-3 rounded-md">
                       <AlertCircle className="h-5 w-5 mr-2" />
                       There was an error sending your message. Please try again.
                     </div>
@@ -223,7 +223,7 @@ export default function Contact() {
 
                   <Button 
                     type="submit" 
-                    className="w-full bg-purple-600 hover:bg-purple-700" 
+                    className="w-full bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white font-normal" 
                     disabled={submitting}
                   >
                     {submitting ? (

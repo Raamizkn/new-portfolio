@@ -98,9 +98,9 @@ export default function Experience() {
   const isInView = useInView(ref, { once: false, amount: 0.2 })
 
   return (
-    <section id="experience" className="py-20 px-4 md:px-8 relative overflow-hidden" ref={ref}>
+    <section id="experience" className="py-20 px-4 md:px-8 relative overflow-hidden bg-gray-50 dark:bg-transparent" ref={ref}>
       {/* Background Effects */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-900/5 via-transparent to-transparent"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-200/20 dark:from-purple-900/5 via-transparent to-transparent"></div>
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl"></div>
       <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
 
@@ -115,9 +115,9 @@ export default function Experience() {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-3xl md:text-4xl font-bold mb-4"
+            className="text-4xl md:text-5xl font-light mb-4"
           >
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-blue-500">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-blue-600 dark:from-purple-400 dark:to-blue-500">
               Professional Journey
             </span>
           </motion.h2>
@@ -125,7 +125,7 @@ export default function Experience() {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-gray-400 max-w-2xl mx-auto text-lg"
+            className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-lg"
           >
             Building expertise through diverse experiences in cloud architecture, AI/ML, and enterprise solutions
           </motion.p>
@@ -188,29 +188,24 @@ function ExperienceItem({
         <motion.div
           whileHover={{ y: -5, scale: 1.02 }}
           transition={{ duration: 0.2 }}
-          className="bg-gray-900/60 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6 shadow-2xl hover:border-purple-500/30 transition-all duration-300 group"
+          className="bg-white dark:bg-gray-900/60 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-2xl p-6 shadow-lg hover:border-purple-500/30 transition-all duration-300 group"
         >
           {/* Header */}
           <div className="flex items-start justify-between mb-4">
             <div className="flex-1">
-              <div className="flex items-center gap-2 mb-2">
-                <Badge 
-                  className={`bg-gradient-to-r ${typeColors[experience.type]} text-white border-0 text-xs font-medium`}
-                >
-                  {typeLabels[experience.type]}
-                </Badge>
-                <div className="flex items-center text-gray-400 text-sm">
-                  <Calendar className="w-3 h-3 mr-1" />
+              <div className="flex items-center gap-3 mb-2">
+                <div className="flex items-center text-gray-600 dark:text-gray-400 text-sm font-normal">
+                  <Calendar className="w-4 h-4 mr-1.5" />
                   {experience.period}
                 </div>
               </div>
               
-              <h3 className="text-xl font-bold text-white mb-1 group-hover:text-purple-300 transition-colors">
+              <h3 className="text-xl font-normal text-gray-900 dark:text-white mb-1 group-hover:text-purple-500 dark:group-hover:text-purple-300 transition-colors">
                 {experience.title}
               </h3>
               
-              <div className="flex items-center gap-4 text-sm text-gray-400 mb-3">
-                <span className="text-purple-400 font-medium">{experience.company}</span>
+              <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400 mb-3">
+                <span className="text-purple-600 dark:text-purple-400 font-normal">{experience.company}</span>
                 {experience.location && (
                   <div className="flex items-center">
                     <MapPin className="w-3 h-3 mr-1" />
@@ -239,7 +234,7 @@ function ExperienceItem({
           </div>
 
           {/* Description */}
-          <p className="text-gray-300 mb-4 leading-relaxed">
+          <p className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
             {experience.description}
           </p>
 
@@ -249,7 +244,7 @@ function ExperienceItem({
               variant="ghost"
               size="sm"
               onClick={() => setIsExpanded(!isExpanded)}
-              className="text-purple-400 hover:text-purple-300 p-0 h-auto font-medium mb-2"
+              className="text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 p-0 h-auto font-normal mb-2"
             >
               <Award className="w-4 h-4 mr-2" />
               Key Achievements
@@ -265,7 +260,7 @@ function ExperienceItem({
                   transition={{ duration: 0.3 }}
                   className="overflow-hidden"
                 >
-                  <ul className="space-y-2 text-sm text-gray-300">
+                  <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-300">
                     {experience.achievements.map((achievement, i) => (
                       <motion.li
                         key={i}
@@ -274,7 +269,7 @@ function ExperienceItem({
                         transition={{ duration: 0.2, delay: i * 0.1 }}
                         className="flex items-start"
                       >
-                        <div className="w-1.5 h-1.5 bg-purple-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                        <div className="w-1.5 h-1.5 bg-purple-600 dark:bg-purple-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
                         {achievement}
                       </motion.li>
                     ))}
@@ -292,13 +287,9 @@ function ExperienceItem({
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
                 transition={{ duration: 0.3, delay: index * 0.2 + i * 0.05 }}
+                className="px-3 py-1 bg-gray-100 dark:bg-gray-800/50 text-gray-700 dark:text-gray-300 text-xs rounded-full hover:bg-purple-100 dark:hover:bg-purple-500/10 hover:text-purple-600 dark:hover:text-purple-300 transition-all duration-200"
               >
-                <Badge 
-                  variant="secondary" 
-                  className="bg-gray-800/80 text-gray-300 hover:bg-purple-500/20 hover:text-purple-300 transition-all duration-200 text-xs border border-gray-700/50"
-                >
-                  {tech}
-                </Badge>
+                {tech}
               </motion.div>
             ))}
           </div>

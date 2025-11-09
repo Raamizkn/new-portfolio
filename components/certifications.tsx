@@ -121,9 +121,9 @@ export default function Certifications() {
   }
 
   return (
-    <section id="certifications" className="py-20 px-4 md:px-8 bg-gray-950 relative overflow-hidden" ref={ref}>
+    <section id="certifications" className="py-20 px-4 md:px-8 bg-white dark:bg-gray-950 relative overflow-hidden" ref={ref}>
       {/* Background Effects */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-900/5 via-transparent to-transparent"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-200/20 dark:from-purple-900/5 via-transparent to-transparent"></div>
       <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
       <div className="absolute bottom-1/3 left-1/4 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl"></div>
 
@@ -138,9 +138,9 @@ export default function Certifications() {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-3xl md:text-4xl font-bold mb-4"
+            className="text-4xl md:text-5xl font-light mb-4"
           >
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-blue-500">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-blue-600 dark:from-purple-400 dark:to-blue-500">
               Professional Certifications
             </span>
           </motion.h2>
@@ -148,7 +148,7 @@ export default function Certifications() {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-gray-400 max-w-2xl mx-auto text-lg"
+            className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-lg"
           >
             Industry-recognized certifications validating expertise in AI, cloud computing, and advanced technologies
           </motion.p>
@@ -163,50 +163,45 @@ export default function Certifications() {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               className="h-full"
             >
-              <Card className="h-full bg-gray-900/60 backdrop-blur-sm border border-gray-700/50 hover:border-purple-500/30 transition-all duration-300 group flex flex-col shadow-2xl">
+              <Card className="h-full bg-white dark:bg-gray-900/60 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 hover:border-purple-500/30 transition-all duration-300 group flex flex-col shadow-lg">
                 {/* Header with Logo and Title */}
                 <CardHeader className="pb-4">
                   <div className="flex items-start gap-4">
                     <div className="relative">
-                      <div className="w-16 h-16 bg-gray-800 rounded-xl flex items-center justify-center group-hover:bg-gray-700 transition-colors duration-300">
-                        <Award className="w-8 h-8 text-purple-400" />
+                      <div className="w-16 h-16 bg-gray-100 dark:bg-gray-800 rounded-xl flex items-center justify-center group-hover:bg-gray-200 dark:group-hover:bg-gray-700 transition-colors duration-300">
+                        <Award className="w-8 h-8 text-purple-600 dark:text-purple-400" />
                       </div>
                       <div className="absolute -top-1 -right-1">
-                        <CheckCircle className="w-5 h-5 text-blue-400 bg-gray-900 rounded-full" />
+                        <CheckCircle className="w-5 h-5 text-blue-600 dark:text-blue-400 bg-white dark:bg-gray-900 rounded-full" />
                       </div>
                     </div>
                     
                     <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-2 mb-2">
-                        <Badge 
-                          className={`bg-gradient-to-r ${levelColors[certification.level]} text-white border-0 text-xs font-medium`}
-                        >
-                          {levelLabels[certification.level]}
-                        </Badge>
-                        <div className="flex items-center text-gray-400 text-sm">
-                          <Calendar className="w-3 h-3 mr-1" />
+                      <div className="flex items-center gap-3 mb-2">
+                        <div className="flex items-center text-gray-600 dark:text-gray-400 text-sm">
+                          <Calendar className="w-4 h-4 mr-1.5" />
                           {certification.date}
                         </div>
                       </div>
                       
-                      <CardTitle className="text-white text-lg leading-tight mb-2 group-hover:text-purple-300 transition-colors line-clamp-2">
+                      <CardTitle className="text-gray-900 dark:text-white text-lg leading-tight mb-2 group-hover:text-purple-500 dark:group-hover:text-purple-300 transition-colors line-clamp-2 font-normal">
                         {certification.title}
                       </CardTitle>
                       
-                      <CardDescription className="text-purple-400 font-medium">
+                      <CardDescription className="text-purple-600 dark:text-purple-400 font-normal">
                         {certification.issuer}
                       </CardDescription>
                       
                       {certification.credentialId && (
                         <div className="flex items-center gap-2 mt-2">
-                          <span className="text-xs text-gray-500">ID:</span>
-                          <code className="text-xs bg-gray-800 px-2 py-1 rounded text-gray-300 font-mono">
+                          <span className="text-xs text-gray-600 dark:text-gray-500">ID:</span>
+                          <code className="text-xs bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded text-gray-700 dark:text-gray-300 font-mono">
                             {certification.credentialId.slice(0, 12)}...
                           </code>
                           <Button
                             variant="ghost"
                             size="sm"
-                            className="h-6 w-6 p-0 text-gray-400 hover:text-purple-400"
+                            className="h-6 w-6 p-0 text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400"
                             onClick={() => copyCredentialId(certification.credentialId!)}
                           >
                             {copiedId === certification.credentialId ? (
@@ -223,19 +218,18 @@ export default function Certifications() {
 
                 {/* Content */}
                 <CardContent className="flex-1 flex flex-col">
-                  <p className="text-gray-300 text-sm leading-relaxed mb-4 line-clamp-4">
+                  <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4 line-clamp-4">
                     {certification.description}
                   </p>
                   
                   <div className="flex flex-wrap gap-2 mt-auto">
                     {certification.skills.map((skill) => (
-                      <Badge 
+                      <span 
                         key={skill} 
-                        variant="secondary" 
-                        className="bg-gray-800/80 text-gray-300 hover:bg-purple-500/20 hover:text-purple-300 transition-all duration-200 text-xs border border-gray-700/50"
+                        className="px-3 py-1 bg-gray-100 dark:bg-gray-800/50 text-gray-700 dark:text-gray-300 hover:bg-purple-100 dark:hover:bg-purple-500/20 hover:text-purple-600 dark:hover:text-purple-300 transition-colors text-xs rounded-full"
                       >
                         {skill}
-                      </Badge>
+                      </span>
                     ))}
                   </div>
                 </CardContent>
@@ -243,7 +237,7 @@ export default function Certifications() {
                 {/* Footer */}
                 <CardFooter className="pt-4 mt-auto">
                   <Button 
-                    className="w-full bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white font-medium transition-all duration-300 shadow-lg hover:shadow-purple-500/25"
+                    className="w-full bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white font-normal transition-all duration-300 shadow-lg hover:shadow-purple-500/25"
                     onClick={() => window.open(certification.credentialUrl, '_blank')}
                     disabled={certification.credentialUrl === "#"}
                   >
