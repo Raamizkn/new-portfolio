@@ -90,23 +90,39 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.7 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4"
           >
-            <Button
+            <motion.button
               onClick={() => scrollToSection("projects")}
-              className="text-white font-normal px-8 py-6 text-lg rounded-full transition-all duration-300 shadow-lg hover:opacity-90 hover:scale-105"
-              style={{ backgroundColor: '#8668ED' }}
+              className="relative overflow-hidden font-light px-10 py-4 text-base rounded-full border-2 group"
+              style={{ 
+                backgroundColor: '#8668ED',
+                borderColor: '#8668ED'
+              }}
+              whileTap={{ scale: 0.98 }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
             >
-              View My Work
-            </Button>
-            <Button
+              <span className="relative z-10 text-white group-hover:text-purple-600 transition-colors duration-200">
+                View My Work
+              </span>
+              <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+            </motion.button>
+            
+            <motion.button
               onClick={() => scrollToSection("contact")}
-              variant="outline"
-              className="border-2 border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white font-normal px-8 py-6 text-lg rounded-full transition-all duration-300 bg-transparent hover:bg-opacity-5"
-              style={{ borderColor: '#8668ED' }}
-              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#8668ED10'}
-              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
+              className="relative overflow-hidden font-light px-10 py-4 text-base rounded-full border-2 bg-transparent group"
+              style={{ 
+                borderColor: '#8668ED'
+              }}
+              whileTap={{ scale: 0.98 }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
             >
-              Get in Touch
-            </Button>
+              <span className="relative z-10 transition-colors duration-200" style={{ color: '#8668ED' }}>
+                <span className="group-hover:text-white">Get in Touch</span>
+              </span>
+              <div 
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+                style={{ backgroundColor: '#8668ED' }}
+              />
+            </motion.button>
           </motion.div>
 
           {/* Social Links */}
@@ -120,14 +136,15 @@ export default function Hero() {
               href="https://github.com/Raamizkn"
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{ scale: 1.1, y: -2 }}
+              className="relative p-3.5 bg-gray-100 dark:bg-gray-800/50 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-full overflow-hidden group"
               whileTap={{ scale: 0.95 }}
-              className="p-3 bg-gray-100 dark:bg-gray-800/50 backdrop-blur-sm border border-gray-300 dark:border-gray-700/50 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800/80 transition-all duration-300"
-              style={{ '--hover-border-color': '#8668ED80' } as React.CSSProperties}
-              onMouseEnter={(e) => e.currentTarget.style.borderColor = '#8668ED80'}
-              onMouseLeave={(e) => e.currentTarget.style.borderColor = ''}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
             >
-              <GitHub className="h-5 w-5 text-gray-700 dark:text-gray-300" />
+              <GitHub className="h-5 w-5 text-gray-700 dark:text-gray-300 relative z-10 transition-colors duration-200 group-hover:text-white" />
+              <div
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+                style={{ backgroundColor: '#8668ED' }}
+              />
               <span className="sr-only">GitHub</span>
             </motion.a>
 
@@ -135,28 +152,30 @@ export default function Hero() {
               href="https://www.linkedin.com/in/raamiz-khan-niazi-b77a43233/"
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{ scale: 1.1, y: -2 }}
+              className="relative p-3.5 bg-gray-100 dark:bg-gray-800/50 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-full overflow-hidden group"
               whileTap={{ scale: 0.95 }}
-              className="p-3 bg-gray-100 dark:bg-gray-800/50 backdrop-blur-sm border border-gray-300 dark:border-gray-700/50 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800/80 transition-all duration-300"
-              style={{ '--hover-border-color': '#8668ED80' } as React.CSSProperties}
-              onMouseEnter={(e) => e.currentTarget.style.borderColor = '#8668ED80'}
-              onMouseLeave={(e) => e.currentTarget.style.borderColor = ''}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
             >
-              <Linkedin className="h-5 w-5 text-gray-700 dark:text-gray-300" />
+              <Linkedin className="h-5 w-5 text-gray-700 dark:text-gray-300 relative z-10 transition-colors duration-200 group-hover:text-white" />
+              <div
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+                style={{ backgroundColor: '#8668ED' }}
+              />
               <span className="sr-only">LinkedIn</span>
             </motion.a>
 
             <motion.a
               href="/resume.pdf"
               download
-              whileHover={{ scale: 1.1, y: -2 }}
+              className="relative p-3.5 bg-gray-100 dark:bg-gray-800/50 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-full overflow-hidden group"
               whileTap={{ scale: 0.95 }}
-              className="p-3 bg-gray-100 dark:bg-gray-800/50 backdrop-blur-sm border border-gray-300 dark:border-gray-700/50 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800/80 transition-all duration-300"
-              style={{ '--hover-border-color': '#8668ED80' } as React.CSSProperties}
-              onMouseEnter={(e) => e.currentTarget.style.borderColor = '#8668ED80'}
-              onMouseLeave={(e) => e.currentTarget.style.borderColor = ''}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
             >
-              <FileText className="h-5 w-5 text-gray-700 dark:text-gray-300" />
+              <FileText className="h-5 w-5 text-gray-700 dark:text-gray-300 relative z-10 transition-colors duration-200 group-hover:text-white" />
+              <div
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+                style={{ backgroundColor: '#8668ED' }}
+              />
               <span className="sr-only">Resume</span>
             </motion.a>
           </motion.div>

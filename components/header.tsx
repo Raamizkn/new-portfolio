@@ -118,13 +118,21 @@ export default function Header() {
                 </button>
               )}
               
-              <Button
+              <motion.button
                 onClick={() => scrollToSection("#contact")}
-                className="text-white font-normal px-6 py-2 rounded-full transition-all duration-300 shadow-lg hover:opacity-90"
-                style={{ backgroundColor: '#8668ED' }}
+                className="relative overflow-hidden font-light px-6 py-2 text-sm rounded-full border-2 group"
+                style={{ 
+                  backgroundColor: '#8668ED',
+                  borderColor: '#8668ED'
+                }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
               >
-                Get in Touch
-              </Button>
+                <span className="relative z-10 text-white group-hover:text-purple-600 transition-colors duration-200">
+                  Get in Touch
+                </span>
+                <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+              </motion.button>
             </motion.div>
 
             {/* Mobile Menu & Theme Toggle */}

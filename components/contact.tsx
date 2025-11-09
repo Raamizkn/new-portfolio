@@ -222,21 +222,31 @@ export default function Contact() {
                     </div>
                   )}
 
-                  <Button 
-                    type="submit" 
-                    className="w-full text-white font-normal transition-all duration-300 shadow-lg hover:opacity-90" 
-                    style={{ backgroundColor: '#8668ED' }}
+                  <motion.button
+                    type="submit"
                     disabled={submitting}
+                    className="relative overflow-hidden w-full font-light py-3 rounded-full border-2 disabled:opacity-50 disabled:cursor-not-allowed group"
+                    style={{ 
+                      backgroundColor: '#8668ED',
+                      borderColor: '#8668ED'
+                    }}
+                    whileTap={!submitting ? { scale: 0.99 } : {}}
+                    transition={{ type: "spring", stiffness: 400, damping: 17 }}
                   >
-                    {submitting ? (
-                      <>Sending...</>
-                    ) : (
-                      <>
-                        <Send className="h-4 w-4 mr-2" />
-                        Send Message
-                      </>
+                    <span className="relative z-10 flex items-center justify-center text-white group-hover:text-purple-600 transition-colors duration-200">
+                      {submitting ? (
+                        "Sending..."
+                      ) : (
+                        <>
+                          <Send className="h-4 w-4 mr-2" />
+                          Send Message
+                        </>
+                      )}
+                    </span>
+                    {!submitting && (
+                      <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
                     )}
-                  </Button>
+                  </motion.button>
                 </form>
               </CardContent>
             </Card>
