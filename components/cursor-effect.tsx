@@ -83,10 +83,10 @@ export default function CursorEffect() {
             backgroundColor: '#8668ED',
           }}
           animate={{
-            width: isPointer ? 50 : 35,
-            height: isPointer ? 50 : 35,
+            width: isPointer ? 16 : 30,
+            height: isPointer ? 16 : 30,
           }}
-          transition={{ duration: 0.3 }}
+          transition={{ duration: 0.2 }}
         />
       </motion.div>
 
