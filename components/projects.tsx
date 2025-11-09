@@ -275,11 +275,12 @@ export default function Projects() {
           viewport={{ once: true }}
           className="text-center mb-8"
         >
-          <h2 className="text-4xl md:text-5xl font-light mb-4" style={{ color: '#8668ED' }}>
-            My Projects
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-light mb-6 leading-tight">
+            <span className="text-gray-900 dark:text-white">My </span>
+            <span style={{ color: '#8668ED' }}>Projects</span>
           </h2>
-          <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            A collection of my recent work, showcasing my relevant skills and experience.
+          <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-lg">
+            A collection of my recent work, <span className="text-gray-500 dark:text-gray-600">showcasing my relevant skills and experience.</span>
           </p>
         </motion.div>
 

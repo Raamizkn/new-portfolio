@@ -56,28 +56,20 @@ export default function Hero() {
         >
 
           {/* Main Heading */}
-          <div className="space-y-4">
+          <div className="space-y-6">
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-5xl md:text-7xl lg:text-8xl font-light tracking-tight"
+              className="text-5xl md:text-7xl lg:text-8xl font-light tracking-tight leading-tight"
             >
-              <span className="text-gray-900 dark:text-white">Hello, I'm</span>
+              <span className="text-gray-900 dark:text-white">Hello, I'm </span>
+              <span style={{ color: '#8668ED' }}>Raamiz Khan</span>
               <br />
-              <span style={{ color: '#8668ED' }}>
-                Raamiz Khan
-              </span>
+              <span className="text-gray-500 dark:text-gray-600">Product & AI</span>
+              <br />
+              <span className="text-gray-500 dark:text-gray-600">Consultant</span>
             </motion.h1>
-
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-              className="text-2xl md:text-3xl lg:text-4xl font-normal text-gray-700 dark:text-gray-300"
-            >
-              Product & AI Consultant
-            </motion.h2>
           </div>
 
           {/* Description */}

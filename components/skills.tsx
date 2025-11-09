@@ -223,11 +223,12 @@ export default function Skills() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-light mb-4" style={{ color: '#8668ED' }}>
-            Skills & Technologies
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-light mb-6 leading-tight">
+            <span className="text-gray-900 dark:text-white">Skills & </span>
+            <span style={{ color: '#8668ED' }}>Technologies</span>
           </h2>
-          <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            The tools and technologies I use to bring ideas to life and solve complex problems
+          <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-lg">
+            The tools and technologies <span className="text-gray-500 dark:text-gray-600">I use to bring ideas to life</span>
           </p>
         </motion.div>
 

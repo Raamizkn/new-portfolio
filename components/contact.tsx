@@ -69,10 +69,9 @@ export default function Contact() {
         transition={{ duration: 0.6 }}
         className="max-w-6xl mx-auto relative z-10"
       >
-        <h2 className="text-4xl md:text-5xl font-light mb-12 text-center">
-          <span style={{ color: '#8668ED' }}>
-            Let's Connect
-          </span>
+        <h2 className="text-5xl md:text-6xl lg:text-7xl font-light mb-12 text-center leading-tight">
+          <span className="text-gray-900 dark:text-white">Let's </span>
+          <span style={{ color: '#8668ED' }}>Connect</span>
         </h2>
 
         <div className="grid md:grid-cols-2 gap-8">

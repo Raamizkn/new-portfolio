@@ -196,11 +196,12 @@ export default function Experience() {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-light mb-4" style={{ color: '#8668ED' }}>
-            Professional Journey
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-light mb-6 leading-tight">
+            <span className="text-gray-900 dark:text-white">Professional </span>
+            <span style={{ color: '#8668ED' }}>Journey</span>
           </h2>
-          <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            My experience building products and leading technical initiatives
+          <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-lg">
+            My experience building products <span className="text-gray-500 dark:text-gray-600">and leading technical initiatives</span>
           </p>
         </motion.div>
 
