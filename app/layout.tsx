@@ -5,6 +5,9 @@ import { ThemeProvider } from '@/components/theme-provider'
 export const metadata: Metadata = {
   title: "Raamiz's Portfolio Website",
   description: 'My Personal Portfolio',
+  openGraph: {
+    images: ['/RKN.png'],
+  },
 }
 
 export default function RootLayout({
