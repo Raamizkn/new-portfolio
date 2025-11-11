@@ -141,7 +141,7 @@ export default function Header() {
                         <Mouse className="w-5 h-5 text-gray-700 dark:text-gray-300" />
                       </button>
                     </TooltipTrigger>
-                    <TooltipContent>
+                    <TooltipContent className="bg-gray-950/50 dark:bg-gray-950/50 backdrop-blur-lg border border-purple-400/20 text-white rounded-lg">
                       <p>Toggle the fancy cursor</p>
                     </TooltipContent>
                   </Tooltip>
