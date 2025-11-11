@@ -2,14 +2,16 @@
 
 import { useEffect, useState } from "react"
 import { motion, useSpring } from "framer-motion"
+import { useCursor } from "@/hooks/use-cursor"
 
 export default function CursorEffect() {
+  const { isCursorEnabled } = useCursor()
   const [isVisible, setIsVisible] = useState(false)
   const [isPointer, setIsPointer] = useState(false)
-  
+
   const cursorX = useSpring(0, { damping: 30, stiffness: 200 })
   const cursorY = useSpring(0, { damping: 30, stiffness: 200 })
-  
+
   const trailX = useSpring(0, { damping: 50, stiffness: 100 })
   const trailY = useSpring(0, { damping: 50, stiffness: 100 })
 
@@ -20,10 +22,11 @@ export default function CursorEffect() {
       cursorY.set(e.clientY)
       trailX.set(e.clientX)
       trailY.set(e.clientY)
-      
-      // Check if hovering over clickable element
+
       const target = e.target as HTMLElement
-      const isClickable = target.closest('button, a, input, textarea, [role="button"]')
+      const isClickable = target.closest(
+        'button, a, input, textarea, [role="button"]'
+      )
       setIsPointer(!!isClickable)
     }
 
@@ -31,18 +34,32 @@ export default function CursorEffect() {
       setIsVisible(false)
     }
 
-    window.addEventListener("mousemove", handleMouseMove)
-    document.addEventListener("mouseleave", handleMouseLeave)
+    if (isCursorEnabled) {
+      window.addEventListener("mousemove", handleMouseMove)
+      document.addEventListener("mouseleave", handleMouseLeave)
 
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove)
-      document.removeEventListener("mouseleave", handleMouseLeave)
+      const style = document.createElement("style")
+      style.innerHTML = `
+        @media (pointer: fine) {
+          * {
+            cursor: none !important;
+          }
+        }
+      `
+      document.head.appendChild(style)
+
+      return () => {
+        window.removeEventListener("mousemove", handleMouseMove)
+        document.removeEventListener("mouseleave", handleMouseLeave)
+        document.head.removeChild(style)
+      }
     }
-  }, [cursorX, cursorY, trailX, trailY])
+  }, [isCursorEnabled, cursorX, cursorY, trailX, trailY])
+
+  const opacity = isCursorEnabled && isVisible ? 1 : 0
 
   return (
     <>
-      {/* Main cursor dot */}
       <motion.div
         className="fixed top-0 left-0 pointer-events-none z-[9999]"
         style={{
@@ -50,13 +67,14 @@ export default function CursorEffect() {
           y: cursorY,
           translateX: "-50%",
           translateY: "-50%",
-          opacity: isVisible ? 1 : 0,
+          opacity: opacity,
         }}
       >
         <motion.div
           className="rounded-full bg-black dark:bg-white"
           style={{
-            filter: 'drop-shadow(0 0 8px rgba(134, 104, 237, 0.5)) dark:drop-shadow(0 0 8px rgba(255, 255, 255, 0.5))',
+            filter:
+              "drop-shadow(0 0 8px rgba(134, 104, 237, 0.5)) dark:drop-shadow(0 0 8px rgba(255, 255, 255, 0.5))",
           }}
           animate={{
             width: isPointer ? 16 : 10,
@@ -66,7 +84,6 @@ export default function CursorEffect() {
         />
       </motion.div>
 
-      {/* Trailing circle - solid, no transparency */}
       <motion.div
         className="fixed top-0 left-0 pointer-events-none z-[9998]"
         style={{
@@ -74,13 +91,13 @@ export default function CursorEffect() {
           y: trailY,
           translateX: "-50%",
           translateY: "-50%",
-          opacity: isVisible ? 1 : 0,
+          opacity: opacity,
         }}
       >
         <motion.div
           className="rounded-full"
           style={{
-            backgroundColor: '#8668ED',
+            backgroundColor: "#8668ED",
           }}
           animate={{
             width: isPointer ? 16 : 30,
@@ -90,7 +107,6 @@ export default function CursorEffect() {
         />
       </motion.div>
 
-      {/* Outer ring */}
       <motion.div
         className="fixed top-0 left-0 pointer-events-none z-[9997]"
         style={{
@@ -98,7 +114,7 @@ export default function CursorEffect() {
           y: cursorY,
           translateX: "-50%",
           translateY: "-50%",
-          opacity: isVisible ? 1 : 0,
+          opacity: opacity,
         }}
       >
         <motion.div
@@ -110,20 +126,6 @@ export default function CursorEffect() {
           transition={{ duration: 0.2 }}
         />
       </motion.div>
-
-      <style jsx global>{`
-        @media (pointer: fine) {
-          * {
-            cursor: none !important;
-          }
-        }
-        
-        @media (pointer: coarse) {
-          .cursor-effect {
-            display: none;
-          }
-        }
-      `}</style>
     </>
   )
 }

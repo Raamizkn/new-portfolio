@@ -2,25 +2,34 @@
 
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Menu, X, Sun, Moon } from "lucide-react"
+import { Menu, X, Sun, Moon, Mouse } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useTheme } from "next-themes"
+import { useCursor } from "@/hooks/use-cursor"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
 
-  const navItems = [
-    { name: "Home", href: "#hero" },
-    { name: "About", href: "#about" },
-    { name: "Projects", href: "#projects" },
-    { name: "Skills", href: "#skills" },
-    { name: "Experience", href: "#experience" },
-    { name: "Certifications", href: "#certifications" },
-    { name: "Contact", href: "#contact" },
-  ]
+const navItems = [
+  { name: "Home", href: "#hero" },
+  { name: "About", href: "#about" },
+  { name: "Projects", href: "#projects" },
+  { name: "Skills", href: "#skills" },
+  { name: "Experience", href: "#experience" },
+  { name: "Certifications", href: "#certifications" },
+  { name: "Contact", href: "#contact" },
+]
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [mounted, setMounted] = useState(false)
   const { theme, setTheme } = useTheme()
+  const { isCursorEnabled, setIsCursorEnabled } = useCursor()
+  const [showCursorTooltip, setShowCursorTooltip] = useState(false)
 
   useEffect(() => {
     setMounted(true)
@@ -29,6 +38,16 @@ export default function Header() {
     }
 
     window.addEventListener("scroll", handleScroll)
+
+    const hasSeenTooltip = localStorage.getItem("hasSeenCursorTooltip")
+    if (!hasSeenTooltip) {
+      const timer = setTimeout(() => {
+        setShowCursorTooltip(true)
+        localStorage.setItem("hasSeenCursorTooltip", "true")
+      }, 2000) // Show tooltip after 2 seconds
+      return () => clearTimeout(timer)
+    }
+
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
@@ -62,7 +81,7 @@ export default function Header() {
                 scrollToSection("#hero")
               }}
               className="text-xl md:text-2xl font-normal transition-all duration-300"
-              style={{ color: '#8668ED' }}
+              style={{ color: "#8668ED" }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -85,7 +104,10 @@ export default function Header() {
                   className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 text-sm font-normal relative group"
                 >
                   {item.name}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300" style={{ backgroundColor: '#8668ED' }}></span>
+                  <span
+                    className="absolute -bottom-1 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300"
+                    style={{ backgroundColor: "#8668ED" }}
+                  ></span>
                 </motion.a>
               ))}
             </nav>
@@ -97,18 +119,48 @@ export default function Header() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="hidden md:flex items-center gap-4"
             >
+              {/* Cursor Toggle */}
+              {mounted && (
+                <TooltipProvider>
+                  <Tooltip open={showCursorTooltip} onOpenChange={setShowCursorTooltip}>
+                    <TooltipTrigger asChild>
+                      <button
+                        onClick={() => setIsCursorEnabled(!isCursorEnabled)}
+                        className="p-2 rounded-full bg-gray-100 dark:bg-gray-800/50 border border-gray-300 dark:border-gray-700/50 transition-all duration-300"
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.borderColor = "#8668ED"
+                          e.currentTarget.style.backgroundColor =
+                            theme === "dark" ? "#8668ED20" : "#8668ED10"
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.borderColor = ""
+                          e.currentTarget.style.backgroundColor = ""
+                        }}
+                        aria-label="Toggle cursor"
+                      >
+                        <Mouse className="w-5 h-5 text-gray-700 dark:text-gray-300" />
+                      </button>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>Toggle the fancy cursor</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
+              )}
+
               {/* Theme Toggle */}
               {mounted && (
                 <button
                   onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
                   className="p-2 rounded-full bg-gray-100 dark:bg-gray-800/50 border border-gray-300 dark:border-gray-700/50 transition-all duration-300"
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.borderColor = '#8668ED'
-                    e.currentTarget.style.backgroundColor = theme === "dark" ? '#8668ED20' : '#8668ED10'
+                    e.currentTarget.style.borderColor = "#8668ED"
+                    e.currentTarget.style.backgroundColor =
+                      theme === "dark" ? "#8668ED20" : "#8668ED10"
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.borderColor = ''
-                    e.currentTarget.style.backgroundColor = ''
+                    e.currentTarget.style.borderColor = ""
+                    e.currentTarget.style.backgroundColor = ""
                   }}
                   aria-label="Toggle theme"
                 >
@@ -119,22 +171,25 @@ export default function Header() {
                   )}
                 </button>
               )}
-              
+
               <motion.button
                 onClick={() => scrollToSection("#contact")}
                 className="relative overflow-hidden font-light px-6 py-2 text-sm rounded-full border-2 bg-transparent group"
-                style={{ 
-                  borderColor: '#8668ED'
+                style={{
+                  borderColor: "#8668ED",
                 }}
                 whileTap={{ scale: 0.98 }}
                 transition={{ type: "spring", stiffness: 400, damping: 17 }}
               >
-                <span className="relative z-10 transition-colors duration-200" style={{ color: '#8668ED' }}>
+                <span
+                  className="relative z-10 transition-colors duration-200"
+                  style={{ color: "#8668ED" }}
+                >
                   <span className="group-hover:text-white">Get in Touch</span>
                 </span>
-                <div 
+                <div
                   className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-                  style={{ backgroundColor: '#8668ED' }}
+                  style={{ backgroundColor: "#8668ED" }}
                 />
               </motion.button>
             </motion.div>
@@ -145,8 +200,10 @@ export default function Header() {
                 <button
                   onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
                   className="p-2 rounded-full bg-gray-100 dark:bg-gray-800/50 border border-gray-300 dark:border-gray-700/50 transition-all duration-300"
-                  onMouseEnter={(e) => e.currentTarget.style.borderColor = '#8668ED80'}
-                  onMouseLeave={(e) => e.currentTarget.style.borderColor = ''}
+                  onMouseEnter={(e) =>
+                    (e.currentTarget.style.borderColor = "#8668ED80")
+                  }
+                  onMouseLeave={(e) => (e.currentTarget.style.borderColor = "")}
                   aria-label="Toggle theme"
                 >
                   {theme === "dark" ? (
@@ -161,7 +218,11 @@ export default function Header() {
                 className="p-2 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
                 aria-label="Toggle menu"
               >
-                {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                {isMobileMenuOpen ? (
+                  <X className="w-6 h-6" />
+                ) : (
+                  <Menu className="w-6 h-6" />
+                )}
               </button>
             </div>
           </div>
@@ -198,7 +259,7 @@ export default function Header() {
               <Button
                 onClick={() => scrollToSection("#contact")}
                 className="text-white font-normal px-6 py-3 rounded-full transition-all duration-300 mt-4 hover:opacity-90"
-                style={{ backgroundColor: '#8668ED' }}
+                style={{ backgroundColor: "#8668ED" }}
               >
                 Get in Touch
               </Button>
