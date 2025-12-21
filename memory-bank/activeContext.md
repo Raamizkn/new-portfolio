@@ -12,10 +12,14 @@
 - Added comprehensive data for the Uber Commuter Pass case study, including overview, intro, concept summary, impact statement, challenge/opportunity, competitor landscape, personas, product experience, pricing, GTM strategy, risks, and forecasts.
 - Implemented the Airbnb CoSpace case study with full strategic analysis and market data.
 - Updated Talkform project image to `Talkform.png`.
-- Refined the "Strategic Moat" section of the case study template to be context-aware based on the project slug.
+- Applied brand-specific secondary colors (Uber: `#06c167`, Airbnb: `#ff5b61`) across the homepage cards and case study pages.
+- Replaced placeholder icons with actual product screenshots in the "Product Experience" sections of the case studies.
+- Refined the "Strategic Moat" section of the case study template to be context-aware and use brand colors.
 
 ## Next Steps
 - Implement Talkform AI case study once data is provided.
+- Refine the persona section layout to be more visually engaging.
+- Ensure smooth parallax or entrance animations for the new screenshots.
 - Refine the transition between the home page and case study pages.
 - Ensure all images are correctly linked and high quality.
 

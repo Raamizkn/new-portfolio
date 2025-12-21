@@ -28,6 +28,7 @@ interface CaseStudyData {
   industry: string
   client: string
   heroImage: string
+  accentColor: string
   overview: string
   introduction: string
   conceptSummary: {
@@ -61,6 +62,7 @@ interface CaseStudyData {
     mechanism: string
     benefit: string
     howItWorks?: string
+    image?: string
   }[]
   pricing: Tier[]
   unitEconomics: {
@@ -106,6 +108,7 @@ const caseStudies: Record<string, CaseStudyData> = {
     industry: "Transportation",
     client: "Uber (I wish)",
     heroImage: "/products/uber/uber.png",
+    accentColor: "#06c167",
     overview: "Uber Commuter Pass represents a strategic evolution in the ride-hailing sector’s approach to customer lifetime value (LTV). It is a conceptual expansion of the Uber platform designed to capture the high-frequency, high-value segment of urban commuters who have transitioned to hybrid work models. By integrating \"Smart Route Locking\" for price certainty and \"Multimodal Ticketing\" for public transit access, the Commuter Pass transforms Uber from a discretionary service into an essential monthly utility.",
     introduction: "The global mobility market is currently navigating a \"retention crisis.\" While Uber has successfully democratized access to on-demand transportation, the underlying business model remains transactional and highly sensitive to price fluctuations. The \"Uber Commuter Pass\" addresses this by creating a structural lock-in mechanism. It targets the \"Hybrid Paradox\"—the reality where workers commuting 2-3 days a week find traditional monthly transit passes economically inefficient, yet find ad-hoc single fares punitively expensive.",
     conceptSummary: [
@@ -202,19 +205,22 @@ const caseStudies: Record<string, CaseStudyData> = {
         title: "Smart Route Locking & Surge Protection",
         mechanism: "User defines \"Home\" and \"Work\" location and pre-schedules commute window.",
         benefit: "Uber \"locks\" the price at the base rate, exempting these specific rides from surge pricing.",
-        howItWorks: "Algorithms batch these rides or position drivers efficiently, reducing operational cost."
+        howItWorks: "Algorithms batch these rides or position drivers efficiently, reducing operational cost.",
+        image: "/products/uber/Screenshot 2025-12-18 at 01.48.55.png"
       },
       {
         title: "Multimodal Integration",
         mechanism: "App integrates local transit ticketing via SDKs (e.g., Masabi).",
         benefit: "User sees a \"Commuter\" tab with \"One Tap Access\" for QR codes for subway/bus.",
-        howItWorks: "App suggests \"Mixed Mode\" trip: Uber to station + digital tube ticket in one transaction."
+        howItWorks: "App suggests \"Mixed Mode\" trip: Uber to station + digital tube ticket in one transaction.",
+        image: "/products/uber/Screenshot 2025-12-18 at 01.49.34.png"
       },
       {
         title: "The \"Hybrid Rollover\"",
         mechanism: "Unused rides roll over to the next month (capped at 2x).",
         benefit: "Eliminates \"use it or lose it\" anxiety that prevents commitment to monthly passes.",
-        howItWorks: "Directly counters primary reason for voluntary churn in utility subscriptions."
+        howItWorks: "Directly counters primary reason for voluntary churn in utility subscriptions.",
+        image: "/products/uber/Screenshot 2025-12-18 at 01.50.02.png"
       }
     ],
     pricing: [
@@ -298,6 +304,7 @@ const caseStudies: Record<string, CaseStudyData> = {
     industry: "Real Estate / Tech",
     client: "Airbnb (I wish)",
     heroImage: "/products/airbnb/airbnb.png",
+    accentColor: "#ff5b61",
     overview: "Airbnb CoSpace represents a strategic response to the paradigm shift in work—a conceptual vertical designed to unlock the latent economic potential of residential real estate during working hours. By enabling users to book flexible workspaces in residential neighborhoods, Airbnb can bridge the critical gap between the home and the office, capturing a piece of the $196B flexible office market.",
     introduction: "The global ecosystem of work, travel, and living is undergoing a structural metamorphosis. Airbnb CoSpace capitalizes on geographic arbitrage, transforming underutilized living rooms and home offices into revenue-generating assets during the 9-to-5 window when they typically sit vacant. This initiative aligns with Airbnb’s strategy to scale new offerings beyond core nights-booked.",
     conceptSummary: [
@@ -394,19 +401,22 @@ const caseStudies: Record<string, CaseStudyData> = {
         title: "The 'Work Mode' Toggle",
         mechanism: "Direct search separation for 'Stays', 'Experiences', and 'CoSpace'.",
         benefit: "Instant filtering for professional workspace criteria, avoiding vacation-only listings.",
-        howItWorks: "Prioritizes search results based on 'Work-Ready' certification."
+        howItWorks: "Prioritizes search results based on 'Work-Ready' certification.",
+        image: "/products/airbnb/Screenshot 2025-12-21 at 22.53.47.png"
       },
       {
         title: "Work-Ready Certification",
         mechanism: "Integrated speed tests (Ookla) and AI-verified ergonomics (desk/chair check).",
         benefit: "Eliminates the 'trust gap' regarding internet reliability and work setup.",
-        howItWorks: "Hosts must run in-app speed tests to display verified connection stats."
+        howItWorks: "Hosts must run in-app speed tests to display verified connection stats.",
+        image: "/products/airbnb/Screenshot 2025-12-21 at 22.50.57.png"
       },
       {
         title: "Seamless Autonomous Access",
         mechanism: "Mandatory 'Instant Book' and smart-lock integration.",
         benefit: "Critical for hourly bookings; eliminates the friction of waiting for host approval.",
-        howItWorks: "Time-coded entry keys sent automatically upon booking."
+        howItWorks: "Time-coded entry keys sent automatically upon booking.",
+        image: "/products/airbnb/Screenshot 2025-12-21 at 23.36.12.png"
       }
     ],
     pricing: [
@@ -491,7 +501,10 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
   }
 
   return (
-    <div className="min-h-screen bg-white text-gray-900 pb-20 selection:bg-green-100">
+    <div 
+      className="min-h-screen bg-white text-gray-900 pb-20 selection:bg-gray-100"
+      style={{ '--accent-color': study.accentColor } as React.CSSProperties}
+    >
       {/* Navigation */}
       <nav className="max-w-7xl mx-auto px-6 py-8 flex justify-between items-center border-b border-gray-50">
         <Link href="/" className="text-2xl font-bold tracking-tighter">
@@ -564,8 +577,15 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
           <h2 className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 mb-12 text-center">Concept Summary</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {study.conceptSummary.map((item, i) => (
-              <div key={i} className="p-10 bg-gray-50 rounded-[32px] hover:bg-green-50 transition-colors duration-500 group">
-                <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center mb-8 shadow-sm group-hover:bg-green-500 group-hover:text-white transition-colors">
+              <div 
+                key={i} 
+                className="p-10 bg-gray-50 rounded-[32px] transition-colors duration-500 group"
+                style={{ '--hover-bg': `${study.accentColor}10` } as React.CSSProperties}
+              >
+                <div 
+                  className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center mb-8 shadow-sm transition-colors"
+                  style={{ color: study.accentColor }}
+                >
                   {i === 0 && <ShieldCheck className="w-6 h-6" />}
                   {i === 1 && <Layout className="w-6 h-6" />}
                   {i === 2 && <TrendingDown className="w-6 h-6" />}
@@ -579,7 +599,10 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
 
         {/* Impact Statement */}
         <div className="bg-black text-white p-16 md:p-24 rounded-[48px] mb-40 relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-green-500/20 blur-[120px] rounded-full -mr-48 -mt-48"></div>
+          <div 
+            className="absolute top-0 right-0 w-96 h-96 blur-[120px] rounded-full -mr-48 -mt-48 opacity-20"
+            style={{ backgroundColor: study.accentColor }}
+          ></div>
           <div className="relative z-10">
             <h2 className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 mb-10">Impact Statement</h2>
             <p className="text-3xl md:text-5xl font-light leading-tight">
@@ -608,7 +631,12 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
             {study.whyItMatters.map((item, i) => (
               <div key={i} className="space-y-6">
-                <div className="text-5xl font-light text-green-500">0{i+1}</div>
+                <div 
+                  className="text-5xl font-light"
+                  style={{ color: study.accentColor }}
+                >
+                  0{i+1}
+                </div>
                 <h3 className="text-2xl font-medium">{item.title}</h3>
                 <p className="text-lg font-light text-gray-500 leading-relaxed">{item.description}</p>
               </div>
@@ -632,7 +660,12 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
               <tbody className="divide-y divide-gray-50">
                 {study.competitorLandscape.map((row, i) => (
                   <tr key={i} className="group">
-                    <td className="py-8 pr-8 font-medium align-top group-hover:text-green-600 transition-colors">{row.platform}</td>
+                    <td 
+                      className="py-8 pr-8 font-medium align-top transition-colors"
+                      style={{ color: 'inherit' }}
+                    >
+                      {row.platform}
+                    </td>
                     <td className="py-8 pr-8 font-light text-gray-500 align-top">{row.whatItDoes}</td>
                     <td className="py-8 pr-8 font-light text-gray-500 align-top">{row.limitations}</td>
                     <td className="py-8 font-light text-gray-500 align-top">{row.strategicGap}</td>
@@ -648,14 +681,23 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
           <h2 className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 mb-16 text-center">Target Personas</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             {study.personas.map((persona, i) => (
-              <div key={i} className="p-12 border border-gray-100 rounded-[40px] hover:shadow-2xl hover:shadow-green-100 transition-all duration-500">
+              <div 
+                key={i} 
+                className="p-12 border border-gray-100 rounded-[40px] transition-all duration-500 hover:shadow-2xl"
+                style={{ '--shadow-color': `${study.accentColor}20` } as React.CSSProperties}
+              >
                 <div className="flex items-center gap-4 mb-10">
                   <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center text-2xl font-medium">
                     {persona.name[0]}
                   </div>
                   <div>
                     <h3 className="text-2xl font-medium">{persona.name} ({persona.location})</h3>
-                    <p className="text-green-600 font-medium text-sm tracking-wide">Target Persona {i+1}</p>
+                    <p 
+                      className="font-medium text-sm tracking-wide"
+                      style={{ color: study.accentColor }}
+                    >
+                      Target Persona {i+1}
+                    </p>
                   </div>
                 </div>
                 <div className="space-y-6 text-[15px]">
@@ -676,9 +718,19 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
             <div key={i} className="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
               <div className={`md:col-span-5 ${i % 2 === 1 ? 'md:order-2' : ''}`}>
                 <div className="aspect-[4/3] bg-gray-50 rounded-[32px] overflow-hidden flex items-center justify-center text-gray-300">
-                  {i === 0 && <Target className="w-24 h-24" />}
-                  {i === 1 && <Users className="w-24 h-24" />}
-                  {i === 2 && <TrendingDown className="w-24 h-24" />}
+                  {feature.image ? (
+                    <img 
+                      src={feature.image} 
+                      alt={feature.title}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <>
+                      {i === 0 && <Target className="w-24 h-24" />}
+                      {i === 1 && <Users className="w-24 h-24" />}
+                      {i === 2 && <TrendingDown className="w-24 h-24" />}
+                    </>
+                  )}
                 </div>
               </div>
               <div className={`md:col-span-7 ${i % 2 === 1 ? 'md:order-1' : ''}`}>
@@ -693,9 +745,15 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                     <p className="text-xl font-light text-gray-600">{feature.benefit}</p>
                   </div>
                   {feature.howItWorks && (
-                    <div className="p-6 bg-green-50 rounded-2xl border-l-4 border-green-500">
-                      <p className="text-sm font-medium text-green-800 mb-1">Technical Implementation</p>
-                      <p className="text-green-700 font-light">{feature.howItWorks}</p>
+                    <div 
+                      className="p-6 rounded-2xl border-l-4"
+                      style={{ 
+                        backgroundColor: `${study.accentColor}10`,
+                        borderLeftColor: study.accentColor
+                      }}
+                    >
+                      <p className="text-sm font-medium mb-1" style={{ color: study.accentColor }}>Technical Implementation</p>
+                      <p className="font-light" style={{ color: study.accentColor }}>{feature.howItWorks}</p>
                     </div>
                   )}
                 </div>
@@ -709,14 +767,22 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
           <h2 className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 mb-16 text-center">Pricing Strategy</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {study.pricing.map((tier, i) => (
-              <div key={i} className={`p-10 rounded-[40px] border ${i === 1 ? 'bg-black text-white border-black scale-105 shadow-2xl' : 'bg-white border-gray-100'} transition-transform duration-500`}>
+              <div 
+                key={i} 
+                className={`p-10 rounded-[40px] border transition-transform duration-500 ${
+                  i === 1 ? 'bg-black text-white border-black scale-105 shadow-2xl' : 'bg-white border-gray-100'
+                }`}
+              >
                 <h3 className="text-xl font-medium mb-2">{tier.name}</h3>
                 <p className={`text-sm mb-8 ${i === 1 ? 'text-gray-400' : 'text-gray-500'}`}>{tier.target}</p>
                 <div className="text-4xl font-normal mb-8 leading-none">{tier.price}</div>
                 <ul className="space-y-4 mb-10">
                   {tier.features.map((f, j) => (
                     <li key={j} className="flex items-start gap-3 text-[15px] font-light">
-                      <Check className={`w-5 h-5 flex-shrink-0 ${i === 1 ? 'text-green-400' : 'text-green-500'}`} />
+                      <Check 
+                        className="w-5 h-5 flex-shrink-0"
+                        style={{ color: study.accentColor }} 
+                      />
                       <span className={i === 1 ? 'text-gray-300' : 'text-gray-600'}>{f}</span>
                     </li>
                   ))}
@@ -734,7 +800,12 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
               <div key={i} className="p-12 bg-gray-50 rounded-[40px] group hover:bg-white hover:shadow-xl transition-all duration-500 border border-transparent hover:border-gray-50">
                 <div className="flex flex-col md:flex-row gap-8">
                   <div className="md:w-1/4">
-                    <div className="text-xs font-bold uppercase text-green-600 mb-2">{phase.phase}</div>
+                    <div 
+                      className="text-xs font-bold uppercase mb-2"
+                      style={{ color: study.accentColor }}
+                    >
+                      {phase.phase}
+                    </div>
                     <h3 className="text-2xl font-medium leading-tight">{phase.title}</h3>
                   </div>
                   <div className="md:w-3/4 grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -784,7 +855,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
               <ul className="space-y-6">
                 {study.forecast.assumptions.map((a, i) => (
                   <li key={i} className="flex gap-4 font-light text-gray-500 leading-relaxed italic text-lg">
-                    <span className="text-green-500 font-bold">•</span> {a}
+                    <span style={{ color: study.accentColor }} className="font-bold">•</span> {a}
                   </li>
                 ))}
               </ul>
@@ -803,13 +874,31 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
             <h3 className="text-3xl font-medium">Retention Multiplier Effect</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {study.forecast.retentionMultiplier.map((m, i) => (
-                <div key={i} className="p-8 bg-green-50/50 rounded-3xl border border-green-100 text-center">
-                  <p className="text-[10px] font-bold uppercase text-green-700 mb-4 tracking-widest">{m.metric}</p>
+                <div 
+                  key={i} 
+                  className="p-8 rounded-3xl border text-center"
+                  style={{ 
+                    backgroundColor: `${study.accentColor}05`,
+                    borderColor: `${study.accentColor}20`
+                  }}
+                >
+                  <p 
+                    className="text-[10px] font-bold uppercase mb-4 tracking-widest"
+                    style={{ color: study.accentColor }}
+                  >
+                    {m.metric}
+                  </p>
                   <div className="flex items-center justify-center gap-4 mb-4">
                     <span className="text-gray-400 line-through text-sm">{m.standard}</span>
-                    <span className="text-3xl font-normal text-green-900">{m.commuter}</span>
+                    <span className="text-3xl font-normal" style={{ color: study.accentColor }}>{m.commuter}</span>
                   </div>
-                  <div className="inline-block px-3 py-1 bg-green-200 text-green-800 text-[10px] font-bold rounded-full uppercase tracking-wider">
+                  <div 
+                    className="inline-block px-3 py-1 text-[10px] font-bold rounded-full uppercase tracking-wider"
+                    style={{ 
+                      backgroundColor: `${study.accentColor}20`,
+                      color: study.accentColor
+                    }}
+                  >
                     {m.impact}
                   </div>
                 </div>
@@ -820,16 +909,19 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
 
         {/* Final Impact */}
         <div className="text-center max-w-3xl mx-auto space-y-10">
-          <Rocket className="w-16 h-16 mx-auto text-green-500" />
+          <Rocket 
+            className="w-16 h-16 mx-auto" 
+            style={{ color: study.accentColor }}
+          />
           <h2 className="text-5xl font-medium leading-tight">Strategic Moat & Future Impact</h2>
           <p className="text-2xl font-light text-gray-500 leading-relaxed">
             {params.slug === 'uber-commuter' ? (
               <>
-                The Uber Commuter Pass isn't just a new revenue stream—it's the foundation of <span className="text-black font-normal underline decoration-green-500 decoration-2 underline-offset-8">MaaS dominance</span>. By locking in the daily commute, Uber increases the switching cost, builds recurring predictability, and secures its place as the operating system for urban life.
+                The Uber Commuter Pass isn't just a new revenue stream—it's the foundation of <span className="text-black font-normal underline decoration-2 underline-offset-8" style={{ textDecorationColor: study.accentColor }}>MaaS dominance</span>. By locking in the daily commute, Uber increases the switching cost, builds recurring predictability, and secures its place as the operating system for urban life.
               </>
             ) : (
               <>
-                Airbnb CoSpace transforms the platform from a travel utility into a <span className="text-black font-normal underline decoration-green-500 decoration-2 underline-offset-8">daily lifestyle infrastructure</span>. By unlocking residential yield and providing hyper-local workspaces, Airbnb secures its ecosystem, lowers acquisition costs, and becomes the indispensable operating system for the hybrid world.
+                Airbnb CoSpace transforms the platform from a travel utility into a <span className="text-black font-normal underline decoration-2 underline-offset-8" style={{ textDecorationColor: study.accentColor }}>daily lifestyle infrastructure</span>. By unlocking residential yield and providing hyper-local workspaces, Airbnb secures its ecosystem, lowers acquisition costs, and becomes the indispensable operating system for the hybrid world.
               </>
             )}
           </p>

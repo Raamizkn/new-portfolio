@@ -16,6 +16,7 @@ interface Project {
   client?: string
   industry?: string
   slug?: string
+  accentColor?: string
 }
 
 // Product Management Projects
@@ -29,7 +30,8 @@ const productProjects: Project[] = [
     image: "/products/uber/uber.png",
     client: "Uber (I wish)",
     industry: "Transportation",
-    slug: "uber-commuter"
+    slug: "uber-commuter",
+    accentColor: "#06c167"
   },
   {
     id: 2,
@@ -40,7 +42,8 @@ const productProjects: Project[] = [
     image: "/products/airbnb/airbnb.png",
     client: "Airbnb (I wish)",
     industry: "Real Estate / Tech",
-    slug: "airbnb-cospace"
+    slug: "airbnb-cospace",
+    accentColor: "#ff5b61"
   },
   {
     id: 3,
@@ -51,7 +54,8 @@ const productProjects: Project[] = [
     image: "/products/Talkform/Talkform.png",
     client: "Talkform AI",
     industry: "Market Research",
-    slug: "talkform-ai"
+    slug: "talkform-ai",
+    accentColor: "#8668ED" // Placeholder for Talkform
   },
 ]
 
@@ -134,11 +138,12 @@ const ProjectCard = ({ project, onClick }: { project: Project; onClick: () => vo
           {/* Arrow Button inside image */}
           <div className="absolute bottom-6 left-6">
             <motion.div
-              className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg"
+              className="w-12 h-12 rounded-full flex items-center justify-center shadow-lg"
+              style={{ backgroundColor: project.accentColor || 'white' }}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >
-              <ExternalLink className="w-5 h-5 text-black" />
+              <ExternalLink className={`w-5 h-5 ${project.accentColor ? 'text-white' : 'text-black'}`} />
             </motion.div>
           </div>
         </div>
