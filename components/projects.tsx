@@ -10,43 +10,48 @@ interface Project {
   title: string
   description: string
   tags: string[]
-  github: string
+  github?: string
   category: string
+  image?: string
+  client?: string
+  industry?: string
+  slug?: string
 }
 
-// Product Design Projects
+// Product Management Projects
 const productProjects: Project[] = [
   {
     id: 1,
-    title: "Customer Churn Prediction System",
-    description: "Full-stack ML system predicting customer churn with retention strategies",
-    tags: ["Python", "Flask", "React", "ML"],
-    github: "https://github.com/Raamizkn/churn-prediction",
-    category: "Product Design"
+    title: "Uber Commuter - Concept Study",
+    description: "Redefining Urban Mobility for Daily Riders through a strategic subscription model.",
+    tags: ["Product Strategy", "Subscription", "MaaS"],
+    category: "Product Management",
+    image: "/products/uber/uber.png",
+    client: "Uber (I wish)",
+    industry: "Transportation",
+    slug: "uber-commuter"
   },
   {
     id: 2,
-    title: "PDF Research Assistant",
-    description: "RAG-powered AI assistant for multi-document analysis and Q&A",
-    tags: ["Python", "LLM", "RAG", "Streamlit"],
-    github: "https://github.com/Raamizkn/RAGpdf",
-    category: "Product Design"
+    title: "Airbnb CoSpace - Strategic Pivot",
+    description: "Unlocking the potential of residential real estate for hybrid workers.",
+    tags: ["Market Expansion", "B2B", "Hybrid Work"],
+    category: "Product Management",
+    image: "/products/airbnb/airbnb.png",
+    client: "Airbnb (I wish)",
+    industry: "Real Estate / Tech",
+    slug: "airbnb-cospace"
   },
   {
     id: 3,
-    title: "Automotive Concept Styler",
-    description: "Generative AI system for rapid automotive concept visualization",
-    tags: ["Python", "Stable Diffusion", "Streamlit"],
-    github: "https://github.com/Raamizkn/AI-Automation-Concept-Styler",
-    category: "Product Design"
-  },
-  {
-    id: 4,
-    title: "Retail Forecasting Tool",
-    description: "AI-powered demand forecasting with automated ETL pipeline",
-    tags: ["R", "ARIMA", "Prophet", "Shiny"],
-    github: "https://github.com/Raamizkn/InventorySales",
-    category: "Product Design"
+    title: "Talkform AI - Product Strategy",
+    description: "Leveraging LLMs to revolutionize qualitative user research at scale.",
+    tags: ["AI/ML", "B2B SaaS", "User Research"],
+    category: "Product Management",
+    image: "/products/Talkform/Screenshot 2025-12-22 at 00.48.33.png",
+    client: "Talkform AI",
+    industry: "Market Research",
+    slug: "talkform-ai"
   },
 ]
 
@@ -106,6 +111,50 @@ const softwareProjects: Project[] = [
 const ProjectCard = ({ project, onClick }: { project: Project; onClick: () => void }) => {
   const [isHovered, setIsHovered] = React.useState(false)
   
+  if (project.category === "Product Management") {
+    return (
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3 }}
+        className="group cursor-pointer"
+        onClick={onClick}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        <div className="relative aspect-square overflow-hidden rounded-3xl mb-4 bg-gray-100 dark:bg-gray-800">
+          {project.image && (
+            <img 
+              src={project.image} 
+              alt={project.title}
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+          )}
+          
+          {/* Arrow Button inside image */}
+          <div className="absolute bottom-6 left-6">
+            <motion.div
+              className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              <ExternalLink className="w-5 h-5 text-black" />
+            </motion.div>
+          </div>
+        </div>
+        
+        <div className="space-y-1 px-2">
+          <p className="text-gray-500 dark:text-gray-400 text-sm font-light">
+            {project.client}
+          </p>
+          <h3 className="text-xl md:text-2xl font-normal text-gray-900 dark:text-white leading-tight">
+            {project.title}
+          </h3>
+        </div>
+      </motion.div>
+    )
+  }
+
   return (
     <motion.div
       layout
@@ -148,17 +197,19 @@ const ProjectCard = ({ project, onClick }: { project: Project; onClick: () => vo
           <span className="text-white/70 text-sm font-light">
             {project.tags[0]}
           </span>
-          <motion.button
-            className="p-2 bg-white/20 backdrop-blur-sm rounded-lg hover:bg-white/30 transition-colors"
-            onClick={(e) => {
-              e.stopPropagation()
-              window.open(project.github, '_blank')
-            }}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-          >
-            <GitHub className="w-4 h-4 text-white" />
-          </motion.button>
+          {project.github && (
+            <motion.button
+              className="p-2 bg-white/20 backdrop-blur-sm rounded-lg hover:bg-white/30 transition-colors"
+              onClick={(e) => {
+                e.stopPropagation()
+                window.open(project.github, '_blank')
+              }}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              <GitHub className="w-4 h-4 text-white" />
+            </motion.button>
+          )}
         </div>
       </div>
       
@@ -248,11 +299,15 @@ export default function Projects() {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   const tabs = [
-    { id: 'product' as const, label: 'Product Design', count: productProjects.length },
+    { id: 'product' as const, label: 'Product Management', count: productProjects.length },
     { id: 'software' as const, label: 'Software Development', count: softwareProjects.length }
   ]
 
   const handleProjectClick = (project: Project) => {
+    if (project.category === "Product Management" && project.slug) {
+      window.location.href = `/case-studies/${project.slug}`
+      return
+    }
     setSelectedProject(project)
     setIsModalOpen(true)
   }
