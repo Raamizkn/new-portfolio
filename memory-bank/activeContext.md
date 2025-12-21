@@ -15,6 +15,9 @@
 - Applied brand-specific secondary colors (Uber: `#06c167`, Airbnb: `#ff5b61`) across the homepage cards and case study pages.
 - Replaced placeholder icons with actual product screenshots in the "Product Experience" sections of the case studies.
 - Refined the "Strategic Moat" section of the case study template to be context-aware and use brand colors.
+- Updated main page navigation to match the minimalist case study style.
+- Removed the custom cursor system entirely to revert to the standard browser cursor.
+- Fixed a compilation error in case study pages by adding the `"use client"` directive.
 
 ## Next Steps
 - Implement Talkform AI case study once data is provided.

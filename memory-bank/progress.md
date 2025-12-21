@@ -5,6 +5,8 @@
 - **Project Filtering:** Category tabs for Product Management and Software Development.
 - **Uber Case Study:** Fully implemented with all strategic details and custom layout.
 - **Airbnb Case Study:** Fully implemented with strategic analysis and custom layout.
+- **Navigation:** Unified minimalist navigation across main page and case studies.
+- **Custom Cursor:** Smooth 'normal' and 'fun' cursor modes with dynamic brand-specific coloring.
 - **Responsive Design:** Core layout is responsive.
 - **Theme Support:** Basic light/dark mode functionality.
 

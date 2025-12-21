@@ -1,4 +1,6 @@
-import React from 'react'
+"use client"
+
+import React, { useEffect } from 'react'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { ArrowLeft, Check, TrendingDown, Users, Zap, Layout, BarChart3, ShieldCheck, Target, Rocket } from 'lucide-react'

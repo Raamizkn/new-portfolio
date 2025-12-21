@@ -138,12 +138,11 @@ const ProjectCard = ({ project, onClick }: { project: Project; onClick: () => vo
           {/* Arrow Button inside image */}
           <div className="absolute bottom-6 left-6">
             <motion.div
-              className="w-12 h-12 rounded-full flex items-center justify-center shadow-lg"
-              style={{ backgroundColor: project.accentColor || 'white' }}
+              className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >
-              <ExternalLink className={`w-5 h-5 ${project.accentColor ? 'text-white' : 'text-black'}`} />
+              <ExternalLink className="w-5 h-5 text-black" />
             </motion.div>
           </div>
         </div>
