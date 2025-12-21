@@ -48,7 +48,7 @@ const productProjects: Project[] = [
     description: "Leveraging LLMs to revolutionize qualitative user research at scale.",
     tags: ["AI/ML", "B2B SaaS", "User Research"],
     category: "Product Management",
-    image: "/products/Talkform/Screenshot 2025-12-22 at 00.48.33.png",
+    image: "/products/Talkform/Talkform.png",
     client: "Talkform AI",
     industry: "Market Research",
     slug: "talkform-ai"

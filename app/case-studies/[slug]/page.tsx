@@ -291,6 +291,195 @@ const caseStudies: Record<string, CaseStudyData> = {
         { metric: "Uber Eats Attach Rate", standard: "15%", commuter: "45%", impact: "3x Ecosystem Value" }
       ]
     }
+  },
+  'airbnb-cospace': {
+    title: "Airbnb CoSpace: Strategic Market Entry & Business Case Analysis",
+    subtitle: "Unlocking residential yield during working hours (Strategic Case Study)",
+    industry: "Real Estate / Tech",
+    client: "Airbnb (I wish)",
+    heroImage: "/products/airbnb/airbnb.png",
+    overview: "Airbnb CoSpace represents a strategic response to the paradigm shift in work—a conceptual vertical designed to unlock the latent economic potential of residential real estate during working hours. By enabling users to book flexible workspaces in residential neighborhoods, Airbnb can bridge the critical gap between the home and the office, capturing a piece of the $196B flexible office market.",
+    introduction: "The global ecosystem of work, travel, and living is undergoing a structural metamorphosis. Airbnb CoSpace capitalizes on geographic arbitrage, transforming underutilized living rooms and home offices into revenue-generating assets during the 9-to-5 window when they typically sit vacant. This initiative aligns with Airbnb’s strategy to scale new offerings beyond core nights-booked.",
+    conceptSummary: [
+      {
+        title: "Hyper-Local Access",
+        description: "Transforming residential 'shadow inventory' into professional workspaces in suburbs where workers actually live."
+      },
+      {
+        title: "Yield Management",
+        description: "Enabling hosts to earn income during daylight hours (11am-3pm) when properties are otherwise idle."
+      },
+      {
+        title: "Ecosystem Integration",
+        description: "Transitioning Airbnb from a transactional travel utility to a daily high-frequency lifestyle 'SuperApp'."
+      }
+    ],
+    impactStatement: "Bridging the gap between travel, remote work, and professional space booking — CoSpace empowers digital nomads and distributed teams to work productively anywhere.",
+    problemOpportunity: {
+      challenge: {
+        title: "The Friction of the Hybrid Model",
+        description: "Professionals face a bifurcated workflow: home offices lack ergonomics and privacy, while corporate offices require expensive, rejected commutes. Third spaces like cafes lack security and guaranteed seating."
+      },
+      opportunity: {
+        title: "Structural Shifts Driving Demand",
+        description: "With 32.6 million Americans working hybrid and digital nomads reaching 18.1 million, there is a massive permanent demographic requiring flexible solutions outside city-center CBDs."
+      }
+    },
+    whyItMatters: [
+      {
+        title: "Asset Utilization Efficiency",
+        description: "Short-term rentals are often vacant between checkout and check-in. CoSpace monetizes these hours without conflict."
+      },
+      {
+        title: "Lower Blended CAC",
+        description: "Integrating a high-frequency work use case lowers the cost of customer re-acquisition compared to annual travel."
+      },
+      {
+        title: "Inventory Density",
+        description: "Airbnb's 8M listings provide a neighborhood density that centralized providers like WeWork can never match."
+      }
+    ],
+    competitorLandscape: [
+      {
+        platform: "Peerspace",
+        whatItDoes: "Hourly space rentals for events and photoshoots.",
+        limitations: "Event-centric brand; high friction for individual productivity focus.",
+        strategicGap: "Focus on 'parties' deter hosts; CoSpace offers a lower-risk professional profile."
+      },
+      {
+        platform: "WeWork",
+        whatItDoes: "Premium, standardized commercial office environments.",
+        limitations: "CBD-only locations; high daily rates; asset-heavy lease liabilities.",
+        strategicGap: "Cannot penetrate the '15-minute city' residential market where workers live."
+      },
+      {
+        platform: "Croissant",
+        whatItDoes: "Aggregator for independent coworking spaces.",
+        limitations: "No unique inventory; dependent on 3rd party space operators.",
+        strategicGap: "Lacks the trusted global brand and insurance infrastructure of Airbnb."
+      },
+      {
+        platform: "Hotel Day-Use",
+        whatItDoes: "Daytime access to hotel rooms.",
+        limitations: "Rooms designed for sleep, not work (poor ergonomics).",
+        strategicGap: "High CAC environment; hotels view this as distressed inventory liquidation."
+      }
+    ],
+    personas: [
+      {
+        name: "Sam",
+        location: "Berlin",
+        profile: "Senior Product Manager in a shared apartment.",
+        schedule: "Remote-first tech role.",
+        income: "€75k/year",
+        behavior: "Struggles with noise and bad ergonomics at home. Finds cafes insecure.",
+        spend: "Willing to pay €25/day for a private 'deep work' room.",
+        painPoints: ["Distractions at home", "Lack of professional background"],
+        needs: "Quiet, private space within 10 minutes walk."
+      },
+      {
+        name: "The Sprint Squad",
+        location: "New York",
+        profile: "Distributed startup team of 5.",
+        schedule: "Weekly in-person sprint days.",
+        income: "Corporate budget",
+        behavior: "Rotates meeting in cramped living rooms; finds WeWork rooms sterile/expensive.",
+        spend: "Willing to pay $60/hour for a 'Team Hub'.",
+        painPoints: ["Cramped home meetings", "High cost of Manhattan offices"],
+        needs: "A 'homey' vibe with whiteboards and monitors for creative collaboration."
+      }
+    ],
+    productExperience: [
+      {
+        title: "The 'Work Mode' Toggle",
+        mechanism: "Direct search separation for 'Stays', 'Experiences', and 'CoSpace'.",
+        benefit: "Instant filtering for professional workspace criteria, avoiding vacation-only listings.",
+        howItWorks: "Prioritizes search results based on 'Work-Ready' certification."
+      },
+      {
+        title: "Work-Ready Certification",
+        mechanism: "Integrated speed tests (Ookla) and AI-verified ergonomics (desk/chair check).",
+        benefit: "Eliminates the 'trust gap' regarding internet reliability and work setup.",
+        howItWorks: "Hosts must run in-app speed tests to display verified connection stats."
+      },
+      {
+        title: "Seamless Autonomous Access",
+        mechanism: "Mandatory 'Instant Book' and smart-lock integration.",
+        benefit: "Critical for hourly bookings; eliminates the friction of waiting for host approval.",
+        howItWorks: "Time-coded entry keys sent automatically upon booking."
+      }
+    ],
+    pricing: [
+      {
+        name: "Shared / Pod",
+        target: "Solo Focus",
+        price: "$15 - $25 / day",
+        features: ["High-speed Wi-Fi", "Ergonomic Chair", "Neighborhood location", "Quiet Zone"]
+      },
+      {
+        name: "Private Office",
+        target: "Deep Work",
+        price: "$30 - $60 / half-day",
+        features: ["Full Private Room", "Monitor Included", "Professional Background", "Absolute Privacy"]
+      },
+      {
+        name: "Team Hub",
+        target: "Collaborative Sprint",
+        price: "$40 - $80 / hour",
+        features: ["Large Meeting Area", "Whiteboard & AV", "Self-service Coffee", "Creative Environment"]
+      }
+    ],
+    unitEconomics: {
+      revenue: "$120M GMV (Year 1 Target)",
+      cogs: ["Verification costs", "Customer support for business tier", "Insurance expansion"],
+      realValue: "Ecosystem Lock-In: Work bookings drive stay visibility, effectively zeroing vacation CAC."
+    },
+    goToMarket: [
+      {
+        phase: "Phase 1",
+        title: "Pilot City Rollout",
+        strategy: "Focus on NY, London, Berlin, Dubai.",
+        execution: "Activate Superhosts with existing workspace; 0% service fee for launch period.",
+        pitch: "\"Monetize your empty hours. Turn your home office into an income stream.\""
+      },
+      {
+        phase: "Phase 2",
+        title: "Corporate Partnership",
+        strategy: "Launch 'Airbnb for Teams' as a remote-perk dashboard.",
+        execution: "Partner with Shopify, GitLab etc. to offer employee workspace budgets.",
+        pitch: "\"Workspace budgets that cost 40% less than a WeWork All Access pass.\""
+      }
+    ],
+    risks: [
+      {
+        category: "Regulatory",
+        detail: "Residential zoning and 'Home Occupation' laws.",
+        probability: "High",
+        mitigation: "Limit capacity to max 4-6 people; focus on 'quiet professional' usage."
+      },
+      {
+        category: "Quality Control",
+        detail: "Inconsistent brand experience vs commercial offices.",
+        probability: "Medium",
+        mitigation: "Rigorous Speed-Test verification and 'Business Ready' badging."
+      }
+    ],
+    forecast: {
+      assumptions: [
+        "20,000 Initial CoSpace Listings (0.25% of supply).",
+        "Average 10 bookings per month per listing.",
+        "Average Booking Value (ABV) of $50."
+      ],
+      revenue: [
+        { label: "Year 1 Conservative Revenue", value: "$20,000,000" },
+        { label: "Year 3 Global Revenue Potential", value: "$900,000,000" }
+      ],
+      retentionMultiplier: [
+        { metric: "Usage Frequency", standard: "1.5 trips/year", commuter: "24 work days/year", impact: "16x Engagement" },
+        { metric: "Booking CAC", standard: "Rising ($35+)", commuter: "Subsidized by Work", impact: "Zero-CAC Vacation" },
+        { metric: "Host Monthly Yield", standard: "$1,500/mo", commuter: "$2,000/mo", impact: "33% Income Increase" }
+      ]
+    }
   }
 }
 
@@ -634,7 +823,15 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
           <Rocket className="w-16 h-16 mx-auto text-green-500" />
           <h2 className="text-5xl font-medium leading-tight">Strategic Moat & Future Impact</h2>
           <p className="text-2xl font-light text-gray-500 leading-relaxed">
-            The Uber Commuter Pass isn't just a new revenue stream—it's the foundation of <span className="text-black font-normal underline decoration-green-500 decoration-2 underline-offset-8">MaaS dominance</span>. By locking in the daily commute, Uber increases the switching cost, builds recurring predictability, and secures its place as the operating system for urban life.
+            {params.slug === 'uber-commuter' ? (
+              <>
+                The Uber Commuter Pass isn't just a new revenue stream—it's the foundation of <span className="text-black font-normal underline decoration-green-500 decoration-2 underline-offset-8">MaaS dominance</span>. By locking in the daily commute, Uber increases the switching cost, builds recurring predictability, and secures its place as the operating system for urban life.
+              </>
+            ) : (
+              <>
+                Airbnb CoSpace transforms the platform from a travel utility into a <span className="text-black font-normal underline decoration-green-500 decoration-2 underline-offset-8">daily lifestyle infrastructure</span>. By unlocking residential yield and providing hyper-local workspaces, Airbnb secures its ecosystem, lowers acquisition costs, and becomes the indispensable operating system for the hybrid world.
+              </>
+            )}
           </p>
           <div className="pt-10">
             <Link href="/#contact" className="inline-flex items-center justify-center px-10 py-5 bg-black text-white rounded-full text-lg font-medium hover:scale-105 transition-transform">
