@@ -101,14 +101,214 @@ interface CaseStudyData {
       impact: string
     }[]
   }
+  marketImpact?: {
+    metric: string
+    target: string
+    result: string
+    analysis: string
+  }[]
 }
 
 const caseStudies: Record<string, CaseStudyData> = {
+  'talkform': {
+    title: "TalkForm: The Strategic Evolution of Mobile Data Entry",
+    subtitle: "Transforming unstructured speech into structured database inputs (Product Case Study)",
+    industry: "AI / Productivity",
+    client: "TalkForm",
+    heroImage: "/products/Talkform/Talkform.png",
+    accentColor: "#1e8a51",
+    overview: "TalkForm is born at the intersection of GUI and natural language interfaces, designed to resolve the inefficiency of mobile data entry. It leverages LLMs to transform unstructured speech into structured database inputs, achieving a 'hybrid' interface that offers the speed of voice with the reliability of text.",
+    introduction: "By 2025, mobile devices account for 64% of web traffic but lag severely in conversion due to 'thumb fatigue'. TalkForm adapts the input mechanism to the user's natural speech, reducing data entry time by over 50% while increasing completion rates in high-friction verticals.",
+    conceptSummary: [
+      {
+        title: "Velocity",
+        description: "Leveraging the 3x speed advantage of speech over typing to reduce Average Time on Task by 50%."
+      },
+      {
+        title: "Accuracy & Trust",
+        description: "A 'Human-in-the-Loop' philosophy where AI proposes and the user disposes, ensuring <10% correction rate."
+      },
+      {
+        title: "Universality",
+        description: "Full WCAG 2.1 AA compliance, using voice as an assistive technology for motor and cognitive impairments."
+      }
+    ],
+    impactStatement: "Eliminating the friction of data entry by creating a 'Zero-UI' form controller that adapts to natural speech.",
+    problemOpportunity: {
+      challenge: {
+        title: "The Mobile Conversion Gap",
+        description: "Mobile conversion rates struggle at 2.8% vs 5% on desktop. The QWERTY keyboard is ill-suited for thumbs on glass, leading to high interaction costs and form abandonment."
+      },
+      opportunity: {
+        title: "Technological Convergence",
+        description: "Commoditized Speech-to-Text (Whisper) and LLM reasoning allow for 'Semantic Parsing'—understanding context instead of just matching keywords."
+      }
+    },
+    whyItMatters: [
+      {
+        title: "Field Service Safety",
+        description: "Hands-free data entry for technicians in hazardous environments, reducing accidents and data degradation."
+      },
+      {
+        title: "Healthcare Efficiency",
+        description: "Automatically populating structured EHR fields from doctor dictations, saving hours of admin work."
+      },
+      {
+        title: "Applicant UX",
+        description: "Reducing drop-off in high-volume recruitment by allowing candidates to 'speak' their applications."
+      }
+    ],
+    competitorLandscape: [
+      {
+        platform: "Traditional Forms",
+        whatItDoes: "Google Forms, JotForm",
+        limitations: "High friction on mobile, low completion rates.",
+        strategicGap: "No native voice layer to reduce input effort."
+      },
+      {
+        platform: "Chatbots",
+        whatItDoes: "Intercom, Drift",
+        limitations: "Linear flow, tedious to edit previous answers.",
+        strategicGap: "Fails the non-linearity requirement of complex data entry."
+      },
+      {
+        platform: "Dictation Tools",
+        whatItDoes: "Siri, Gboard",
+        limitations: "'Dumb' transcription without field mapping.",
+        strategicGap: "Lacks semantic parsing to map speech to database fields."
+      }
+    ],
+    personas: [
+      {
+        name: "Sam",
+        location: "Field Technician",
+        profile: "HVAC repair specialist",
+        schedule: "80% hands-busy on-site",
+        income: "N/A",
+        behavior: "Enters bare minimum data due to grease/gloves",
+        spend: "N/A",
+        painPoints: ["Thumb fatigue", "Safety risks typing on ladders", "Data recall errors"],
+        needs: "Describe repairs in plain English and have software categorize them."
+      },
+      {
+        name: "Sarah",
+        location: "Ops Manager",
+        profile: "CRM Administrator",
+        schedule: "Office-based",
+        income: "N/A",
+        behavior: "Cleans up poor technician data daily",
+        spend: "N/A",
+        painPoints: ["Incomplete records", "Invoicing delays", "Lack of analytics"],
+        needs: "Structured, accurate data without increasing tech workload."
+      }
+    ],
+    productExperience: [
+      {
+        title: "One-Shot Interaction",
+        mechanism: "User speaks a natural sentence containing multiple data points.",
+        benefit: "Populates Name, Email, and Role simultaneously from one utterance.",
+        howItWorks: "Uses LLM prompt engineering to map narrative text to JSON schema.",
+        image: "/products/Talkform/Screenshot 2025-12-22 at 00.50.37.png"
+      },
+      {
+        title: "Confidence Loop",
+        mechanism: "Real-time streaming with optimistic UI and shimmer animations.",
+        benefit: "Builds trust by showing 'ears' (STT) and 'brain' (LLM) processing.",
+        howItWorks: "Highlights low-confidence words for quick tap-to-edit correction.",
+        image: "/products/Talkform/Screenshot 2025-12-22 at 00.53.09.png"
+      },
+      {
+        title: "Enterprise Sync",
+        mechanism: "Native integration layer with Zapier and Webhooks.",
+        benefit: "Data flows instantly to Salesforce or HubSpot 'Source of Truth'.",
+        howItWorks: "Google Form Importer scrapes schemas for instant voice-enablement.",
+        image: "/products/Talkform/Screenshot 2025-12-22 at 00.49.50.png"
+      }
+    ],
+    pricing: [
+      {
+        name: "Starter",
+        target: "Individual Researchers",
+        price: "$29/mo",
+        features: ["1,000 Voice Minutes", "Basic Integrations", "Standard Support"]
+      },
+      {
+        name: "Pro",
+        target: "Field Service Teams",
+        price: "$99/mo",
+        features: ["Unlimited Voice", "Salesforce/SAP Sync", "Priority Processing", "Advanced Analytics"]
+      }
+    ],
+    unitEconomics: {
+      revenue: "Tiered SaaS subscription",
+      cogs: ["OpenAI Whisper API costs", "LLM Token usage (GPT-4o)"],
+      realValue: "55% reduction in data entry labor costs for enterprise clients."
+    },
+    goToMarket: [
+      {
+        phase: "Phase 1",
+        title: "Vertical Focus: FSM",
+        strategy: "Target 'hands-busy' industries.",
+        execution: "Partner with HVAC and Telecomm safety officers.",
+        pitch: "\"Stop typing, start talking. Safer for them, better data for you.\""
+      },
+      {
+        phase: "Phase 2",
+        title: "Platform Expansion",
+        strategy: "Become the voice layer for existing web forms.",
+        execution: "Launch Chrome Extension and Google Form Importer.",
+        pitch: "\"Voice-enable any form in 60 seconds.\""
+      }
+    ],
+    risks: [
+      {
+        category: "Privacy",
+        detail: "Users hesitant to speak sensitive data (SSN, CC).",
+        probability: "High",
+        mitigation: "\"Secure Mode\" that disables mic for PII fields, forcing keyboard."
+      },
+      {
+        category: "Accuracy",
+        detail: "Proper noun recognition issues (names, addresses).",
+        probability: "Medium",
+        mitigation: "\"Tap-to-Edit\" UI pattern for low-latency correction."
+      }
+    ],
+    forecast: {
+      assumptions: [
+        "LLM costs continue to decrease by 2x annually.",
+        "Mobile traffic remains >60% of total web traffic.",
+        "Voice Parity: STT reaches human-level accuracy in noisy environments."
+      ],
+      revenue: [
+        { label: "Target Enterprise ARR", value: "$2.5M" },
+        { label: "Completion Rate Uplift", value: "+22%" }
+      ],
+      retentionMultiplier: [
+        { metric: "Time on Task", standard: "120s", commuter: "70s", impact: "42% Reduction" },
+        { metric: "Form Completion", standard: "68%", commuter: "83%", impact: "22% Increase" }
+      ]
+    },
+    marketImpact: [
+      {
+        metric: "Form Completion Rate",
+        target: "+15%",
+        result: "+22%",
+        analysis: "Novelty combined with friction reduction drove massive uplift."
+      },
+      {
+        metric: "Average Time on Task",
+        target: "-50%",
+        result: "-42%",
+        analysis: "Users spent more time reviewing; 'Review Tax' is real but net gain is high."
+      }
+    ]
+  },
   'uber-commuter': {
     title: "Uber Commuter Pass — Redefining Urban Mobility for Daily Riders",
     subtitle: "Integrated Mobility Subscription (Portfolio Case Study)",
     industry: "Transportation",
-    client: "Uber (I wish)",
+    client: "Uber ",
     heroImage: "/products/uber/uber.png",
     accentColor: "#06c167",
     overview: "Uber Commuter Pass represents a strategic evolution in the ride-hailing sector’s approach to customer lifetime value (LTV). It is a conceptual expansion of the Uber platform designed to capture the high-frequency, high-value segment of urban commuters who have transitioned to hybrid work models. By integrating \"Smart Route Locking\" for price certainty and \"Multimodal Ticketing\" for public transit access, the Commuter Pass transforms Uber from a discretionary service into an essential monthly utility.",
@@ -304,7 +504,7 @@ const caseStudies: Record<string, CaseStudyData> = {
     title: "Airbnb CoSpace: Strategic Market Entry & Business Case Analysis",
     subtitle: "Unlocking residential yield during working hours (Strategic Case Study)",
     industry: "Real Estate / Tech",
-    client: "Airbnb (I wish)",
+    client: "Airbnb ",
     heroImage: "/products/airbnb/airbnb.png",
     accentColor: "#ff5b61",
     overview: "Airbnb CoSpace represents a strategic response to the paradigm shift in work—a conceptual vertical designed to unlock the latent economic potential of residential real estate during working hours. By enabling users to book flexible workspaces in residential neighborhoods, Airbnb can bridge the critical gap between the home and the office, capturing a piece of the $196B flexible office market.",
@@ -754,7 +954,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                         borderLeftColor: study.accentColor
                       }}
                     >
-                      <p className="text-sm font-medium mb-1" style={{ color: study.accentColor }}>Technical Implementation</p>
+                      <p className="text-sm font-medium mb-1" style={{ color: study.accentColor }}>{params.slug === 'talkform' ? 'Product Insight' : 'Technical Implementation'}</p>
                       <p className="font-light" style={{ color: study.accentColor }}>{feature.howItWorks}</p>
                     </div>
                   )}
@@ -921,9 +1121,13 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
               <>
                 The Uber Commuter Pass isn't just a new revenue stream—it's the foundation of <span className="text-black font-normal underline decoration-2 underline-offset-8" style={{ textDecorationColor: study.accentColor }}>MaaS dominance</span>. By locking in the daily commute, Uber increases the switching cost, builds recurring predictability, and secures its place as the operating system for urban life.
               </>
-            ) : (
+            ) : params.slug === 'airbnb-cospace' ? (
               <>
                 Airbnb CoSpace transforms the platform from a travel utility into a <span className="text-black font-normal underline decoration-2 underline-offset-8" style={{ textDecorationColor: study.accentColor }}>daily lifestyle infrastructure</span>. By unlocking residential yield and providing hyper-local workspaces, Airbnb secures its ecosystem, lowers acquisition costs, and becomes the indispensable operating system for the hybrid world.
+              </>
+            ) : (
+              <>
+                TalkForm validates that the future of HCI is not 'Voice Only' but <span className="text-black font-normal underline decoration-2 underline-offset-8" style={{ textDecorationColor: study.accentColor }}>Multimodal</span>. By eliminating the friction of data entry and leveraging LLMs for semantic parsing, TalkForm becomes the foundational infrastructure for the next era of Agentic Interfaces.
               </>
             )}
           </p>

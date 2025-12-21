@@ -28,7 +28,7 @@ const productProjects: Project[] = [
     tags: ["Product Strategy", "Subscription", "MaaS"],
     category: "Product Management",
     image: "/products/uber/uber.png",
-    client: "Uber (I wish)",
+    client: "Uber ",
     industry: "Transportation",
     slug: "uber-commuter",
     accentColor: "#06c167"
@@ -40,22 +40,22 @@ const productProjects: Project[] = [
     tags: ["Market Expansion", "B2B", "Hybrid Work"],
     category: "Product Management",
     image: "/products/airbnb/airbnb.png",
-    client: "Airbnb (I wish)",
+    client: "Airbnb ",
     industry: "Real Estate / Tech",
     slug: "airbnb-cospace",
     accentColor: "#ff5b61"
   },
   {
     id: 3,
-    title: "Talkform AI - Product Strategy",
-    description: "Leveraging LLMs to revolutionize qualitative user research at scale.",
-    tags: ["AI/ML", "B2B SaaS", "User Research"],
+    title: "TalkForm - Voice-First Evolution",
+    description: "Transforming mobile data entry through strategic LLM-powered interfaces.",
+    tags: ["Voice AI", "HCI", "Product Strategy"],
     category: "Product Management",
     image: "/products/Talkform/Talkform.png",
-    client: "Talkform AI",
-    industry: "Market Research",
-    slug: "talkform-ai",
-    accentColor: "#8668ED" // Placeholder for Talkform
+    client: "TalkForm ",
+    industry: "AI / Productivity",
+    slug: "talkform",
+    accentColor: "#1e8a51"
   },
 ]
 
