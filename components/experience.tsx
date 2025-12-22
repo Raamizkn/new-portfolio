@@ -20,52 +20,48 @@ const experiences: Experience[] = [
   {
     id: 1,
     period: "Aug 2025 — Present",
-    title: "AI Consultant",
+    title: "AI Product Consultant",
     company: "Ncrese",
     location: "Remote, United States",
     type: "full-time",
     description:
-      "Leading end-to-end AI voice agent development and marketing automation systems for clients, driving significant improvements in conversions and operational efficiency.",
+      "Leading client discovery and solution scoping to translate commercial objectives into AI automation initiatives.",
     achievements: [
-      "Led development and deployment of AI voice agents using n8n, VAPI, and Retell, driving a 30% increase in lead conversions through automated engagement",
-      "Scoped, designed, and productized a marketing automation system for a digital agency, resulting in a 50% workload reduction and 60% growth in content output",
-      "Drove prompt and context engineering initiatives on Langfuse, enhancing latency efficiency and contextual accuracy across production-grade AI systems by 40-45%",
-      "Partnered with stakeholders to refine agentic logic and reliability in voice AI systems"
+      "Led client discovery, stakeholder interviews, and solution scoping across sales, marketing, and operations teams, translating commercial objectives into AI automation initiatives (using n8n and VAPI) that increased qualified lead conversion by 30%.",
+      "Analyzed agency workflows and market needs to productize a marketing automation offering, defining value propositions and delivery structure that reduced manual workload by 50% and scaled content output by 60%.",
+      "Presented performance insights and optimization recommendations to client stakeholders, leveraging Langfuse and Prompt Engineering to improve system accuracy and latency by 40–45%, supporting client retention and upsell discussions."
     ],
     technologies: ["n8n", "VAPI", "Retell", "Langfuse", "OpenAI API", "Prompt Engineering", "Voice AI", "Marketing Automation"],
   },
   {
     id: 2,
     period: "Aug 2025 — Present",
-    title: "Cofounder & AI Product Head",
+    title: "Cofounder & Product Head",
     company: "Mathison AI",
     location: "Türkiye",
     type: "full-time",
     description:
-      "Cofounded and leading product design, overseeing UX, feature rollout, and sprint management from concept to deployment.",
+      "Cofounded the startup and leading product strategy, roadmap planning, and sprint execution in a fast-paced environment.",
     achievements: [
-      "Led product design, overseeing UX, feature rollout, and sprint management from concept to deployment",
-      "Developed and tested backend APIs, managing full-stack integration and ensuring stable, scalable releases",
-      "Built and integrated AI grading agents using OpenAI APIs and MongoDB on Next.js, automating assessments with 85% accuracy",
-      "Managed cross-functional team coordination and agile development cycles"
+      "Cofounded the startup and led product strategy, roadmap planning, and sprint execution in a fast-paced environment, making data-informed decisions to align product direction with user, institutional, and business needs.",
+      "Conducted customer research, validation interviews, and iterative testing cycles, refining value propositions, messaging, and feature scope to improve product-market fit across early deployments.",
+      "Oversaw launch of AI-driven assessment workflows built with Next.js and OpenAI API, presenting results to stakeholders and automating grading with 85% accuracy, significantly reducing evaluation time and operational costs."
     ],
     technologies: ["Next.js", "OpenAI API", "MongoDB", "TypeScript", "Product Management", "Sprint Management", "Full-Stack Development"],
   },
   {
     id: 3,
     period: "Mar 2025 — Jun 2025",
-    title: "AI Product Intern",
+    title: "Product Intern",
     company: "Alt Ventures",
     location: "Singapore",
     type: "internship",
     description:
-      "Engineered AI voice agents and developed scalable frontend/backend services for professional interview platform.",
+      "Supported commercialization and optimization of customer-facing AI agents for a voice-based interview platform.",
     achievements: [
-      "Engineered and optimized AI agent prompts, improving response relevance by 30% in dynamic customer-facing environments",
-      "Developed LLM-driven voice AI agents to conduct mock professional interviews with 95%+ transcription accuracy",
-      "Integrated emotional intelligence via Hume API's EVI models for enhanced interview experience",
-      "Built scalable frontend (Next.js with Stripe Connect) and backend services (Supabase) to support real-time AI agent operations",
-      "Led website frontend design and prototyping in Figma, maintaining UI/UX alignment with product and brand identity"
+      "Analyzed user behavior and performance metrics to optimize customer-facing AI agents, improving response relevance by 30% and strengthening engagement in revenue-generating workflows.",
+      "Supported commercialization of a voice-based mock interview platform by contributing to feature prioritization, pricing-adjacent decisions, and onboarding flows that enabled scalable user acquisition and payments.",
+      "Spearheaded product insights and UI prototypes in Figma to internal stakeholders, leading frontend iterations that aligned brand positioning with conversion goals."
     ],
     technologies: ["Next.js", "Supabase", "Hume API", "Stripe", "Figma", "Voice AI", "LLM", "Prompt Engineering"],
   },
@@ -77,12 +73,11 @@ const experiences: Experience[] = [
     location: "Pakistan",
     type: "internship",
     description:
-      "Built RAG workflows and telemedicine solutions, improving platform UI/UX and optimizing AI automation.",
+      "Streamlined support workflows and revamped key platform processes through friction analysis and telemedicine rollout.",
     achievements: [
-      "Built RAG workflows for lab-pharmacy support using n8n and WhatsApp Cloud API, cutting response time by 40%",
-      "Improved platform UI/UX with Vue.js, aligning design to product goals and raising task completion 35%",
-      "Developed a secure telemedicine web-app with Zoom SDK and Node.js, enabling 100+ weekly consultations post-launch",
-      "Optimized AI automation via context engineering, reducing LLM errors 35% and improving response relevance"
+      "Streamlined support workflows with AI (using n8n and WhatsApp Cloud API), cutting patient/partner response time by 40% and boosting service efficiency.",
+      "Revamped key workflows in collaboration with product and ops teams based on friction analysis, raising task completion by 35%.",
+      "Facilitated the telemedicine platform rollout (integrated with Zoom SDK) and early adoption, coordinating launch aimed for 100+ weekly consultations."
     ],
     technologies: ["n8n", "Vue.js", "Node.js", "Zoom SDK", "WhatsApp API", "RAG", "Context Engineering"],
   },
