@@ -86,6 +86,54 @@ const productProjects: Project[] = [
 // Software Development Projects
 const softwareProjects: Project[] = [
   {
+    id: 11,
+    title: "WitchCraft",
+    description: "ATS-friendly resume management tool with drag-and-drop builder and template library.",
+    tags: ["React", "Node.js", "MongoDB", "ATS"],
+    github: "https://github.com/Raamizkn/witchcraft",
+    category: "Software"
+  },
+  {
+    id: 12,
+    title: "Creative Spark Agent",
+    description: "AI-powered idea generation tool leveraging IBM watsonx.ai and Granite models.",
+    tags: ["Python", "IBM watsonx", "LLM", "GenAI"],
+    github: "https://github.com/Raamizkn/IBM",
+    category: "Software"
+  },
+  {
+    id: 13,
+    title: "Weather ETL Pipeline",
+    description: "Automated weather data pipeline with Airflow DAGs, data quality checks, and SQL analysis.",
+    tags: ["Python", "Airflow", "ETL", "SQLite"],
+    github: "https://github.com/Raamizkn/Weather-DAG-Pipeline",
+    category: "Software"
+  },
+  {
+    id: 14,
+    title: "RAG PDF Assistant",
+    description: "Advanced PDF research assistant using RAG for multi-document knowledge retrieval.",
+    tags: ["Python", "FastAPI", "LangChain", "ChromaDB"],
+    github: "https://github.com/Raamizkn/RAGpdf",
+    category: "Software"
+  },
+  {
+    id: 15,
+    title: "Referral App",
+    description: "Scalable referral management system for tracking and rewarding user acquisitions.",
+    tags: ["Next.js", "PostgreSQL", "Referral API"],
+    github: "https://github.com/Raamizkn/referralapp",
+    category: "Software"
+  },
+  {
+    id: 16,
+    title: "XLM Model",
+    description: "Implementation and fine-tuning of Cross-lingual Language Models for multilingual tasks.",
+    tags: ["PyTorch", "NLP", "Transformers", "XLM"],
+    github: "https://github.com/Raamizkn/xlm",
+    category: "Software"
+  },
+  {
     id: 5,
     title: "Resume Ranking System",
     description: "Automated resume ranking with BERT embeddings and OpenAI API",
@@ -100,39 +148,7 @@ const softwareProjects: Project[] = [
     tags: ["Python", "AWS", "Lambda", "Docker"],
     github: "https://github.com/Raamizkn/AWS-Sim",
     category: "Software"
-  },
-  {
-    id: 7,
-    title: "Network Compliance Auditor",
-    description: "Tool for auditing network configurations against compliance policies",
-    tags: ["Python", "SSH", "Security", "Automation"],
-    github: "https://github.com/Raamizkn/network",
-    category: "Software"
-  },
-  {
-    id: 8,
-    title: "Page Master Extension",
-    description: "AI-powered Chrome extension for page analysis and summarization",
-    tags: ["JavaScript", "Chrome", "Gemini API"],
-    github: "https://github.com/Raamizkn/page-master",
-    category: "Software"
-  },
-  {
-    id: 9,
-    title: "Chat Application",
-    description: "RESTful chat system with group messaging and user management",
-    tags: ["PHP", "Slim", "SQLite", "REST"],
-    github: "https://github.com/Raamizkn/chat-app",
-    category: "Software"
-  },
-  {
-    id: 10,
-    title: "E-Commerce Platform",
-    description: "Full-featured e-commerce with order tracking and wishlist",
-    tags: ["PHP", "MySQL", "E-Commerce"],
-    github: "https://github.com/Raamizkn/ecommerce-platform",
-    category: "Software"
-  },
+  }
 ]
 
 // Project Card Component
@@ -408,7 +424,7 @@ export default function Projects() {
           </div>
         </motion.div>
 
-        {/* Projects Grid */}
+        {/* Projects Grid / Gallery */}
         <AnimatePresence mode="wait">
           <motion.div
             key={activeTab}
@@ -416,7 +432,9 @@ export default function Projects() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.4 }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            className={activeTab === 'software' 
+              ? "flex overflow-x-auto pb-12 gap-6 snap-x snap-mandatory no-scrollbar -mx-4 md:-mx-8 px-4 md:px-8 cursor-grab active:cursor-grabbing" 
+              : "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"}
           >
             {(activeTab === 'product' ? productProjects : softwareProjects).map((project, index) => (
               <motion.div
@@ -424,6 +442,7 @@ export default function Projects() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
+                className={activeTab === 'software' ? "min-w-[300px] md:min-w-[400px] snap-start" : ""}
               >
                 <ProjectCard 
                   project={project} 
