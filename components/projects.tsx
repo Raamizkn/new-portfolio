@@ -19,7 +19,7 @@ interface Project {
   accentColor?: string
 }
 
-// Product Management Projects
+// Product Management 
 const productProjects: Project[] = [
   {
     id: 1,
