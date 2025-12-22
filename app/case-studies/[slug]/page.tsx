@@ -4,6 +4,7 @@ import React, { useEffect } from 'react'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { ArrowLeft, Check, TrendingDown, Users, Zap, Layout, BarChart3, ShieldCheck, Target, Rocket } from 'lucide-react'
+import Header from '@/components/header'
 
 interface Persona {
   name: string
@@ -1089,24 +1090,12 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
 
   return (
     <div 
-      className="min-h-screen bg-white text-gray-900 pb-20 selection:bg-gray-100"
+      className="min-h-screen bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 pb-20 selection:bg-gray-100 dark:selection:bg-gray-800"
       style={{ '--accent-color': study.accentColor } as React.CSSProperties}
     >
-      {/* Navigation */}
-      <nav className="max-w-7xl mx-auto px-6 py-8 flex justify-between items-center border-b border-gray-50">
-        <Link href="/" className="text-2xl font-bold tracking-tighter">
-          RKN
-        </Link>
-        <div className="hidden md:flex gap-10 items-center font-normal">
-          <Link href="/" className="text-[15px] hover:text-gray-500 transition-colors">Home</Link>
-          <Link href="/#about" className="text-[15px] hover:text-gray-500 transition-colors">About</Link>
-          <Link href="/#projects" className="text-[15px] hover:text-gray-500 transition-colors font-medium">Case Studies</Link>
-          <Link href="/#contact" className="text-[15px] hover:text-gray-500 transition-colors">Contact</Link>
-          <Link href="/#contact" className="px-7 py-3 bg-black text-white rounded-full text-[15px] font-medium hover:bg-gray-800 transition-all">Get in touch</Link>
-        </div>
-      </nav>
+      <Header />
 
-      <main className="max-w-5xl mx-auto px-6 pt-16">
+      <main className="max-w-5xl mx-auto px-6 pt-32">
         <Link href="/#projects" className="inline-flex items-center text-gray-400 hover:text-black transition-colors mb-16 text-sm font-medium uppercase tracking-widest">
           <ArrowLeft className="w-4 h-4 mr-2" />
           Back to Projects
@@ -1147,12 +1136,12 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
             <h2 className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 mb-6">Overview</h2>
           </div>
           <div className="md:col-span-8 space-y-12">
-            <p className="text-2xl font-light leading-relaxed text-gray-600">
+            <p className="text-2xl font-light leading-relaxed text-gray-600 dark:text-gray-300">
               {study.overview}
             </p>
             <div className="space-y-6">
               <h3 className="text-3xl font-medium">Introduction</h3>
-              <p className="text-xl font-light leading-relaxed text-gray-500">
+              <p className="text-xl font-light leading-relaxed text-gray-500 dark:text-gray-400">
                 {study.introduction}
               </p>
             </div>
@@ -1166,11 +1155,11 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
             {study.conceptSummary.map((item, i) => (
               <div 
                 key={i} 
-                className="p-10 bg-gray-50 rounded-[32px] transition-colors duration-500 group"
+                className="p-10 bg-gray-50 dark:bg-white/5 rounded-[32px] transition-colors duration-500 group border border-transparent dark:border-white/5 hover:border-gray-200 dark:hover:border-white/10"
                 style={{ '--hover-bg': `${study.accentColor}10` } as React.CSSProperties}
               >
                 <div 
-                  className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center mb-8 shadow-sm transition-colors"
+                  className="w-12 h-12 bg-white dark:bg-white/10 rounded-2xl flex items-center justify-center mb-8 shadow-sm transition-colors border border-gray-100 dark:border-white/10"
                   style={{ color: study.accentColor }}
                 >
                   {i === 0 && <ShieldCheck className="w-6 h-6" />}
@@ -1178,19 +1167,19 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                   {i === 2 && <TrendingDown className="w-6 h-6" />}
                 </div>
                 <h3 className="text-xl font-medium mb-4">{item.title}</h3>
-                <p className="text-gray-500 font-light leading-relaxed">{item.description}</p>
+                <p className="text-gray-500 dark:text-gray-400 font-light leading-relaxed">{item.description}</p>
               </div>
             ))}
           </div>
         </div>
 
         {/* Impact Statement */}
-        <div className="bg-black text-white p-16 md:p-24 rounded-[48px] mb-40 relative overflow-hidden">
+        <div className="bg-black dark:bg-white/5 text-white p-16 md:p-24 rounded-[48px] mb-40 relative overflow-hidden border border-white/10">
           <div 
             className="absolute top-0 right-0 w-96 h-96 blur-[120px] rounded-full -mr-48 -mt-48 opacity-20"
             style={{ backgroundColor: study.accentColor }}
           ></div>
-          <div className="relative z-10">
+          <div className="relative z-10 text-center md:text-left">
             <h2 className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 mb-10">Impact Statement</h2>
             <p className="text-3xl md:text-5xl font-light leading-tight">
               "{study.impactStatement}"
@@ -1203,17 +1192,17 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
           <div className="space-y-8">
             <h2 className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400">The Challenge</h2>
             <h3 className="text-4xl font-medium leading-tight">{study.problemOpportunity.challenge.title}</h3>
-            <p className="text-xl font-light text-gray-500 leading-relaxed">{study.problemOpportunity.challenge.description}</p>
+            <p className="text-xl font-light text-gray-500 dark:text-gray-400 leading-relaxed">{study.problemOpportunity.challenge.description}</p>
           </div>
           <div className="space-y-8">
             <h2 className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400">The Opportunity</h2>
             <h3 className="text-4xl font-medium leading-tight">{study.problemOpportunity.opportunity.title}</h3>
-            <p className="text-xl font-light text-gray-500 leading-relaxed">{study.problemOpportunity.opportunity.description}</p>
+            <p className="text-xl font-light text-gray-500 dark:text-gray-400 leading-relaxed">{study.problemOpportunity.opportunity.description}</p>
           </div>
         </div>
 
         {/* Why It Matters */}
-        <div className="mb-40 py-24 border-y border-gray-100">
+        <div className="mb-40 py-24 border-y border-gray-100 dark:border-white/5">
           <h2 className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 mb-16 text-center">Why It Matters</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
             {study.whyItMatters.map((item, i) => (
@@ -1225,7 +1214,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                   0{i+1}
                 </div>
                 <h3 className="text-2xl font-medium">{item.title}</h3>
-                <p className="text-lg font-light text-gray-500 leading-relaxed">{item.description}</p>
+                <p className="text-lg font-light text-gray-500 dark:text-gray-400 leading-relaxed">{item.description}</p>
               </div>
             ))}
           </div>
@@ -1270,11 +1259,14 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
             {study.personas.map((persona, i) => (
               <div 
                 key={i} 
-                className="p-12 border border-gray-100 rounded-[40px] transition-all duration-500 hover:shadow-2xl"
+                className="p-12 border border-gray-100 dark:border-white/5 rounded-[40px] transition-all duration-500 hover:shadow-2xl bg-gray-50/50 dark:bg-white/5"
                 style={{ '--shadow-color': `${study.accentColor}20` } as React.CSSProperties}
               >
                 <div className="flex items-center gap-4 mb-10">
-                  <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center text-2xl font-medium">
+                  <div 
+                    className="w-16 h-16 rounded-full flex items-center justify-center text-2xl font-medium"
+                    style={{ backgroundColor: `${study.accentColor}20`, color: study.accentColor }}
+                  >
                     {persona.name[0]}
                   </div>
                   <div>
@@ -1288,10 +1280,10 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                   </div>
                 </div>
                 <div className="space-y-6 text-[15px]">
-                  <p className="font-light text-gray-600"><span className="font-semibold text-gray-900">Profile:</span> {persona.profile}</p>
-                  <p className="font-light text-gray-600"><span className="font-semibold text-gray-900">Schedule:</span> {persona.schedule}</p>
-                  <p className="font-light text-gray-600"><span className="font-semibold text-gray-900">Current Behavior:</span> {persona.behavior}</p>
-                  <p className="font-light text-gray-600"><span className="font-semibold text-gray-900">Needs:</span> {persona.needs}</p>
+                  <p className="font-light text-gray-600 dark:text-gray-400"><span className="font-semibold text-gray-900 dark:text-white">Profile:</span> {persona.profile}</p>
+                  <p className="font-light text-gray-600 dark:text-gray-400"><span className="font-semibold text-gray-900 dark:text-white">Schedule:</span> {persona.schedule}</p>
+                  <p className="font-light text-gray-600 dark:text-gray-400"><span className="font-semibold text-gray-900 dark:text-white">Current Behavior:</span> {persona.behavior}</p>
+                  <p className="font-light text-gray-600 dark:text-gray-400"><span className="font-semibold text-gray-900 dark:text-white">Needs:</span> {persona.needs}</p>
                 </div>
               </div>
             ))}
@@ -1299,54 +1291,61 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
         </div>
 
         {/* Product Experience */}
-        <div className="mb-40 space-y-16">
+        <div className="mb-40 space-y-24">
           <h2 className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 text-center">Product Experience</h2>
-          {study.productExperience.map((feature, i) => (
-            <div key={i} className="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
-              <div className={`md:col-span-5 ${i % 2 === 1 ? 'md:order-2' : ''}`}>
-                <div className="aspect-[4/3] bg-gray-50 rounded-[32px] overflow-hidden flex items-center justify-center text-gray-300">
-                  {feature.image ? (
-                    <img 
-                      src={feature.image} 
-                      alt={feature.title}
-                      className="w-full h-full object-cover"
-                    />
-                  ) : (
-                    <>
-                      {i === 0 && <Target className="w-24 h-24" />}
-                      {i === 1 && <Users className="w-24 h-24" />}
-                      {i === 2 && <TrendingDown className="w-24 h-24" />}
-                    </>
-                  )}
-                </div>
-              </div>
-              <div className={`md:col-span-7 ${i % 2 === 1 ? 'md:order-1' : ''}`}>
-                <h3 className="text-3xl font-medium mb-6">{feature.title}</h3>
-                <div className="space-y-6">
-                  <div>
-                    <p className="text-xs font-bold uppercase text-gray-400 mb-1 tracking-wider">Mechanism</p>
-                    <p className="text-xl font-light text-gray-600">{feature.mechanism}</p>
-                  </div>
-                  <div>
-                    <p className="text-xs font-bold uppercase text-gray-400 mb-1 tracking-wider">Benefit</p>
-                    <p className="text-xl font-light text-gray-600">{feature.benefit}</p>
-                  </div>
-                  {feature.howItWorks && (
-                    <div 
-                      className="p-6 rounded-2xl border-l-4"
-                      style={{ 
-                        backgroundColor: `${study.accentColor}10`,
-                        borderLeftColor: study.accentColor
-                      }}
-                    >
-                      <p className="text-sm font-medium mb-1" style={{ color: study.accentColor }}>{params.slug === 'talkform' ? 'Product Insight' : 'Technical Implementation'}</p>
-                      <p className="font-light" style={{ color: study.accentColor }}>{feature.howItWorks}</p>
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
+            {study.productExperience.map((feature, i) => {
+              const colSpan = i === 0 ? "md:col-span-12" : i % 3 === 1 ? "md:col-span-7" : "md:col-span-5";
+              return (
+                <div 
+                  key={i} 
+                  className={`${colSpan} bg-gray-50 dark:bg-white/5 rounded-[32px] overflow-hidden border border-gray-100 dark:border-white/10 flex flex-col`}
+                >
+                  <div className="p-8 md:p-10 space-y-6 flex-grow">
+                    <div className="space-y-2">
+                      <h3 className="text-2xl font-medium tracking-tight">{feature.title}</h3>
+                      <div className="flex flex-wrap gap-x-8 gap-y-4">
+                        <div className="max-w-[240px]">
+                          <p className="text-[10px] font-bold uppercase text-gray-400 mb-1 tracking-widest">Mechanism</p>
+                          <p className="text-sm font-light text-gray-600 dark:text-gray-400 leading-relaxed">{feature.mechanism}</p>
+                        </div>
+                        <div className="max-w-[240px]">
+                          <p className="text-[10px] font-bold uppercase text-gray-400 mb-1 tracking-widest">Benefit</p>
+                          <p className="text-sm font-light text-gray-600 dark:text-gray-400 leading-relaxed">{feature.benefit}</p>
+                        </div>
+                      </div>
                     </div>
-                  )}
+                    
+                    {feature.howItWorks && (
+                      <div 
+                        className="p-4 rounded-2xl text-xs font-light leading-relaxed"
+                        style={{ backgroundColor: `${study.accentColor}10`, color: study.accentColor }}
+                      >
+                        <span className="font-bold uppercase tracking-wider block mb-1">Insight</span>
+                        {feature.howItWorks}
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="px-8 pb-8 md:px-10 md:pb-10">
+                    <div className="aspect-[16/10] w-full bg-white dark:bg-black/20 rounded-2xl overflow-hidden shadow-xl border border-gray-100 dark:border-white/5">
+                      {feature.image ? (
+                        <img 
+                          src={feature.image} 
+                          alt={feature.title}
+                          className="w-full h-full object-cover"
+                        />
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center text-gray-200 dark:text-gray-800">
+                          {i % 3 === 0 ? <Target className="w-20 h-20" /> : i % 3 === 1 ? <Users className="w-20 h-20" /> : <TrendingDown className="w-20 h-20" />}
+                        </div>
+                      )}
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-          ))}
+              );
+            })}
+          </div>
         </div>
 
         {/* Pricing Tiers */}
@@ -1357,7 +1356,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
               <div 
                 key={i} 
                 className={`p-10 rounded-[40px] border transition-transform duration-500 ${
-                  i === 1 ? 'bg-black text-white border-black scale-105 shadow-2xl' : 'bg-white border-gray-100'
+                  i === 1 ? 'bg-black dark:bg-white/10 text-white border-black scale-105 shadow-2xl' : 'bg-white dark:bg-white/5 border-gray-100 dark:border-white/10'
                 }`}
               >
                 <h3 className="text-xl font-medium mb-2">{tier.name}</h3>
@@ -1370,7 +1369,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                         className="w-5 h-5 flex-shrink-0"
                         style={{ color: study.accentColor }} 
                       />
-                      <span className={i === 1 ? 'text-gray-300' : 'text-gray-600'}>{f}</span>
+                      <span className={i === 1 ? 'text-gray-300' : 'text-gray-600 dark:text-gray-400'}>{f}</span>
                     </li>
                   ))}
                 </ul>
@@ -1384,7 +1383,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
           <h2 className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 mb-16">Go-to-Market Strategy</h2>
           <div className="space-y-8">
             {study.goToMarket.map((phase, i) => (
-              <div key={i} className="p-12 bg-gray-50 rounded-[40px] group hover:bg-white hover:shadow-xl transition-all duration-500 border border-transparent hover:border-gray-50">
+              <div key={i} className="p-12 bg-gray-50 dark:bg-white/5 rounded-[40px] group hover:bg-white dark:hover:bg-white/10 hover:shadow-xl transition-all duration-500 border border-transparent hover:border-gray-50 dark:hover:border-white/10">
                 <div className="flex flex-col md:flex-row gap-8">
                   <div className="md:w-1/4">
                     <div 
@@ -1398,11 +1397,11 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                   <div className="md:w-3/4 grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div>
                       <p className="text-[10px] font-bold uppercase text-gray-400 mb-2 tracking-widest">Strategy</p>
-                      <p className="font-light text-gray-600 leading-relaxed">{phase.strategy}</p>
+                      <p className="font-light text-gray-600 dark:text-gray-400 leading-relaxed">{phase.strategy}</p>
                     </div>
                     <div>
                       <p className="text-[10px] font-bold uppercase text-gray-400 mb-2 tracking-widest">Pitch</p>
-                      <p className="font-light text-gray-600 italic">"{phase.pitch}"</p>
+                      <p className="font-light text-gray-600 dark:text-gray-400 italic">"{phase.pitch}"</p>
                     </div>
                   </div>
                 </div>
@@ -1416,17 +1415,17 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
           <h2 className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 mb-12">Risks & Mitigation</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {study.risks.map((risk, i) => (
-              <div key={i} className="p-10 bg-red-50/30 border border-red-100 rounded-[32px]">
+              <div key={i} className="p-10 bg-red-50/30 dark:bg-red-950/10 border border-red-100 dark:border-red-900/20 rounded-[32px]">
                 <div className="flex justify-between items-center mb-6">
-                  <h3 className="text-xl font-medium text-red-900">{risk.category}</h3>
-                  <span className="px-3 py-1 bg-red-100 text-red-700 text-[10px] font-bold uppercase tracking-wider rounded-full">
+                  <h3 className="text-xl font-medium text-red-900 dark:text-red-400">{risk.category}</h3>
+                  <span className="px-3 py-1 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400 text-[10px] font-bold uppercase tracking-wider rounded-full">
                     {risk.probability} Probability
                   </span>
                 </div>
-                <p className="text-gray-700 font-light mb-8 leading-relaxed">{risk.detail}</p>
-                <div className="p-6 bg-white rounded-2xl shadow-sm border border-red-50">
+                <p className="text-gray-700 dark:text-gray-300 font-light mb-8 leading-relaxed">{risk.detail}</p>
+                <div className="p-6 bg-white dark:bg-white/5 rounded-2xl shadow-sm border border-red-50 dark:border-red-900/10">
                   <p className="text-[10px] font-bold uppercase text-gray-400 mb-2 tracking-widest">Mitigation</p>
-                  <p className="font-light text-gray-600 text-sm leading-relaxed">{risk.mitigation}</p>
+                  <p className="font-light text-gray-600 dark:text-gray-400 text-sm leading-relaxed">{risk.mitigation}</p>
                 </div>
               </div>
             ))}
@@ -1434,14 +1433,14 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
         </div>
 
         {/* Forecast */}
-        <div className="mb-40 bg-gray-50 p-16 md:p-24 rounded-[48px]">
+        <div className="mb-40 bg-gray-50 dark:bg-white/5 p-16 md:p-24 rounded-[48px] border border-transparent dark:border-white/5">
           <h2 className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 mb-16">Forecast & Business Model</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-24 mb-24">
             <div className="space-y-12">
               <h3 className="text-3xl font-medium">Assumptions</h3>
               <ul className="space-y-6">
                 {study.forecast.assumptions.map((a, i) => (
-                  <li key={i} className="flex gap-4 font-light text-gray-500 leading-relaxed italic text-lg">
+                  <li key={i} className="flex gap-4 font-light text-gray-500 dark:text-gray-400 leading-relaxed italic text-lg">
                     <span style={{ color: study.accentColor }} className="font-bold">•</span> {a}
                   </li>
                 ))}
@@ -1449,9 +1448,9 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
             </div>
             <div className="grid grid-cols-1 gap-8">
               {study.forecast.revenue.map((r, i) => (
-                <div key={i} className="p-10 bg-white rounded-3xl shadow-sm border border-gray-100">
+                <div key={i} className="p-10 bg-white dark:bg-white/5 rounded-3xl shadow-sm border border-gray-100 dark:border-white/10">
                   <p className="text-[10px] font-bold uppercase text-gray-400 mb-3 tracking-widest">{r.label}</p>
-                  <div className="text-4xl font-normal text-black">{r.value}</div>
+                  <div className="text-4xl font-normal text-black dark:text-white">{r.value}</div>
                 </div>
               ))}
             </div>
@@ -1463,9 +1462,8 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
               {study.forecast.retentionMultiplier.map((m, i) => (
                 <div 
                   key={i} 
-                  className="p-8 rounded-3xl border text-center"
+                  className="p-8 rounded-3xl border text-center bg-white dark:bg-white/5 border-gray-100 dark:border-white/10"
                   style={{ 
-                    backgroundColor: `${study.accentColor}05`,
                     borderColor: `${study.accentColor}20`
                   }}
                 >
@@ -1477,7 +1475,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                   </p>
                   <div className="flex items-center justify-center gap-4 mb-4">
                     <span className="text-gray-400 line-through text-sm">{m.standard}</span>
-                    <span className="text-3xl font-normal" style={{ color: study.accentColor }}>{m.commuter}</span>
+                    <span className="text-3xl font-normal text-black dark:text-white" style={{ color: study.accentColor }}>{m.commuter}</span>
                   </div>
                   <div 
                     className="inline-block px-3 py-1 text-[10px] font-bold rounded-full uppercase tracking-wider"
@@ -1495,7 +1493,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
         </div>
 
         {/* Strategic Analysis Section */}
-        <div className="mb-40 p-16 md:p-24 bg-gray-900 text-white rounded-[48px] relative overflow-hidden">
+        <div className="mb-40 p-16 md:p-24 bg-gray-900 dark:bg-white/5 text-white rounded-[48px] relative overflow-hidden border border-white/10">
           <div 
             className="absolute top-0 left-0 w-full h-full opacity-10"
             style={{ 

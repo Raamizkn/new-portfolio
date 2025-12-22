@@ -150,32 +150,32 @@ const ProjectCard = ({ project, onClick }: { project: Project; onClick: () => vo
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        <div className="relative aspect-square overflow-hidden rounded-3xl mb-4 bg-gray-100 dark:bg-gray-800">
+        <div className="relative aspect-[4/5] overflow-hidden rounded-[32px] mb-6 bg-white/5 border border-white/10">
           {project.image && (
             <img 
               src={project.image} 
               alt={project.title}
-              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
             />
           )}
           
           {/* Arrow Button inside image */}
-          <div className="absolute bottom-6 left-6">
+          <div className="absolute bottom-8 left-8">
             <motion.div
-              className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg"
+              className="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-2xl overflow-hidden"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >
-              <ExternalLink className="w-5 h-5 text-black" />
+              <ExternalLink className="w-6 h-6 text-black" />
             </motion.div>
           </div>
         </div>
         
-        <div className="space-y-1 px-2">
-          <p className="text-gray-500 dark:text-gray-400 text-sm font-light">
+        <div className="space-y-2 px-2">
+          <p className="text-gray-500 text-xs font-bold uppercase tracking-widest">
             {project.client}
           </p>
-          <h3 className="text-xl md:text-2xl font-normal text-gray-900 dark:text-white leading-tight">
+          <h3 className="text-2xl font-light text-white leading-tight tracking-tight group-hover:text-[#8668ED] transition-colors">
             {project.title}
           </h3>
         </div>
@@ -190,44 +190,49 @@ const ProjectCard = ({ project, onClick }: { project: Project; onClick: () => vo
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
       transition={{ duration: 0.3 }}
-      className="relative w-full rounded-2xl overflow-hidden cursor-pointer group"
+      className="relative w-full rounded-[32px] overflow-hidden cursor-pointer group border border-white/5"
       style={{
-        backgroundColor: '#8668ED',
-        aspectRatio: '16/10',
+        backgroundColor: '#111111',
+        aspectRatio: '4/5',
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onClick={onClick}
-      whileHover={{ y: -8, transition: { duration: 0.2 } }}
+      whileHover={{ y: -12, transition: { duration: 0.3, ease: "easeOut" } }}
     >
-      {/* Subtle gradient overlay */}
+      {/* Subtle grid pattern overlay */}
       <div 
-        className="absolute inset-0"
+        className="absolute inset-0 opacity-5"
         style={{
-          background: 'linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 50%, rgba(0,0,0,0.1) 100%)',
+          backgroundImage: `radial-gradient(circle at 2px 2px, rgba(255,255,255,0.1) 1px, transparent 0)`,
+          backgroundSize: '24px 24px'
         }}
       />
       
       {/* Content */}
-      <div className="absolute inset-0 p-6 md:p-8 flex flex-col justify-between">
+      <div className="absolute inset-0 p-8 md:p-10 flex flex-col justify-between z-10">
         {/* Title */}
         <div>
-          <h3 className="text-2xl md:text-3xl font-light text-white leading-tight mb-2">
+          <h3 className="text-3xl md:text-4xl font-light text-white leading-tight mb-4 tracking-tight">
             {project.title}
           </h3>
-          <p className="text-white/70 text-sm font-light line-clamp-2">
+          <p className="text-gray-400 text-base font-light line-clamp-3 leading-relaxed">
             {project.description}
           </p>
         </div>
         
         {/* Bottom Info */}
         <div className="flex items-center justify-between">
-          <span className="text-white/70 text-sm font-light">
-            {project.tags[0]}
-          </span>
+          <div className="flex flex-wrap gap-2">
+            {project.tags.slice(0, 2).map(tag => (
+              <span key={tag} className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] text-gray-400 uppercase tracking-widest font-medium">
+                {tag}
+              </span>
+            ))}
+          </div>
           {project.github && (
             <motion.button
-              className="p-2 bg-white/20 backdrop-blur-sm rounded-lg hover:bg-white/30 transition-colors"
+              className="p-3 bg-white/10 backdrop-blur-md rounded-full border border-white/10 hover:bg-white hover:text-black transition-all duration-300"
               onClick={(e) => {
                 e.stopPropagation()
                 window.open(project.github, '_blank')
@@ -235,18 +240,21 @@ const ProjectCard = ({ project, onClick }: { project: Project; onClick: () => vo
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >
-              <GitHub className="w-4 h-4 text-white" />
+              <GitHub className="w-5 h-5" />
             </motion.button>
           )}
         </div>
       </div>
       
-      {/* Hover overlay */}
+      {/* Hover gradient light */}
       <motion.div
-        className="absolute inset-0 bg-white/10"
+        className="absolute inset-0 z-0"
         initial={{ opacity: 0 }}
         animate={{ opacity: isHovered ? 1 : 0 }}
-        transition={{ duration: 0.2 }}
+        transition={{ duration: 0.5 }}
+        style={{
+          background: `radial-gradient(circle at center, rgba(134, 104, 237, 0.15) 0%, transparent 70%)`
+        }}
       />
     </motion.div>
   )
@@ -346,8 +354,8 @@ export default function Projects() {
   }
 
   return (
-    <section id="projects" className="py-12 px-4 md:px-8 relative overflow-hidden bg-white dark:bg-transparent">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-200/20 dark:from-purple-900/10 via-transparent to-transparent"></div>
+    <section id="projects" className="py-24 px-4 md:px-8 relative overflow-hidden bg-[#050505] text-white">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-purple-900/20 via-transparent to-transparent"></div>
       
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Header */}
@@ -356,14 +364,13 @@ export default function Projects() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-8"
+          className="text-center mb-16"
         >
-          <h2 className="text-5xl md:text-6xl lg:text-7xl font-light mb-6 leading-tight">
-            <span className="text-gray-900 dark:text-white">My </span>
-            <span style={{ color: '#8668ED' }}>Projects</span>
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-light mb-6 leading-tight tracking-tight">
+            Selected <span style={{ color: '#8668ED' }}>Work</span>
           </h2>
-          <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-lg">
-            A collection of my recent work, <span className="text-gray-500 dark:text-gray-600">showcasing my relevant skills and experience.</span>
+          <p className="text-gray-400 max-w-2xl mx-auto text-lg font-light">
+            A curated collection of product strategies and software engineering projects.
           </p>
         </motion.div>
 
@@ -373,9 +380,9 @@ export default function Projects() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
-          className="flex justify-center mb-12"
+          className="flex justify-center mb-16"
         >
-          <div className="inline-flex bg-gray-100 dark:bg-gray-900/50 backdrop-blur-sm border border-gray-300 dark:border-gray-800 rounded-full p-1.5">
+          <div className="inline-flex bg-white/5 backdrop-blur-md border border-white/10 rounded-full p-1.5">
             {tabs.map((tab) => (
               <button
                 key={tab.id}
@@ -385,15 +392,14 @@ export default function Projects() {
                 {activeTab === tab.id && (
                   <motion.div
                     layoutId="activeProjectTab"
-                    className="absolute inset-0 rounded-full"
-                    style={{ backgroundColor: '#8668ED' }}
+                    className="absolute inset-0 rounded-full bg-white"
                     transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                   />
                 )}
-                <span className={`relative z-10 font-light transition-colors duration-300 ${
+                <span className={`relative z-10 text-sm font-medium transition-colors duration-300 ${
                   activeTab === tab.id 
-                    ? 'text-white' 
-                    : 'text-gray-600 dark:text-gray-400'
+                    ? 'text-black' 
+                    : 'text-gray-400 hover:text-white'
                 }`}>
                   {tab.label}
                 </span>
