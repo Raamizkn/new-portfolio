@@ -594,21 +594,21 @@ const caseStudies: Record<string, CaseStudyData> = {
         mechanism: "User speaks a natural sentence containing multiple data points.",
         benefit: "Populates Name, Email, and Role simultaneously from one utterance.",
         howItWorks: "Uses LLM prompt engineering to map narrative text to JSON schema.",
-        image: "/products/Talkform/Screenshot 2025-12-22 at 00.50.37.png"
+        image: "/products/Talkform/Screenshot 2025-12-22 at 00.48.33.png"
       },
       {
         title: "Confidence Loop",
         mechanism: "Real-time streaming with optimistic UI and shimmer animations.",
         benefit: "Builds trust by showing 'ears' (STT) and 'brain' (LLM) processing.",
         howItWorks: "Highlights low-confidence words for quick tap-to-edit correction.",
-        image: "/products/Talkform/Screenshot 2025-12-22 at 00.53.09.png"
+        image: "/products/Talkform/Screenshot 2025-12-22 at 00.50.37.png"
       },
       {
         title: "Enterprise Sync",
         mechanism: "Native integration layer with Zapier and Webhooks.",
         benefit: "Data flows instantly to Salesforce or HubSpot 'Source of Truth'.",
         howItWorks: "Google Form Importer scrapes schemas for instant voice-enablement.",
-        image: "/products/Talkform/Screenshot 2025-12-22 at 00.49.50.png"
+        image: "/products/Talkform/Screenshot 2025-12-22 at 00.53.09.png"
       }
     ],
     pricing: [
@@ -794,21 +794,21 @@ const caseStudies: Record<string, CaseStudyData> = {
         mechanism: "User defines \"Home\" and \"Work\" location and pre-schedules commute window.",
         benefit: "Uber \"locks\" the price at the base rate, exempting these specific rides from surge pricing.",
         howItWorks: "Algorithms batch these rides or position drivers efficiently, reducing operational cost.",
-        image: "/products/uber/Screenshot 2025-12-18 at 01.48.55.png"
+        image: "/products/uber/Screenshot 2025-12-18 at 01.50.44.png"
       },
       {
         title: "Multimodal Integration",
         mechanism: "App integrates local transit ticketing via SDKs (e.g., Masabi).",
         benefit: "User sees a \"Commuter\" tab with \"One Tap Access\" for QR codes for subway/bus.",
         howItWorks: "App suggests \"Mixed Mode\" trip: Uber to station + digital tube ticket in one transaction.",
-        image: "/products/uber/Screenshot 2025-12-18 at 01.49.34.png"
+        image: "/products/uber/Screenshot 2025-12-18 at 01.50.59.png"
       },
       {
         title: "The \"Hybrid Rollover\"",
         mechanism: "Unused rides roll over to the next month (capped at 2x).",
         benefit: "Eliminates \"use it or lose it\" anxiety that prevents commitment to monthly passes.",
         howItWorks: "Directly counters primary reason for voluntary churn in utility subscriptions.",
-        image: "/products/uber/Screenshot 2025-12-18 at 01.50.02.png"
+        image: "/products/uber/Screenshot 2025-12-18 at 01.57.41.png"
       }
     ],
     pricing: [
@@ -990,14 +990,14 @@ const caseStudies: Record<string, CaseStudyData> = {
         mechanism: "Direct search separation for 'Stays', 'Experiences', and 'CoSpace'.",
         benefit: "Instant filtering for professional workspace criteria, avoiding vacation-only listings.",
         howItWorks: "Prioritizes search results based on 'Work-Ready' certification.",
-        image: "/products/airbnb/Screenshot 2025-12-21 at 22.53.47.png"
+        image: "/products/airbnb/Screenshot 2025-12-21 at 22.50.57.png"
       },
       {
         title: "Work-Ready Certification",
         mechanism: "Integrated speed tests (Ookla) and AI-verified ergonomics (desk/chair check).",
         benefit: "Eliminates the 'trust gap' regarding internet reliability and work setup.",
         howItWorks: "Hosts must run in-app speed tests to display verified connection stats.",
-        image: "/products/airbnb/Screenshot 2025-12-21 at 22.50.57.png"
+        image: "/products/airbnb/Screenshot 2025-12-21 at 22.51.42.png"
       },
       {
         title: "Seamless Autonomous Access",
@@ -1327,13 +1327,13 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                     )}
                   </div>
 
-                  <div className="px-8 pb-8 md:px-10 md:pb-10">
-                    <div className="aspect-[16/10] w-full bg-white dark:bg-black/20 rounded-2xl overflow-hidden shadow-xl border border-gray-100 dark:border-white/5">
+                  <div className="px-4 pb-4 md:px-6 md:pb-6">
+                    <div className="aspect-[16/9] w-full bg-white dark:bg-black/20 rounded-2xl overflow-hidden shadow-xl border border-gray-100 dark:border-white/5">
                       {feature.image ? (
                         <img 
                           src={feature.image} 
                           alt={feature.title}
-                          className="w-full h-full object-cover"
+                          className="w-full h-full object-cover object-top"
                         />
                       ) : (
                         <div className="w-full h-full flex items-center justify-center text-gray-200 dark:text-gray-800">
@@ -1458,11 +1458,11 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
           
           <div className="space-y-12">
             <h3 className="text-3xl font-medium">Retention Multiplier Effect</h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {study.forecast.retentionMultiplier.map((m, i) => (
                 <div 
                   key={i} 
-                  className="p-8 rounded-3xl border text-center bg-white dark:bg-white/5 border-gray-100 dark:border-white/10"
+                  className="p-6 rounded-3xl border text-center bg-white dark:bg-white/5 border-gray-100 dark:border-white/10 flex flex-col justify-between min-h-[200px]"
                   style={{ 
                     borderColor: `${study.accentColor}20`
                   }}
@@ -1473,12 +1473,16 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                   >
                     {m.metric}
                   </p>
-                  <div className="flex items-center justify-center gap-4 mb-4">
-                    <span className="text-gray-400 line-through text-sm">{m.standard}</span>
-                    <span className="text-3xl font-normal text-black dark:text-white" style={{ color: study.accentColor }}>{m.commuter}</span>
+                  <div className="space-y-3 mb-6">
+                    <div className="flex flex-col items-center gap-1">
+                      <span className="text-gray-400 line-through text-xs">{m.standard}</span>
+                      <span className="text-2xl font-normal text-black dark:text-white leading-tight break-words max-w-full" style={{ color: study.accentColor }}>
+                        {m.commuter}
+                      </span>
+                    </div>
                   </div>
                   <div 
-                    className="inline-block px-3 py-1 text-[10px] font-bold rounded-full uppercase tracking-wider"
+                    className="inline-block px-3 py-1.5 text-[9px] font-bold rounded-full uppercase tracking-wider mt-auto mx-auto"
                     style={{ 
                       backgroundColor: `${study.accentColor}20`,
                       color: study.accentColor

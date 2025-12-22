@@ -10,7 +10,7 @@ export default function About() {
   return (
     <section id="about" className="py-32 px-4 md:px-8 relative overflow-hidden bg-white dark:bg-gray-950" ref={ref}>
       {/* Background Effects */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-200/10 dark:from-purple-900/5 via-transparent to-transparent"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-emerald-200/10 dark:from-emerald-900/5 via-transparent to-transparent"></div>
       
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Main Typography Section */}
@@ -105,7 +105,7 @@ export default function About() {
                 borderColor: 'transparent'
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = '#8668ED'
+                e.currentTarget.style.borderColor = '#059669'
                 e.currentTarget.style.transform = 'translateY(-4px)'
               }}
               onMouseLeave={(e) => {

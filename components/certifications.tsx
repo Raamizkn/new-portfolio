@@ -101,7 +101,7 @@ const CertificationCard = ({ cert, index }: { cert: Certification; index: number
       <div 
         className="h-full p-8 bg-white dark:bg-gray-900/40 backdrop-blur-sm border border-gray-200 dark:border-gray-800/50 rounded-2xl transition-all duration-300 flex flex-col"
         onMouseEnter={(e) => {
-          e.currentTarget.style.borderColor = '#8668ED'
+          e.currentTarget.style.borderColor = '#059669'
           e.currentTarget.style.transform = 'translateY(-4px)'
         }}
         onMouseLeave={(e) => {
@@ -113,9 +113,9 @@ const CertificationCard = ({ cert, index }: { cert: Certification; index: number
         <div className="mb-6">
           <div 
             className="inline-flex items-center justify-center w-14 h-14 rounded-xl"
-            style={{ backgroundColor: '#8668ED20' }}
+            style={{ backgroundColor: '#05966920' }}
           >
-            <Award className="w-7 h-7" style={{ color: '#8668ED' }} />
+            <Award className="w-7 h-7" style={{ color: '#059669' }} />
           </div>
         </div>
 
@@ -162,7 +162,7 @@ const CertificationCard = ({ cert, index }: { cert: Certification; index: number
                   aria-label="Copy credential ID"
                 >
                   {copiedId === cert.id ? (
-                    <Check className="w-4 h-4" style={{ color: '#8668ED' }} />
+                    <Check className="w-4 h-4" style={{ color: '#059669' }} />
                   ) : (
                     <Copy className="w-4 h-4 text-gray-600 dark:text-gray-400" />
                   )}
@@ -177,12 +177,12 @@ const CertificationCard = ({ cert, index }: { cert: Certification; index: number
           onClick={() => window.open(cert.credentialUrl, '_blank')}
           className="relative overflow-hidden w-full font-light py-3 rounded-full border-2 bg-transparent group"
           style={{ 
-            borderColor: '#8668ED'
+            borderColor: '#059669'
           }}
           whileTap={{ scale: 0.99 }}
           transition={{ type: "spring", stiffness: 400, damping: 17 }}
         >
-          <span className="relative z-10 flex items-center justify-center transition-colors duration-200" style={{ color: '#8668ED' }}>
+          <span className="relative z-10 flex items-center justify-center transition-colors duration-200" style={{ color: '#059669' }}>
             <span className="flex items-center group-hover:text-white">
               <ExternalLink className="w-4 h-4 mr-2" />
               View Credential
@@ -190,7 +190,7 @@ const CertificationCard = ({ cert, index }: { cert: Certification; index: number
           </span>
           <div 
             className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-            style={{ backgroundColor: '#8668ED' }}
+            style={{ backgroundColor: '#059669' }}
           />
         </motion.button>
       </div>
@@ -204,7 +204,7 @@ export default function Certifications() {
 
   return (
     <section id="certifications" className="py-20 px-4 md:px-8 relative overflow-hidden bg-white dark:bg-transparent" ref={ref}>
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-200/10 dark:from-purple-900/5 via-transparent to-transparent"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-emerald-200/10 dark:from-emerald-900/5 via-transparent to-transparent"></div>
       
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Header */}
@@ -216,7 +216,7 @@ export default function Certifications() {
         >
           <h2 className="text-5xl md:text-6xl lg:text-7xl font-light mb-6 leading-tight">
             <span className="text-gray-900 dark:text-white">Professional </span>
-            <span style={{ color: '#8668ED' }}>Certifications</span>
+            <span style={{ color: '#059669' }}>Certifications</span>
           </h2>
           <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-lg">
             Continuous learning <span className="text-gray-500 dark:text-gray-600">and professional development</span>

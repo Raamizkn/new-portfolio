@@ -20,168 +20,118 @@ export default function Hero() {
   }
 
   return (
-    <section id="hero" className="min-h-screen flex flex-col justify-center items-center px-4 md:px-8 relative overflow-hidden pt-20">
+    <section id="hero" className="min-h-screen flex items-center px-4 md:px-8 relative overflow-hidden pt-20">
       {/* Subtle Background Effects */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-purple-900/10 via-transparent to-transparent"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-emerald-900/10 via-transparent to-transparent"></div>
       
-      {/* Minimal floating particles */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(3)].map((_, i) => (
+      <div className="max-w-7xl mx-auto w-full relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Left Content */}
           <motion.div
-            key={i}
-            className="absolute w-1 h-1 bg-purple-400/30 rounded-full"
-            style={{
-              left: `${20 + i * 30}%`,
-              top: `${30 + i * 20}%`,
-            }}
-            animate={{
-              y: [-10, 10, -10],
-              opacity: [0.3, 0.6, 0.3],
-            }}
-            transition={{
-              duration: 4 + i,
-              repeat: Infinity,
-              delay: i * 0.5,
-            }}
-          />
-        ))}
-      </div>
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: isVisible ? 1 : 0, x: isVisible ? 0 : -30 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="space-y-10"
+          >
+            <div className="space-y-4">
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                className="text-6xl md:text-8xl font-medium tracking-tight leading-tight text-gray-900 dark:text-white"
+              >
+                Hello, I am <br />
+                <span style={{ color: '#059669' }}>Raamiz Khan Niazi</span>
+              </motion.h1>
+              
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
+                transition={{ duration: 0.8, delay: 0.5 }}
+                className="h-0.5 w-full bg-gray-200 dark:bg-white/10"
+              />
+              
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+                className="text-2xl md:text-3xl text-gray-600 dark:text-gray-400 font-light leading-relaxed"
+              >
+                AI Product Manager + <br />
+                Consultant
+              </motion.p>
+            </div>
 
-      <div className="max-w-6xl mx-auto w-full relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 30 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-center space-y-8"
-        >
-
-          {/* Main Heading */}
-          <div className="space-y-6">
-            <motion.h1
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-5xl md:text-7xl lg:text-8xl font-light tracking-tight leading-tight"
+              transition={{ duration: 0.8, delay: 0.7 }}
+              className="pt-4"
             >
-              <span className="text-gray-900 dark:text-white">Hello, I'm </span>
-              <span style={{ color: '#8668ED' }}>Raamiz Khan Niazi</span>
-              <br />
-              <span className="text-gray-500 dark:text-gray-600 text-4xl md:text-6xl lg:text-7xl">AI Product Manager & Consultant</span>
-            </motion.h1>
-          </div>
+              <button
+                onClick={() => scrollToSection("projects")}
+                className="text-lg font-medium text-gray-900 dark:text-white hover:text-[#059669] dark:hover:text-[#059669] transition-colors duration-300 flex items-center gap-2 group"
+              >
+                View My Portfolio
+                <div className="w-8 h-px bg-current group-hover:w-12 transition-all duration-300" />
+              </button>
+            </motion.div>
 
-          {/* Description */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed"
-          >
-            Specializing in AI product management, voice agents, and automation workflows. I build intelligent solutions 
-            that drive conversions, streamline operations, and deliver measurable impact.
-          </motion.p>
+            {/* Social Links */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: isVisible ? 1 : 0 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+              className="flex gap-6 pt-8"
+            >
+              <a href="https://github.com/Raamizkn" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
+                <GitHub className="h-6 w-6" />
+              </a>
+              <a href="https://www.linkedin.com/in/raamiz-khan-niazi-b77a43233/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
+                <Linkedin className="h-6 w-6" />
+              </a>
+              <a href="/resume.pdf" download className="text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
+                <FileText className="h-6 w-6" />
+              </a>
+            </motion.div>
+          </motion.div>
 
-          {/* CTA Buttons */}
+          {/* Right Image */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
-            transition={{ duration: 0.8, delay: 0.7 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: isVisible ? 1 : 0, scale: isVisible ? 1 : 0.9 }}
+            transition={{ duration: 1, delay: 0.3 }}
+            className="relative flex justify-center lg:justify-end"
           >
-            <motion.button
-              onClick={() => scrollToSection("projects")}
-              className="relative overflow-hidden font-light px-10 py-4 text-base rounded-full border-2 bg-transparent group"
-              style={{ 
-                borderColor: '#8668ED'
-              }}
-              whileTap={{ scale: 0.98 }}
-              transition={{ type: "spring", stiffness: 400, damping: 17 }}
-            >
-              <span className="relative z-10 transition-colors duration-200" style={{ color: '#8668ED' }}>
-                <span className="group-hover:text-white">View My Work</span>
-              </span>
-              <div 
-                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-                style={{ backgroundColor: '#8668ED' }}
+            <div className="w-64 h-64 md:w-80 md:h-80 lg:w-[450px] lg:h-[450px] relative rounded-[48px] md:rounded-[60px] lg:rounded-[80px] overflow-hidden shadow-2xl">
+              <img 
+                src="/headshot.jpeg" 
+                alt="Raamiz Khan Niazi" 
+                className="w-full h-full object-cover"
               />
-            </motion.button>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
+            </div>
             
-            <motion.button
-              onClick={() => scrollToSection("contact")}
-              className="relative overflow-hidden font-light px-10 py-4 text-base rounded-full border-2 bg-transparent group"
-              style={{ 
-                borderColor: '#8668ED'
+            {/* Decorative elements */}
+            <motion.div 
+              animate={{ 
+                rotate: [0, 10, 0],
+                scale: [1, 1.1, 1]
               }}
-              whileTap={{ scale: 0.98 }}
-              transition={{ type: "spring", stiffness: 400, damping: 17 }}
-            >
-              <span className="relative z-10 transition-colors duration-200" style={{ color: '#8668ED' }}>
-                <span className="group-hover:text-white">Get in Touch</span>
-              </span>
-              <div 
-                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-                style={{ backgroundColor: '#8668ED' }}
-              />
-            </motion.button>
+              transition={{ duration: 5, repeat: Infinity }}
+              className="absolute -top-6 -right-6 w-24 h-24 bg-emerald-500/10 rounded-full blur-3xl"
+            />
+            <motion.div 
+              animate={{ 
+                rotate: [0, -10, 0],
+                scale: [1, 1.2, 1]
+              }}
+              transition={{ duration: 7, repeat: Infinity }}
+              className="absolute -bottom-10 -left-10 w-40 h-40 bg-emerald-500/5 rounded-full blur-3xl"
+            />
           </motion.div>
-
-          {/* Social Links */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: isVisible ? 1 : 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className="flex justify-center gap-4 pt-8"
-          >
-            <motion.a
-              href="https://github.com/Raamizkn"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="relative p-3.5 bg-gray-100 dark:bg-gray-800/50 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-full overflow-hidden group"
-              whileTap={{ scale: 0.95 }}
-              transition={{ type: "spring", stiffness: 400, damping: 17 }}
-            >
-              <GitHub className="h-5 w-5 text-gray-700 dark:text-gray-300 relative z-10 transition-colors duration-200 group-hover:text-white" />
-              <div
-                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-                style={{ backgroundColor: '#8668ED' }}
-              />
-              <span className="sr-only">GitHub</span>
-            </motion.a>
-
-            <motion.a
-              href="https://www.linkedin.com/in/raamiz-khan-niazi-b77a43233/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="relative p-3.5 bg-gray-100 dark:bg-gray-800/50 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-full overflow-hidden group"
-              whileTap={{ scale: 0.95 }}
-              transition={{ type: "spring", stiffness: 400, damping: 17 }}
-            >
-              <Linkedin className="h-5 w-5 text-gray-700 dark:text-gray-300 relative z-10 transition-colors duration-200 group-hover:text-white" />
-              <div
-                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-                style={{ backgroundColor: '#8668ED' }}
-              />
-              <span className="sr-only">LinkedIn</span>
-            </motion.a>
-
-            <motion.a
-              href="/resume.pdf"
-              download
-              className="relative p-3.5 bg-gray-100 dark:bg-gray-800/50 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-full overflow-hidden group"
-              whileTap={{ scale: 0.95 }}
-              transition={{ type: "spring", stiffness: 400, damping: 17 }}
-            >
-              <FileText className="h-5 w-5 text-gray-700 dark:text-gray-300 relative z-10 transition-colors duration-200 group-hover:text-white" />
-              <div
-                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-                style={{ backgroundColor: '#8668ED' }}
-              />
-              <span className="sr-only">Resume</span>
-            </motion.a>
-          </motion.div>
-        </motion.div>
+        </div>
       </div>
-
     </section>
   )
 }

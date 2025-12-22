@@ -109,7 +109,7 @@ export default function FloatingNav() {
             exit={{ opacity: 0, x: 20, scale: 0.9 }}
             transition={{ duration: 0.2, type: "spring", damping: 20 }}
             className="absolute right-16 top-0 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md rounded-2xl shadow-2xl overflow-hidden min-w-[200px]"
-            style={{ border: '1px solid rgba(134, 104, 237, 0.2)' }}
+            style={{ border: '1px solid rgba(5, 150, 105, 0.2)' }}
           >
             <div className="p-3 space-y-1">
               {navItems.map((item, index) => {
@@ -123,13 +123,13 @@ export default function FloatingNav() {
                     transition={{ duration: 0.2, delay: index * 0.05 }}
                     className="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all duration-200 text-left text-gray-700 dark:text-gray-300 relative overflow-hidden group"
                     style={isActive ? { 
-                      backgroundColor: '#8668ED',
+                      backgroundColor: '#059669',
                       color: 'white'
                     } : undefined}
                   >
                     {!isActive && (
                       <div 
-                        className="absolute inset-0 bg-gradient-to-r from-transparent via-purple-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                        className="absolute inset-0 bg-gradient-to-r from-transparent via-emerald-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                         style={{ transform: 'translateX(-100%)', animation: 'shimmer 2s infinite' }}
                       />
                     )}

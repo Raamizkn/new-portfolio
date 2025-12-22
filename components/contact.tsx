@@ -61,7 +61,7 @@ export default function Contact() {
 
   return (
     <section id="contact" className="py-20 px-4 md:px-8 bg-white dark:bg-transparent" ref={ref}>
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-200/10 dark:from-purple-900/5 via-transparent to-transparent"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-emerald-200/10 dark:from-emerald-900/5 via-transparent to-transparent"></div>
       
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -71,7 +71,7 @@ export default function Contact() {
       >
         <h2 className="text-5xl md:text-6xl lg:text-7xl font-light mb-12 text-center leading-tight">
           <span className="text-gray-900 dark:text-white">Let's </span>
-          <span style={{ color: '#8668ED' }}>Connect</span>
+          <span style={{ color: '#059669' }}>Connect</span>
         </h2>
 
         <div className="grid md:grid-cols-2 gap-8">
@@ -89,8 +89,8 @@ export default function Contact() {
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="flex items-center gap-4">
-                  <div className="p-3 rounded-xl" style={{ backgroundColor: '#8668ED20' }}>
-                    <Mail className="h-6 w-6" style={{ color: '#8668ED' }} />
+                  <div className="p-3 rounded-xl" style={{ backgroundColor: '#05966920' }}>
+                    <Mail className="h-6 w-6" style={{ color: '#059669' }} />
                   </div>
                   <div>
                     <h3 className="text-sm font-normal text-gray-700 dark:text-gray-300">Email</h3>
@@ -99,8 +99,8 @@ export default function Contact() {
                 </div>
 
                 <div className="flex items-center gap-4">
-                  <div className="p-3 rounded-xl" style={{ backgroundColor: '#8668ED20' }}>
-                    <MessageSquare className="h-6 w-6" style={{ color: '#8668ED' }} />
+                  <div className="p-3 rounded-xl" style={{ backgroundColor: '#05966920' }}>
+                    <MessageSquare className="h-6 w-6" style={{ color: '#059669' }} />
                   </div>
                   <div>
                     <h3 className="text-sm font-normal text-gray-700 dark:text-gray-300">Social Media</h3>
@@ -227,12 +227,12 @@ export default function Contact() {
                     disabled={submitting}
                     className="relative overflow-hidden w-full font-light py-3 rounded-full border-2 bg-transparent disabled:opacity-50 disabled:cursor-not-allowed group"
                     style={{ 
-                      borderColor: '#8668ED'
+                      borderColor: '#059669'
                     }}
                     whileTap={!submitting ? { scale: 0.99 } : {}}
                     transition={{ type: "spring", stiffness: 400, damping: 17 }}
                   >
-                    <span className="relative z-10 flex items-center justify-center transition-colors duration-200" style={{ color: '#8668ED' }}>
+                    <span className="relative z-10 flex items-center justify-center transition-colors duration-200" style={{ color: '#059669' }}>
                       <span className="flex items-center group-hover:text-white">
                         {submitting ? (
                           "Sending..."
@@ -247,7 +247,7 @@ export default function Contact() {
                     {!submitting && (
                       <div 
                         className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-                        style={{ backgroundColor: '#8668ED' }}
+                        style={{ backgroundColor: '#059669' }}
                       />
                     )}
                   </motion.button>

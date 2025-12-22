@@ -175,7 +175,7 @@ const ProjectCard = ({ project, onClick }: { project: Project; onClick: () => vo
           <p className="text-gray-500 text-xs font-bold uppercase tracking-widest">
             {project.client}
           </p>
-          <h3 className="text-2xl font-light text-white leading-tight tracking-tight group-hover:text-[#8668ED] transition-colors">
+          <h3 className="text-2xl font-light text-white leading-tight tracking-tight group-hover:text-[#059669] transition-colors">
             {project.title}
           </h3>
         </div>
@@ -253,7 +253,7 @@ const ProjectCard = ({ project, onClick }: { project: Project; onClick: () => vo
         animate={{ opacity: isHovered ? 1 : 0 }}
         transition={{ duration: 0.5 }}
         style={{
-          background: `radial-gradient(circle at center, rgba(134, 104, 237, 0.15) 0%, transparent 70%)`
+          background: `radial-gradient(circle at center, rgba(5, 150, 105, 0.15) 0%, transparent 70%)`
         }}
       />
     </motion.div>
@@ -315,7 +315,7 @@ const ProjectModal = ({ project, isOpen, onClose }: { project: Project | null; i
               {/* GitHub Button */}
               <Button
                 className="w-full text-white font-normal transition-all duration-300 shadow-lg hover:opacity-90"
-                style={{ backgroundColor: '#8668ED' }}
+                style={{ backgroundColor: '#059669' }}
                 onClick={() => window.open(project.github, '_blank')}
               >
                 <GitHub className="w-5 h-5 mr-2" />
@@ -355,7 +355,7 @@ export default function Projects() {
 
   return (
     <section id="projects" className="py-24 px-4 md:px-8 relative overflow-hidden bg-[#050505] text-white">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-purple-900/20 via-transparent to-transparent"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-emerald-900/20 via-transparent to-transparent"></div>
       
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Header */}
@@ -367,7 +367,7 @@ export default function Projects() {
           className="text-center mb-16"
         >
           <h2 className="text-5xl md:text-6xl lg:text-7xl font-light mb-6 leading-tight tracking-tight">
-            Selected <span style={{ color: '#8668ED' }}>Work</span>
+            Selected <span style={{ color: '#059669' }}>Work</span>
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto text-lg font-light">
             A curated collection of product strategies and software engineering projects.

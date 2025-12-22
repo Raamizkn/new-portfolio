@@ -118,7 +118,7 @@ export default function Header() {
                               href={`/case-studies/${project.slug}`}
                               className="flex flex-col gap-0.5 px-4 py-3 rounded-[16px] hover:bg-gray-50 dark:hover:bg-white/5 transition-colors group"
                             >
-                              <span className="text-[14px] font-medium text-gray-900 dark:text-white group-hover:text-[#8668ED] transition-colors">
+                              <span className="text-[14px] font-medium text-gray-900 dark:text-white group-hover:text-[#059669] transition-colors">
                                 {project.name}
                               </span>
                               <span className="text-[11px] text-gray-400 dark:text-gray-500 uppercase tracking-widest font-bold">

@@ -102,7 +102,7 @@ const ExperienceCard = ({ experience, index }: { experience: Experience; index: 
       <div 
         className="p-8 bg-white dark:bg-gray-900/40 backdrop-blur-sm border border-gray-200 dark:border-gray-800/50 rounded-2xl transition-all duration-300"
         onMouseEnter={(e) => {
-          e.currentTarget.style.borderColor = '#8668ED'
+          e.currentTarget.style.borderColor = '#059669'
           e.currentTarget.style.transform = 'translateY(-4px)'
         }}
         onMouseLeave={(e) => {
@@ -158,7 +158,7 @@ const ExperienceCard = ({ experience, index }: { experience: Experience; index: 
         <button
           onClick={() => setIsExpanded(!isExpanded)}
           className="flex items-center gap-2 text-sm font-normal transition-colors"
-          style={{ color: '#8668ED' }}
+          style={{ color: '#059669' }}
         >
           <span>{isExpanded ? 'Hide' : 'Show'} Key Achievements</span>
           {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
@@ -183,7 +183,7 @@ const ExperienceCard = ({ experience, index }: { experience: Experience; index: 
                     transition={{ delay: i * 0.1 }}
                     className="flex items-start gap-3 text-sm text-gray-600 dark:text-gray-400"
                   >
-                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ backgroundColor: '#8668ED' }} />
+                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ backgroundColor: '#059669' }} />
                     <span>{achievement}</span>
                   </motion.li>
                 ))}
@@ -202,7 +202,7 @@ export default function Experience() {
 
   return (
     <section id="experience" className="py-20 px-4 md:px-8 relative overflow-hidden bg-white dark:bg-transparent" ref={ref}>
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-200/10 dark:from-purple-900/5 via-transparent to-transparent"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-emerald-200/10 dark:from-emerald-900/5 via-transparent to-transparent"></div>
       
       <div className="max-w-5xl mx-auto relative z-10">
         {/* Header */}
@@ -214,7 +214,7 @@ export default function Experience() {
         >
           <h2 className="text-5xl md:text-6xl lg:text-7xl font-light mb-6 leading-tight">
             <span className="text-gray-900 dark:text-white">Professional </span>
-            <span style={{ color: '#8668ED' }}>Journey</span>
+            <span style={{ color: '#059669' }}>Journey</span>
           </h2>
           <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-lg">
             My experience building products <span className="text-gray-500 dark:text-gray-600">and leading technical initiatives</span>
