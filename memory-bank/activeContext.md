@@ -16,13 +16,14 @@
 - Replaced placeholder icons with actual product screenshots in the "Product Experience" sections of the case studies.
 - Refined the "Strategic Moat" section of the case study template to be context-aware and use brand colors.
 - Updated main page navigation to match the minimalist case study style.
-- Removed the custom cursor system entirely to revert to the standard browser cursor.
 - Implemented the TalkForm AI case study with comprehensive strategy data and visual assets.
-- Integrated brand-specific accent colors and data structures for TalkForm.
+- Implemented the Zoom Hybrid Event Marketplace case study with detailed strategic analysis.
+- Integrated brand-specific accent colors and data structures for all case studies.
 
 ## Next Steps
 - Refine the persona section layout to be more visually engaging across all case studies.
 - Ensure all product images and screenshots are properly optimized and displayed.
+- Add specific visual assets for the Zoom case study once available.
 - Final review of all case study content for consistency and tone.
 - Refine the transition between the home page and case study pages.
 - Ensure all images are correctly linked and high quality.

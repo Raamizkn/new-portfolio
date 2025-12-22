@@ -47,7 +47,7 @@ const productProjects: Project[] = [
   },
   {
     id: 3,
-    title: "TalkForm - Voice-First Evolution",
+    title: "TalkForm - Conversational Form filling",
     description: "Transforming mobile data entry through strategic LLM-powered interfaces.",
     tags: ["Voice AI", "HCI", "Product Strategy"],
     category: "Product Management",
@@ -57,6 +57,30 @@ const productProjects: Project[] = [
     slug: "talkform",
     accentColor: "#1e8a51"
   },
+  {
+    id: 4,
+    title: "Zoom Hybrid Event Marketplace",
+    description: "Strategic expansion from a communication utility to a two-sided network marketplace.",
+    tags: ["Marketplace", "SaaS Strategy", "GMV"],
+    category: "Product Management",
+    image: "/products/zoom/zoom.png",
+    client: "Zoom ",
+    industry: "Enterprise SaaS",
+    slug: "zoom-marketplace",
+    accentColor: "#2D8CFF"
+  },
+  {
+    id: 5,
+    title: "AltVoice.ai - Mock Interviews",
+    description: "High-fidelity AI role simulation for specialized technical and GTM positions.",
+    tags: ["GenAI", "Sales Enablement", "EdTech"],
+    category: "Product Management",
+    image: "/products/altvoice/altvoice.png",
+    client: "AltVoice.ai",
+    industry: "AI / HR Tech",
+    slug: "altvoice",
+    accentColor: "#0b4031"
+  }
 ]
 
 // Software Development Projects

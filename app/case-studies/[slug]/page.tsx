@@ -110,6 +110,391 @@ interface CaseStudyData {
 }
 
 const caseStudies: Record<string, CaseStudyData> = {
+  'altvoice': {
+    title: "Strategic Market Entry & Opportunity Analysis: AltVoice.ai",
+    subtitle: "High-Fidelity Mock Interviews for Technical Enablement (Strategic Analysis)",
+    industry: "AI / HR Tech",
+    client: "AltVoice.ai",
+    heroImage: "/products/altvoice/altvoice.png",
+    accentColor: "#0b4031",
+    overview: "AltVoice.ai is uniquely positioned to capitalize on the structural shift in technical enablement by moving beyond communication coaching into High-Fidelity Role Simulation. It leverages 'AI Replicas' to simulate the cognitive validity of specialized roles like GTM Engineering and AI Product Management.",
+    introduction: "The interview preparation market is polarized between unscalable human coaching and low-fidelity content. AltVoice democratizes access to elite technical mentorship, providing a 'flight simulator' for high-stakes careers where substance matters more than speech mechanics.",
+    conceptSummary: [
+      {
+        title: "Cognitive Validity",
+        description: "Moving beyond 'um' counting to evaluate the technical coherence of frameworks and architectural proposals."
+      },
+      {
+        title: "AI Replicas",
+        description: "Expert-cloned personas that mimic specific technical biases, objection patterns, and strategic evaluation rubrics."
+      },
+      {
+        title: "Flight Simulator",
+        description: "A high-fidelity training ground where candidates can fail cheaply and repeatedly before the real interview."
+      }
+    ],
+    impactStatement: "Democratizing access to elite technical mentorship through expert-cloned AI replicas and high-fidelity role simulation.",
+    problemOpportunity: {
+      challenge: {
+        title: "The Commodity Trap",
+        description: "Incumbents focus on 'communication hygiene' (pacing, tone) but fail to simulate the technical reality of specialized roles, leaving a vacuum in cognitive assessment."
+      },
+      opportunity: {
+        title: "Technical Specialization",
+        description: "Explosive 205% growth in roles like GTM Engineering creates a demand for specialized preparation that generic platforms cannot provide."
+      }
+    },
+    whyItMatters: [
+      {
+        title: "Reduced Usage Gap",
+        description: "Allows candidates to perform 20+ mock sessions at a fraction of the cost of human expert marketplaces."
+      },
+      {
+        title: "Enterprise Readiness",
+        description: "Accelerates Sales Engineer ramp time from 9 months to weeks via 'Certification at Scale' using top-performer twins."
+      },
+      {
+        title: "AI Literacy",
+        description: "Positions university career centers as forward-thinking by using AI to train students for live technical screens."
+      }
+    ],
+    competitorLandscape: [
+      {
+        platform: "Yoodli",
+        whatItDoes: "AI Communication Coach",
+        limitations: "Focuses on delivery mechanics rather than technical substance.",
+        strategicGap: "Lacks strategic scenarios for specialized technical roles."
+      },
+      {
+        platform: "Exponent",
+        whatItDoes: "Interview Content & P2P",
+        limitations: "Static content library and high variance in peer-to-peer quality.",
+        strategicGap: "Cannot match the up-to-the-minute relevance of an AI replica."
+      },
+      {
+        platform: "Interviewing.io",
+        whatItDoes: "Human Expert Marketplace",
+        limitations: "Prohibitively expensive cost per session ($100-$250).",
+        strategicGap: "High operational cost prevents the repetition needed for mastery."
+      }
+    ],
+    personas: [
+      {
+        name: "Alex",
+        location: "GTM Engineer Aspirant",
+        profile: "Mid-level backend engineer pivoting to RevOps",
+        schedule: "Applying to 5-10 roles per week",
+        income: "$150k target",
+        behavior: "Watches YouTube tutorials; lacks hands-on practice",
+        spend: "N/A",
+        painPoints: ["Impostor syndrome", "No established path", "Fear of sales psychology questions"],
+        needs: "A simulator to practice Python/SQL screens in a revenue context."
+      },
+      {
+        name: "Sarah",
+        location: "Enterprise Enablement",
+        profile: "VP of Global Pre-Sales",
+        schedule: "Managing 50+ Sales Engineers",
+        income: "N/A",
+        behavior: "Burns budget on shadowing senior staff",
+        spend: "$1,200/employee/year",
+        painPoints: ["Unscalable training", "Inconsistent demo quality", "Long ramp times"],
+        needs: "Certification at scale using digital twins of top performers."
+      }
+    ],
+    productExperience: [
+      {
+        title: "Digital Twin Architecture",
+        mechanism: "Ingests expert 'digital exhaust' (blogs, podcasts, code) via RAG.",
+        benefit: "Monetizes expert personas while providing proprietary technical feedback.",
+        howItWorks: "Uses LoRA adapters to mimic specific cognitive styles and evaluation rubrics.",
+        image: "/products/altvoice/Screenshot 2025-12-22 at 02.27.43.png"
+      },
+      {
+        title: "Live Interactive Sandbox",
+        mechanism: "Multi-modal interface simulating CRM dashboards and code environments.",
+        benefit: "Validates technical execution, not just verbal explanations.",
+        howItWorks: "AI critiques logic and execution steps within a mock UI environment.",
+        image: "/products/altvoice/Screenshot 2025-12-22 at 02.28.17.png"
+      },
+      {
+        title: "Ground-Truth Feedback",
+        mechanism: "Verification layer connected to live technical documentation.",
+        benefit: "Eliminates AI hallucinations in high-stakes technical evaluations.",
+        howItWorks: "Cross-references responses against Stripe, AWS, and modern data stack guides.",
+        image: "/products/altvoice/Screenshot 2025-12-22 at 02.29.02.png"
+      }
+    ],
+    pricing: [
+      {
+        name: "Quarterly Sprint",
+        target: "Job Seekers",
+        price: "$129/qtr",
+        features: ["Unlimited Mock Sessions", "Expert Persona Access", "Technical Feedback Reports"]
+      },
+      {
+        name: "Enablement Seat",
+        target: "Enterprise Teams",
+        price: "$120/mo",
+        features: ["Top Performer Replicas", "Certification Workflow", "SSO & Admin Analytics"]
+      },
+      {
+        name: "Departmental",
+        target: "Universities",
+        price: "$15k/yr",
+        features: ["500 Student Seats", "Specialized Career Paths", "Alumni Capacity Expansion"]
+      }
+    ],
+    unitEconomics: {
+      revenue: "Tiered B2C/B2B subscription",
+      cogs: "Inference-heavy voice interaction (~$1.00 per 30-min session)",
+      realValue: "4.2x LTV/CAC ratio for B2C; massive ROI on deal-save for B2B."
+    },
+    goToMarket: [
+      {
+        phase: "Phase 1: Authority",
+        title: "B2C Authority Building",
+        strategy: "Define the 'GTM Engineer' category.",
+        execution: "Publish 'State of GTM Engineering' report via Modern Data Stack influencers.",
+        pitch: "\"Definition through data: Establishing the gold standard for high-tech roles.\""
+      },
+      {
+        phase: "Phase 2: B2B Expansion",
+        title: "Digital Twin Trojan Horse",
+        strategy: "Target VPs of Sales at Series C+ startups.",
+        execution: "Build free 'Top Performer' twins to demonstrate certification at scale.",
+        pitch: "\"Imagine if your entire team could practice against your best closer 24/7.\""
+      }
+    ],
+    risks: [
+      {
+        category: "Regulatory",
+        detail: "NYC Local Law 144 compliance for Automated Employment Decision Tools.",
+        probability: "High",
+        mitigation: "Position as 'Training Tool' vs 'Selection Tool' initially; invest in bias audits."
+      },
+      {
+        category: "Technical",
+        detail: "Hallucination risk in complex technical evaluations.",
+        probability: "Medium",
+        mitigation: "Deterministic code execution layer and verification against live documentation."
+      }
+    ],
+    forecast: {
+      assumptions: [
+        "High-Technical job postings remain strong (>35k/qtr).",
+        "Inference costs decrease by 60% via model optimization.",
+        "Average job search duration remains ~3.5 months."
+      ],
+      revenue: [
+        { label: "Year 3 ARR Target", value: "$11.5M" },
+        { label: "Gross Margin Target", value: "82%" }
+      ],
+      retentionMultiplier: [
+        { metric: "LTV/CAC Ratio", standard: "3:1", commuter: "4.2:1", impact: "High Growth Efficiency" },
+        { metric: "Interview Pass Rate", standard: "15%", commuter: "38%", impact: "Significant Career Acceleration" }
+      ]
+    },
+    marketImpact: [
+      {
+        metric: "GTM Role Postings",
+        target: "Growth",
+        result: "+205%",
+        analysis: "Rapid market expansion validates the need for specialized simulation."
+      },
+      {
+        metric: "Inference Cost",
+        target: "Reduction",
+        result: "-60%",
+        analysis: "Optimization strategy using hybrid model architectures ensures profitability."
+      }
+    ]
+  },
+  'zoom-marketplace': {
+    title: "Zoom Hybrid Event Marketplace: Strategic Portfolio Case Study",
+    subtitle: "The Pivot from Utility to Ecosystem (Strategic Expansion)",
+    industry: "Enterprise SaaS / Marketplace",
+    client: "Zoom ",
+    heroImage: "/products/zoom/zoom.png",
+    accentColor: "#2D8CFF",
+    overview: "Zoom stands at a pivotal juncture. Having successfully navigated hyper-growth, it now faces the dilemma of a commoditized utility. The Hybrid Event Marketplace is a conceptual expansion designed to transition Zoom from a pure SaaS provider to a two-sided network marketplace, capturing the high-margin transaction value currently lost to third-party platforms.",
+    introduction: "The global virtual events market is projected to reach $297B by 2030. For Zoom, this represents an expansion of its TAM beyond enterprise communication into the $205B Creator Economy. The Marketplace unifies discovery, transaction, and delivery into a single cohesive ecosystem.",
+    conceptSummary: [
+      {
+        title: "Network Moat",
+        description: "Creating a defensible moat through high-liquidity network effects, making the platform difficult to displace compared to pure SaaS features."
+      },
+      {
+        title: "GMV Expansion",
+        description: "Unlocking new high-growth revenue streams based on Gross Merchandise Value rather than just fixed seat licenses."
+      },
+      {
+        title: "Closed-Loop Data",
+        description: "Unifying the 'Event Stack' to eliminate data silos between discovery, ticketing, and video delivery."
+      }
+    ],
+    impactStatement: "Transitioning Zoom from a pure communication utility into the world's largest marketplace for live, hybrid experiences.",
+    problemOpportunity: {
+      challenge: {
+        title: "The Fragmented 'Event Stack'",
+        description: "Organizers currently use a 'Frankenstein' stack of Eventbrite, Mailchimp, and Stripe. This leads to data loss, high CAC ($72/lead), and 'platform leakage' where Zoom bears the cost but misses the transaction upside."
+      },
+      opportunity: {
+        title: "Vertical Integration",
+        description: "Zoom owns the 'destination' (300M daily users). By moving upstream to discovery and transaction, it can arbitrage the high fees of incumbents and offer superior ROI via native distribution."
+      }
+    },
+    whyItMatters: [
+      {
+        title: "Structural Hybrid Shift",
+        description: "70% of event planners view hybrid as permanent. The market demands tools that handle audience complexity seamlessly."
+      },
+      {
+        title: "Prosumer Monetization",
+        description: "The line between a meeting and an event is blurring. Millions of 'knowledge solopreneurs' need an integrated business-in-a-box."
+      },
+      {
+        title: "Discovery Gap",
+        description: "With 3.3 trillion annual minutes, Zoom has an untapped inventory of 'professional intent' that can be converted into content discovery."
+      }
+    ],
+    competitorLandscape: [
+      {
+        platform: "Eventbrite",
+        whatItDoes: "Legacy Ticketing",
+        limitations: "Disconnected from delivery; rising 'Organizer Fees'.",
+        strategicGap: "Lacks native video; bears high overhead Eventbrite cannot easily reduce."
+      },
+      {
+        platform: "Luma",
+        whatItDoes: "Viral Scheduling",
+        limitations: "Completely reliant on external video tools (Zoom/Meet).",
+        strategicGap: "Niche focus; lacks the massive enterprise reach of Zoom."
+      },
+      {
+        platform: "LinkedIn",
+        whatItDoes: "B2B Social Network",
+        limitations: "High CAC for organizers; lacks robust native ticketing.",
+        strategicGap: "Not built for transactional commerce loops."
+      }
+    ],
+    personas: [
+      {
+        name: "Sarah",
+        location: "Knowledge Solopreneur",
+        profile: "Executive Coach / Yoga Instructor",
+        schedule: "Hosts 2-4 paid workshops/week",
+        income: "$80k/year",
+        behavior: "Manages 3 different subscriptions to run her business",
+        spend: "N/A",
+        painPoints: ["Subscription fatigue", "Manual recording delivery", "Fragmented analytics"],
+        needs: "A unified 'Business in a Box' that automates scheduling and payments."
+      },
+      {
+        name: "David",
+        location: "Enterprise Marketer",
+        profile: "Demand Gen at B2B SaaS",
+        schedule: "Monthly large-scale webinars",
+        income: "N/A",
+        behavior: "Pays $75/lead on LinkedIn Ads",
+        spend: "N/A",
+        painPoints: ["High CPL", "Broken attribution loops", "CSV upload hell"],
+        needs: "Lower CAC via organic discovery and native CRM sync."
+      }
+    ],
+    productExperience: [
+      {
+        title: "Discovery Dashboard",
+        mechanism: "AI-powered feed within the Zoom client based on meeting metadata.",
+        benefit: "Lowers Creator CAC by suggesting relevant events to 300M daily users.",
+        howItWorks: "Uses professional intent signals to recommend content without violating privacy.",
+        image: "/products/zoom/Screenshot 2025-12-22 at 03.08.03.png"
+      },
+      {
+        title: "The Smart Ticket",
+        mechanism: "Dynamic digital asset that unifies access, recordings, and AI summaries.",
+        benefit: "Eliminates the 'Where is my link?' friction for attendees.",
+        howItWorks: "The ticket acts as the credential, updating in real-time as the event progresses.",
+        image: "/products/zoom/Screenshot 2025-12-22 at 03.08.25.png"
+      },
+      {
+        title: "Closed-Loop Analytics",
+        mechanism: "Unified funnel from discovery to engagement to CRM sync.",
+        benefit: "Enables ROAS optimization impossible with disconnected stacks.",
+        howItWorks: "Correlates attendance duration with lead qualification signals in the CRM."
+      }
+    ],
+    pricing: [
+      {
+        name: "Starter",
+        target: "New Creators",
+        price: "$0/mo",
+        features: ["5% + $0.99 Fee", "Organic Discovery", "Zoom Wallet Access"]
+      },
+      {
+        name: "Pro",
+        target: "Professional Coaches",
+        price: "$49/mo",
+        features: ["2% + $0.30 Fee", "Advanced Analytics", "CRM Integrations", "Custom Branding"]
+      },
+      {
+        name: "Enterprise",
+        target: "Marketing Teams",
+        price: "Custom",
+        features: ["Negotiated Fees", "Salesforce/Marketo Native Sync", "White-label Options"]
+      }
+    ],
+    unitEconomics: {
+      revenue: "Take-rate commission + SaaS Upsell",
+      cogs: "Zero marginal cost (piggybacks on existing video infra)",
+      realValue: "90:1 LTV/CAC ratio compared to standard 3:1 in SaaS."
+    },
+    goToMarket: [
+      {
+        phase: "Phase 1: Seed",
+        title: "Supply Aggregation",
+        strategy: "Target existing power hosts with 'Zero Fee' incentives.",
+        execution: "Onboard 50k Creators; focus on Pro users with high meeting volume.",
+        pitch: "\"Switch and Save: Lower fees, more discovery.\""
+      },
+      {
+        phase: "Phase 2: Discovery",
+        title: "Demand Aggregation",
+        strategy: "Activate internal traffic inventory.",
+        execution: "Launch 'Discovery Tab' and dynamic post-meeting recommendations.",
+        pitch: "\"The world's largest classroom, right in your Zoom client.\""
+      }
+    ],
+    risks: [
+      {
+        category: "Disintermediation",
+        detail: "Users meeting on Zoom but transacting off-platform to avoid fees.",
+        probability: "Medium",
+        mitigation: "Increase inextricable value (Auto-summaries, verified reviews, recording sync)."
+      },
+      {
+        category: "Privacy",
+        detail: "Backlash against using meeting data for recommendations.",
+        probability: "High",
+        mitigation: "Strict Opt-In governance; recommendations based only on public tags."
+      }
+    ],
+    forecast: {
+      assumptions: [
+        "Conversion: 0.25% of DAUs buy one ticket monthly.",
+        "ATP: $40 blended average ticket price.",
+        "Take Rate: 5% flat fee."
+      ],
+      revenue: [
+        { label: "Base Case Annual Net Revenue", value: "$18 Million" },
+        { label: "Upside Case Annual Net Revenue", value: "$144 Million" }
+      ],
+      retentionMultiplier: [
+        { metric: "SaaS Retention", standard: "82%", commuter: "96%", impact: "Significant Churn Reduction" },
+        { metric: "Ecosystem Value", standard: "1x", commuter: "2.5x", impact: "High Lifetime Value" }
+      ]
+    }
+  },
   'talkform': {
     title: "TalkForm: The Strategic Evolution of Mobile Data Entry",
     subtitle: "Transforming unstructured speech into structured database inputs (Product Case Study)",
@@ -1109,6 +1494,51 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
           </div>
         </div>
 
+        {/* Strategic Analysis Section */}
+        <div className="mb-40 p-16 md:p-24 bg-gray-900 text-white rounded-[48px] relative overflow-hidden">
+          <div 
+            className="absolute top-0 left-0 w-full h-full opacity-10"
+            style={{ 
+              background: `radial-gradient(circle at 20% 30%, ${study.accentColor}, transparent 70%)`
+            }}
+          ></div>
+          <div className="relative z-10">
+            <h2 className="text-xs font-bold uppercase tracking-[0.2em] text-gray-500 mb-12">Strategic Analysis</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+              <div className="space-y-8">
+                <h3 className="text-3xl font-medium">The Future of {params.slug === 'uber-commuter' ? 'MaaS' : params.slug === 'airbnb-cospace' ? 'Living' : params.slug === 'zoom-marketplace' ? 'Ecosystems' : params.slug === 'altvoice' ? 'Role Simulation' : 'HCI'}</h3>
+                <p className="text-lg font-light text-gray-400 leading-relaxed">
+                  {params.slug === 'uber-commuter' ? 
+                    "The Uber Commuter Pass isn't just a product; it's a strategic defense mechanism. By integrating public transit and locking in the daily commute, Uber increases the 'switching cost' and secures recurring revenue." :
+                   params.slug === 'airbnb-cospace' ?
+                    "CoSpace transforms Airbnb from a travel agency to a 'Living Utility'. By facilitating living, traveling, and working, Airbnb captures the entire lifecycle of the mobile professional." :
+                   params.slug === 'zoom-marketplace' ?
+                    "The transition to a Marketplace model has profound implications for Zoom's valuation. By demonstrating a successful marketplace pivot, Zoom signals to investors that it has a 'Second Act' beyond seat licenses." :
+                   params.slug === 'altvoice' ?
+                    "AltVoice is uniquely positioned to capitalize on the structural shift in technical enablement by moving beyond communication coaching into High-Fidelity Role Simulation." :
+                    "The success of TalkForm validates that the future of HCI is not 'Voice Only' but 'Multimodal'. Users want the speed of voice for generation and the precision of touch for curation."
+                  }
+                </p>
+              </div>
+              <div className="space-y-8">
+                <h3 className="text-3xl font-medium">Market Impact</h3>
+                <p className="text-lg font-light text-gray-400 leading-relaxed">
+                  {params.slug === 'uber-commuter' ?
+                    "Moving Uber from the 'Leisure' budget line to the 'Utility' budget line shifts revenue quality from transactional to predictable, driving a higher valuation multiple." :
+                   params.slug === 'airbnb-cospace' ?
+                    "By stabilizing host income through weekday bookings, Airbnb reduces host churn and financial stress while bypassing OTA bid wars for customer re-acquisition." :
+                   params.slug === 'zoom-marketplace' ?
+                    "Zoom becomes the operating system for the Creator Economy—the place where knowledge is not just communicated, but sold. This flywheel creates a barrier to entry that competitors cannot easily replicate." :
+                   params.slug === 'altvoice' ?
+                    "AltVoice democratizes access to elite technical mentorship through its Digital Twin architecture, allowing experts to monetize their interviewing persona at scale." :
+                    "TalkForm's schema mapping technology is foundational for the next era of AI: Agentic Interfaces, where AI navigates forms autonomously on behalf of users."
+                  }
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Final Impact */}
         <div className="text-center max-w-3xl mx-auto space-y-10">
           <Rocket 
@@ -1124,6 +1554,14 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
             ) : params.slug === 'airbnb-cospace' ? (
               <>
                 Airbnb CoSpace transforms the platform from a travel utility into a <span className="text-black font-normal underline decoration-2 underline-offset-8" style={{ textDecorationColor: study.accentColor }}>daily lifestyle infrastructure</span>. By unlocking residential yield and providing hyper-local workspaces, Airbnb secures its ecosystem, lowers acquisition costs, and becomes the indispensable operating system for the hybrid world.
+              </>
+            ) : params.slug === 'altvoice' ? (
+              <>
+                AltVoice.ai establishes a new category of <span className="text-black font-normal underline decoration-2 underline-offset-8" style={{ textDecorationColor: study.accentColor }}>High-Fidelity Role Simulation</span>. By leveraging Digital Twin technology and cognitive validity assessment, AltVoice democratizes elite mentorship and becomes the essential flight simulator for the modern AI workforce.
+              </>
+            ) : params.slug === 'zoom-marketplace' ? (
+              <>
+                The Zoom Hybrid Event Marketplace represents the pivot from <span className="text-black font-normal underline decoration-2 underline-offset-8" style={{ textDecorationColor: study.accentColor }}>utility to ecosystem</span>. By unifying discovery, transaction, and delivery, Zoom transcends the utility trap and becomes the world's largest classroom and marketplace for professional growth.
               </>
             ) : (
               <>

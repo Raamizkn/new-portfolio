@@ -2,17 +2,9 @@
 
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Menu, X, Sun, Moon, Mouse } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { Menu, X, Sun, Moon } from "lucide-react"
 import { useTheme } from "next-themes"
-import { useCursor } from "@/hooks/use-cursor"
 import Link from "next/link"
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip"
 
 const navItems = [
   { name: "Home", href: "/#hero" },
