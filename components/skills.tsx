@@ -40,7 +40,7 @@ const developmentSkills: Skill[] = [
   { name: "AWS", category: "Cloud", description: "Cloud Services", icon: "amazonaws" },
   { name: "Python", category: "Language", description: "Backend & AI", icon: "python" },
 ]
-
+//testing commit
 const SkillCard = ({ skill, index }: { skill: Skill; index: number }) => {
   const [isHovered, setIsHovered] = useState(false)
   const [imageError, setImageError] = useState(false)
